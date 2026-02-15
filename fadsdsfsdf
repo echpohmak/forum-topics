@@ -1,0 +1,32 @@
+<div id="gh-topic-root"></div>
+
+<script>
+(async function () {
+  const BASE = "https://cdn.jsdelivr.net/gh/USER/REPO@BRANCH/topics";
+  const SLUG = "test";
+
+  const root = document.getElementById("gh-topic-root");
+  if (!root) return;
+
+  const v = Date.now();
+
+  try {
+    const url = `${BASE}/${SLUG}.html?v=${v}`;
+    const r = await fetch(url, { cache: "no-store" });
+    if (!r.ok) throw new Error(`HTTP ${r.status}`);
+
+    root.innerHTML = await r.text();
+
+    root.querySelectorAll("script").forEach(old => {
+      const s = document.createElement("script");
+      for (const a of old.attributes) s.setAttribute(a.name, a.value);
+      s.text = old.textContent || "";
+      old.replaceWith(s);
+    });
+
+  } catch (e) {
+    console.error(e);
+    root.innerHTML = "<div style='padding:10px;border:1px solid #ec3e3e;border-radius:8px;'>Не удалось загрузить контент с GitHub.</div>";
+  }
+})();
+</script>
