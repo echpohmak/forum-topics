@@ -246,6 +246,9 @@
       padding: 10px 14px;
       font-size: 16px;
       white-space: nowrap;
+	  padding: 12px 14px;
+      line-height: 1.1;
+      opacity: 1;
     }
 
     .opg-tabs .tab-content:not(.active){ display:none !important; }
@@ -275,14 +278,24 @@
   <div class="echpohmak-header">Единая система повышений и отработок для членов ОПГ</div>
 
   <div class="opg-tabs">
-    <nav class="tabs-nav">
-      <a href="#" class="tab-link active" data-target="tab-promote">Повышения</a>
-      <a href="#" class="tab-link" data-target="tab-penalties">Снятие взысканий</a>
-      <a href="#" class="tab-link" data-target="tab-points">Начисление баллов</a>
-      <a href="#" class="tab-link" data-target="tab-reports">Отчётность</a>
-      <a href="#" class="tab-link" data-target="tab-notes">Примечания</a>
-      <div class="tab-indicator"></div>
-    </nav>
+	<nav class="tabs-nav">
+	  <a href="#" class="tab-link active" data-target="tab-promote"
+	     data-full="Повышения" data-short="Повыш." title="Повышения">Повышения</a>
+
+	  <a href="#" class="tab-link" data-target="tab-penalties"
+	     data-full="Снятие взысканий" data-short="Взыск." title="Снятие взысканий">Снятие взысканий</a>
+
+	  <a href="#" class="tab-link" data-target="tab-points"
+	     data-full="Начисление баллов" data-short="Баллы" title="Начисление баллов">Начисление баллов</a>
+
+	  <a href="#" class="tab-link" data-target="tab-reports"
+	     data-full="Отчётность" data-short="Отчёт" title="Отчётность">Отчётность</a>
+
+	  <a href="#" class="tab-link" data-target="tab-notes"
+	     data-full="Примечания" data-short="Важно" title="Примечания">Примечания</a>
+
+	  <div class="tab-indicator"></div>
+	</nav>
 
     <div class="tabs-content">
       <section id="tab-promote" class="tab-content active">
@@ -476,6 +489,16 @@
       tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
 
+    function applyTabLabels(){
+      tabs.forEach(t => {
+        const full  = t.dataset.full  || t.textContent.trim();
+        const short = t.dataset.short || full;
+        t.textContent = isMobile() ? short : full;
+      });
+      const current = nav.querySelector('.tab-link.active') || tabs[0];
+      requestAnimationFrame(() => moveIndicator(current));
+    }
+
     function activateTab(tab){
       const tgt = tab.dataset.target;
       if (!tgt) return;
@@ -490,12 +513,14 @@
     }
 
     const activeTab = nav.querySelector('.tab-link.active') || tabs[0];
-    if (activeTab) {
-      requestAnimationFrame(() => {
+
+    requestAnimationFrame(() => {
+      applyTabLabels();
+      if (activeTab) {
         moveIndicator(activeTab);
         scrollTabIntoView(activeTab);
-      });
-    }
+      }
+    });
 
     tabs.forEach(tab => {
       tab.addEventListener('click', e => {
@@ -505,8 +530,7 @@
     });
 
     window.addEventListener('resize', () => {
-      const current = nav.querySelector('.tab-link.active') || tabs[0];
-      moveIndicator(current);
+      applyTabLabels();
     }, { passive: true });
   })();
 </script>
