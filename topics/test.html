@@ -1,20 +1,23 @@
 <link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200&amp;display=swap" rel="stylesheet">
 <style type="text/css">
-#elComment_5853062 .ipsResponsive_hidePhone { 
+    #elComment_7364249 .ipsResponsive_hidePhone { 
         display: none; 
     }
-    #elComment_5853062 .ipsComment_author { 
+    #elComment_7364249 .ipsComment_author { 
         display: none; 
     }
-    #elComment_5853062 .ipsComment_meta { 
+    #elComment_7364249 .ipsComment_meta { 
         display: none; 
     }
-    #elComment_5853062 .ipsType_reset  { 
+    #elComment_7364249 .ipsType_reset  { 
         display: none; 
     }
-    #elComment_5853062 { 
+    #elComment_7364249 { 
         border-radius: 8px 8px 8px 8px 
     }
     .ipsPager { 
@@ -29,10 +32,10 @@
     .md-toast-warning { 
         font-size: 19px; line-height: 1.1;
     }
-    #elComment_5853062 .ipsType_normal.ipsType_richText.ipsContained { 
+    #elComment_7364249 .ipsType_normal.ipsType_richText.ipsContained { 
         font-family: Montserrat,Helvetica,sans-serif; 
     }
-    #elComment_5853062 .ipsComment.ipsModerated:not(.ipsComment_selected), .ipsComment.ipsModerated.ipsBox:not(.ipsBox_transparent):not(.ipsComment_selected) {
+    #elComment_7364249 .ipsComment.ipsModerated:not(.ipsComment_selected), .ipsComment.ipsModerated.ipsBox:not(.ipsBox_transparent):not(.ipsComment_selected) {
         background: transparent;
         border: 1px solid #ec3e3e;
     }
@@ -42,13 +45,13 @@
     .ipsComment.ipsComment_highlighted:not(.ipsComment_selected):not(.ipsModerated):not(.ipsComment_popular), .ipsComment.ipsComment_highlighted.ipsBox:not(.ipsComment_selected):not(.ipsModerated):not(.ipsComment_popular):not(.ipsBox_transparent) { 
         border-color: transparent; background: transparent; 
     }
-    #elComment_5853062  .ipsModerated { 
+    #elComment_7364249  .ipsModerated { 
         background: transparent; 
     }
-    #elComment_5853062 .ipsBox { 
+    #elComment_7364249 .ipsBox { 
         border: 1px solid transparent; 
     }
-    #elComment_5853062 .ipsComment { 
+    #elComment_7364249 .ipsComment { 
         border: 1px solid transparent; 
     }
     .cTopicPostArea { 
@@ -69,1648 +72,428 @@
     .cAuthorPane.cAuthorPane_mobile {
         display: none;
     }
-    /* special thanks to Sokolin for the styles that hide the standard message design */</style>
-<link href="https://echpohmak.pythonanywhere.com/libraries/forumStylesMO.css" rel="stylesheet">
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const spoilerContainers = document.querySelectorAll('.echpohmak-spoiler-container')
-        spoilerContainers.forEach(function(spoilerContainer) {
-            const spoilerHeader = spoilerContainer.querySelector('.echpohmak-spoiler-header');
-            const spoilerContents = spoilerContainer.querySelector('.echpohmak-spoiler-contents')
-            spoilerHeader.addEventListener('click', function() {
-                if (spoilerContainer.classList.contains('open')) {
-                    spoilerContents.style.maxHeight = '0';
-                    spoilerContainer.classList.remove('open');
-                } else {
-                    const contentHeight = spoilerContents.scrollHeight + 'px';
-                    spoilerContents.style.maxHeight = contentHeight;
-                    spoilerContainer.classList.add('open');
-                }
-            });
-        });
-    });
-</script><script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const toggleDivs = document.querySelectorAll('.linkss .toggle-submenu');
+    /* special thanks to Sokolin for the styles that hide the standard message design */
+</style>
+<link rel="stylesheet" href="https://storage.yandexcloud.net/mta-province-4-forum-styles/forumStylesOPG.css">
 
-        toggleDivs.forEach(function(div) {
-            div.addEventListener('click', function(e) {
-                e.stopPropagation();
+<style type="text/css">
+  :root{
+    --opg-accent: #7f8c8d;   /* акцентный цвет */
+    --opg-bg: #1e1e2d;
+    --opg-border: #5d5e74;
+    --opg-text: #e9e9f1;
+    --opg-muted: #b9bacb;
+  }
 
-                const menuItem = this.closest('.menu-item-has-children');
-                const subMenu = menuItem.querySelector('.sub-menu');
+  /* ===== TABS NAVIGATION ===== */
+  .opg-tabs { color: var(--opg-text); }
 
-                const isExpanded = this.classList.contains('open');
+  .opg-tabs .tabs-nav{
+    position: relative;
+    display: flex;
+    border-bottom: 2px solid #333;
+    margin-bottom: 20px;
+    gap: 2px;
+  }
 
-                if (isExpanded) {
-                    subMenu.classList.remove('open');
-                    this.classList.remove('open');
-                    this.setAttribute('aria-expanded', 'false');
-                } else {
-                    subMenu.classList.add('open');
-                    this.classList.add('open');
-                    this.setAttribute('aria-expanded', 'true');
-                }
-            });
-        });
+  .opg-tabs .tab-link{
+    flex: 1;
+    padding: 12px;
+    text-align: center;
+    text-decoration: none !important;
+    color: #bbb;
+    font-size: 18px;
+    font-weight: 700;
+    word-break: keep-all;
+    cursor: pointer;
+    user-select: none;
+    transition: color .3s ease, transform .3s ease, opacity .2s ease;
+    opacity: .95;
+  }
 
-        const tocLinks = document.querySelectorAll('.linkss a.toc-link');
+  .opg-tabs .tab-link:hover{
+    transform: translateY(-2px) scale(1.03);
+    opacity: 1;
+  }
 
-        tocLinks.forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                const isSubmenuLink = this.closest('.sub-menu') !== null;
+  .opg-tabs .tab-link.active{
+    color: var(--opg-accent);
+    opacity: 1;
+  }
 
-                e.preventDefault();
+  .opg-tabs .tab-indicator{
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background-color: var(--opg-accent);
+    border-radius: 4px 4px 0 0;
+    transition:
+      left .5s cubic-bezier(.23,1,.32,1),
+      width .5s cubic-bezier(.23,1,.32,1),
+      background-color .3s ease;
+  }
 
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
+  /* ===== TAB CONTENT ===== */
+  @keyframes contentFadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
 
-                if (targetElement) {
-                    const fixedHeaderHeight = 0;
-                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                    const offsetPosition = elementPosition - fixedHeaderHeight;
+  .opg-tabs .tabs-content{
+    position: relative;
+    min-height: 200px;
+  }
 
-                    window.scrollTo({
-                        top: offsetPosition,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    });
-</script>
+  .opg-tabs .tab-content{
+    position: absolute;
+    top: 0;
+    left: -9999px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .opg-tabs .tab-content.active{
+    left: 0;
+    position: relative;
+    opacity: 1;
+    pointer-events: auto;
+    animation: contentFadeIn .45s ease-out both;
+  }
+
+  /* ===== SECTION LAYOUT ===== */
+  .opg-tabs .sections{
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+
+  .opg-tabs .section{
+    background-color: var(--opg-bg);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid var(--opg-border);
+    box-shadow: 0 4px 8px rgba(0,0,0,.2);
+  }
+
+  .opg-tabs .section h3{
+    font-size: 20px;
+    font-weight: 800;
+    margin: 0 0 10px 0;
+    border-bottom: 2px solid var(--opg-accent);
+    padding-bottom: 6px;
+    color: var(--opg-accent);
+  }
+
+  .opg-tabs .section p{
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    color: var(--opg-text);
+  }
+
+  .opg-tabs .section .muted{
+    color: var(--opg-muted);
+  }
+
+  .opg-tabs .section ul{
+    list-style: disc inside;
+    margin: 0;
+    padding: 0;
+  }
+
+  .opg-tabs .section ul li{
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: var(--opg-text);
+  }
+
+  .opg-tabs .badge{
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(127,140,141,.55);
+    background: rgba(127,140,141,.12);
+    color: var(--opg-text);
+    font-weight: 700;
+    font-size: 14px;
+    margin: 0 0 10px 0;
+  }
+
+  .opg-tabs .divider{
+    height: 1px;
+    background: rgba(255,255,255,.08);
+    margin: 12px 0;
+    border-radius: 999px;
+  }
+
+  /* ===== DESKTOP GRID HELPERS ===== */
+  .col-12{ grid-column: span 12; }
+  .col-8 { grid-column: span 8; }
+  .col-6 { grid-column: span 6; }
+  .col-4 { grid-column: span 4; }
+  .col-3 { grid-column: span 3; }
+
+  /* ===== MOBILE ===== */
+  @media (max-width: 768px){
+    .opg-tabs .tabs-nav{
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .opg-tabs .tabs-nav::-webkit-scrollbar{ display:none; }
+
+    .opg-tabs .tab-link{
+      flex: 0 0 auto;
+      padding: 10px 14px;
+      font-size: 16px;
+    }
+
+    .opg-tabs .tab-content:not(.active){ display:none !important; }
+    .opg-tabs .tab-content.active{
+      display:block !important;
+      position:relative !important;
+      left:auto !important;
+      top:auto !important;
+    }
+    .opg-tabs .tabs-content{ min-height: 0 !important; }
+
+    .opg-tabs .sections{
+      display:flex !important;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .opg-tabs .section{ padding: 12px; }
+    .opg-tabs .section h3{ font-size: 18px; }
+    .opg-tabs .section p,
+    .opg-tabs .section li{ font-size: 16px; }
+  }
+</style>
+
 <div class="echpohmak-container">
-	<div class="echpohmak-header">
-		Устав Министерства Обороны
-	</div>
-
-	<p style="text-align: center; font-size: 18px;">
-		Настоящий устав определяет права, обязанности и ограничения для военнослужащих Воинской Части №1017 (ВЧ), а также описывает отношения между ними. Устав дополняет Устав Сотрудников Фракций и другие уставные документы, не противореча им. Если пункт из УСФ повторяется в Уставе в другой формулировке, то следует руководствоваться пунктом данного Устава.
-	</p>
-
-	<hr class="echpohmak-hr">
-	<h2 style="text-align: center!important;">
-		Оглавление
-	</h2>
-
-	<ul class="linkss" style="padding-left: 15px; margin-top: 3px;">
-		<li>
-			<a class="toc-link" href="#sub-section1" rel="">1. Основные положения</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section2" rel="">2. Подразделения</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section3" rel="">3. Звания и повышения</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section4" rel="">4. Иерархия</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section5" rel="">5. Обязанности</a>
-		</li>
-        <li class="menu-item-has-children">
-            <span class="menu-header" style="font-size:16px;">
-                <a href="#sub-section6" rel="" class="toc-link">6. Запреты</a>
-                <div class="toggle-submenu" aria-expanded="false" aria-label="Toggle Submenu" role="button" tabindex="0"></div>
-            </span>
-
-			<ul class="sub-menu">
-				<li>
-					<a class="toc-link" href="#sub-section61" rel="">Общение</a>
-				</li>
-				<li>
-					<a class="toc-link" href="#sub-section62" rel="">Амуниция</a>
-				</li>
-				<li>
-					<a class="toc-link" href="#sub-section63" rel="">Техника и личный транспорт</a>
-				</li>
-				<li>
-					<a class="toc-link" href="#sub-section64" rel="">Рабочий день и AFK</a>
-				</li>
-				<li>
-					<a class="toc-link" href="#sub-section65" rel="">Наряды и посты</a>
-				</li>
-				<li>
-					<a class="toc-link" href="#sub-section66" rel="">Воинская часть и её территория</a>
-				</li>
-				<li>
-					<a class="toc-link" href="#sub-section67" rel="">Прочее</a>
-				</li>
-			</ul>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section7" rel="">7. Субординация</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section8" rel="">8. Рация</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section9" rel="">9. Правила поведения в строю</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section10" rel="">10. Территория Воинской Части</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section11" rel="">11. Регламент Контрольно-Пропускного пункта Воинской Части</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section12" rel="">12. Действия при угрозе</a>
-		</li>
-		<li>
-			<a class="toc-link" href="#sub-section13" rel="">13. Регламент использования Боевого вертолёта</a>
-		</li>
-	</ul>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section1">
-		<h2 style="text-align: center;">
-			1. Основные положения
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">1.1 &mdash;</span> Военнослужащий - лицо, исполняющее должностные обязанности, связанные с прохождением военной службы, которая призвана решать задачи в сфере безопасности и обороны государства, и в связи с этим, обладающее специальным правовым статусом.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.2 &mdash;</span> Каждый военнослужащий при зачислении на службу получает соответствующее звание. Про звания подробнее указано в главе 3 данного Устава.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.2.1 &mdash;</span> Каждый военнослужащий, поступающий на военную службу по контракту, обязан принять военную присягу.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.3 &mdash;</span> За нарушение любого из нормативных документов к военнослужащему могут быть принятые следующие меры наказания:</span>
-		</p>
-
-		<p style="text-align: justify;">
-			<span style="color:#ec743b; font-weight: bold;"><span style="font-size:18px;">Устное предупреждение [0.1/3]<br>
-			Карцер<br>
-			Предупреждение [0.3/3]<br>
-			Выговор [1/3]<br>
-			Строгий выговор [2/3]<br>
-			Понижение<br>
-			Увольнение</span> </span>
-		</p>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">1.4 &mdash;</span> Согласно пункту 1.4 УСФ, мера наказания может изменяться от той, которая указана в зависимости от ситуации. Также может быть выдано наказание за нарушение, не предусмотренное ниже изложенным документом, с последующим добавлением пункта в документ по решению ГСЗФ.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.4.1 &mdash;</span> Военнослужащий срочной службы, нарушивший пункт 2.1 УСФ может быть наказан карцером от 200 до 400 минут в зависимости от нарушения и конкретной ситуации.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Мут - <span style="color: #ec743b !important; font-weight: bold;">200 минут карцера</span><br>
-					Блокировка аккаунта - <span style="color:#ec743b !important; font-weight: bold;">400 минут карцера</span></span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">1.5 &mdash;</span> Рабочий день военнослужащих на контрактной основе с 10:00 до 20:00 по МСК.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.5.1 &mdash;</span> Рабочий день военнослужащих на контрактной основе в субботу с 11:00 до 18:00 по МСК.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.5.2 &mdash;</span> Рабочий день военнослужащих на срочной основе круглосуточный, без перерывов и выходных.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.6 &mdash;</span> Солдатам контрактной службы разрешено брать обеденное время с 15:00 до 16:00.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Ровно в 16:00 военнослужащий должен быть в форме и на территории ВЧ. <span style="color:#ec743b !important; font-weight: bold;">[Контракт: Выговор]</span></span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">1.7 &mdash;</span> Перед снятием формы и последующим покиданием ВЧ военнослужащий обязан сдать всю амуницию на склад (включая рацию) и поставить в журнале активности статус АФК.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.8 &mdash;</span> Все военнослужащие могут быть вызваны из увольнительного времени/отпуска на ВЧ в любое время.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.9 &mdash;</span> Военнослужащие, уходящие в увольнительное время/отпуск, обязаны сдать все табельное оружие, боеприпасы и амуницию на склад.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.10 &mdash;</span> Увольнительное время/отпуск не даёт вам права нарушать Устав МО и прочие нормативные документы.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.11 &mdash;</span> Подавать заявку на отпуск разрешено не ранее чем за 12 часов до начала отпуска.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Вам нужен отпуск на 12.04, соответственно вы подаёте заявку на отпуск 11.04, не позже 12:00 по московскому времени.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">1.12 &mdash;</span> ВЧ обязана сотрудничать с другими государственными структурами. Любое проявление конфликта строго запрещено. Все конфликты должны быть урегулированы сотрудниками, либо при помощи Лидеров организаций.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.13 &mdash;</span> Сотрудники МЗ имеют право проезжать на территорию ВЧ во время поставки медикаментов и закрытия вызова.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.14 &mdash;</span> Сотрудники МВД имеют право пройти на территорию ВЧ только при наличии вызова с целью закрыть его.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Только с сопровождением военнослужащего со званием Майор и выше.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">1.15 &mdash;</span> Помимо случаев описанных в пунктах 1.13-1.15 сотрудники государственных организаций имеют право посетить территорию ВЧ при проведении мероприятия или иного события с их участием.<br>
-			<span style="color:#32cd32; font-weight: bold;">1.15.1 &mdash;</span> Сотрудники имеют полное право отказать в пропуске на ВЧ при отсутствии весомой причины.</span>
-		</p>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section2">
-		<h2 style="text-align: center;">
-			2. Подразделения
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">2.1 &mdash;</span> Весь состав разделён на несколько подразделений - взводов. Каждый взвод выполняет различные задачи.<br>
-			<span style="color:#32cd32; font-weight: bold;">2.1.1 &mdash;</span> Учебная Рота &ndash; взвод, разделённый на два подразделения (солдаты срочной (УР-С) и контрактной (УР-К) службы), обеспечивают круглосуточную охрану Воинской Части.<br>
-			<span style="color:#32cd32; font-weight: bold;">2.1.2 &mdash;</span> Дипломатический Корпус - взвод, направленный на всестороннее развитие дипломатических отношений между Министерством Обороны и другими государственными организациями.<br>
-			<span style="color:#32cd32; font-weight: bold;">2.1.3 &mdash;</span> Служба Тыла - взвод, обеспечивающий Воинскую Часть продовольствием, боеприпасами и оружием в мирное и военное время.<br>
-			<span style="color:#32cd32; font-weight: bold;">2.1.4 &mdash;</span> Служба Материального Обеспечения - взвод, обеспечивающий МВД боеприпасами и оружием. Является связующим звеном заводов-изготовителей и отделений полиции.<br>
-			<span style="color:#32cd32; font-weight: bold;">2.1.5 &mdash;</span> Военно-Воздушные силы &mdash; это взвод, отвечающее за поддержание порядка в воздушном пространстве Республики Провинция. Его задачей является обеспечение безопасности и контроля за использованием воздушного пространства.<br>
-			<span style="color:#32cd32; font-weight: bold;">2.1.6 &mdash;</span> Военная Полиция - взвод, обеспечивающий общественную безопасность, принимающий участие в охране общественного порядка и обеспечивающий территориальную целостность и оборону Республики.<br>
-			<span style="color:#32cd32; font-weight: bold;">2.1.7 &mdash;</span> Учебный Корпус - взвод, задача которого обучать молодое пополнение, проводить тренировки и лекции, заниматься военнослужащими на срочной основе.<br>
-			<span style="color:#32cd32; font-weight: bold;">2.2 &mdash;</span> Каждый взвод имеет свой собственный Устав, дополняющий данный документ.</span>
-		</p>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section3">
-		<h2 style="text-align: center;">
-			3. Звания и повышения
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">3.1 &mdash;</span> При зачислении на службу каждому военнослужащему присваивается определённое звание. Для срочной основы это звание Рядовой, для контрактной - Прапорщик.<br>
-			<span style="color:#32cd32; font-weight: bold;">3.1.1 &mdash;</span> В случае восстановления в звании военнослужащему присваивается звание иное от указанного в пункте 3.1.<br>
-			<span style="color:#32cd32; font-weight: bold;">3.2 &mdash;</span> Любое повышение происходит строго в соответствии с системой повышений описанной ниже.<br>
-			<span style="color:#32cd32; font-weight: bold;">3.3 &mdash;</span> Повышения на срочной основе происходят автоматически каждые 12 часов службы.<br>
-			<span style="color:#32cd32; font-weight: bold;">3.4 &mdash;</span> На контрактной основе звания покупаются за баллы, подробнее про это можно изучить в данной теме: Система повышений<br>
-			<span style="color:#32cd32; font-weight: bold;">3.4.1 &mdash;</span> За баллы возможно повышение до Капитана включительно, далее повышение происходит с назначением на какую-либо должность.<br>
-			<span style="color:#32cd32; font-weight: bold;">3.5 &mdash;</span> Запросы на повышение рассматриваются строго Генералами и/или Маршалом. [Контракт: Предупреждение]<br>
-			<span style="color:#32cd32; font-weight: bold;">3.6 &mdash;</span> Перечень званий:</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Перечень</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Звания указаны в формате Звание [Порядковый номер] | За что присваивается<br>
-					<span style="color:#32cd32; font-weight: bold;">Срочная основа</span>:<br>
-					Рядовой [1] | При зачислении<br>
-					Ефрейтор [2] | 12 часов службы<br>
-					Младший Сержант [3] | 12 часов службы<br>
-					<span style="color:#32cd32; font-weight: bold;">Контрактная основа</span>:<br>
-					Прапорщик [4] | При зачислении<br>
-					Лейтенант [5] | 40 баллов + выполненная работа<br>
-					Старший Лейтенант [6] | 80 баллов + выполненная работа<br>
-					Капитан [7] | 120 баллов + выполненная работа<br>
-					Майор [8] | Должность Инструктора/Заместителя Командира взвода<br>
-					Полковник [9] | Должность Командир взвода<br>
-					Генерал [10] | Должность Заместитель Командира Округа<br>
-					Маршал [11] | Должность Командир Округа</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">3.7 &mdash;</span> Звания подразделяются на следующие группы:</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Группы</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">Младший Состав</span>:<br>
-					Младший солдатский состав:<br>
-					━ Рядовой<br>
-					━ Ефрейтор<br>
-					━ Мл.Сержант<br>
-					Младший офицерский Состав:<br>
-					━ Прапорщик<br>
-					━ Лейтенант<br>
-					━ Старший Лейтенант<br>
-					━ Капитан<br>
-					<span style="color:#32cd32; font-weight: bold;">Старший Состав</span>:<br>
-					Старший офицерский состав:<br>
-					━ Майор<br>
-					━ Полковник<br>
-					<span style="color:#32cd32; font-weight: bold;">Высший Руководящий Состав</span>:<br>
-					Высший офицерский состав:<br>
-					━ Генерал<br>
-					━ Маршал</span>
-				</p>
-			</div>
-		</div>
-
-		<div style="max-height: 3px;">
-			&nbsp;
-		</div>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section4">
-		<h2 style="text-align: center;">
-			4. Иерархия
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">4.1 &mdash;</span> Все военнослужащие ВЧ подчиняются строгой внутренней иерархии.&nbsp;<br>
-			<span style="color:#32cd32; font-weight: bold;">4.2 &mdash;</span> Приказ обязателен к выполнению только в том случае, если его выдал военнослужащий, вышестоящий по званию или должности, и он не нарушает ВПС.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Зам.Ком. взвода может отдавать приказы Инструктору взвода</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">4.3 &mdash;</span> В случае отсутствия непосредственного начальства приказания могут выдаваться старшим по званию, но, если непосредственное начальство присутствует, то приказы, выданные старшим по званию, будут приравниваться к превышению должностных полномочий. <span style="color:#ec743b; font-weight: bold;">[Наказание согласно 3.3 УСФ]</span></span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Прапорщику ВВС отдал приказ Капитан УК, но в сети присутствовал Ком.ВВС. Данный приказ будет являться превышением должностных полномочий.</span>
-				</p>
-			</div>
-		</div>
-
-		<div style="max-height: 3px;">
-			&nbsp;
-		</div>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">На приказы от ВРС/Командования одного взвода данный пункт не действует.</span>
-				</p>
-			</div>
-		</div>
-
-		<div style="max-height: 3px;">
-			&nbsp;
-		</div>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Приказы солдатам срочной службы/солдатам УР-2.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">4.4 &mdash;</span> Все военнослужащие подчиняются непосредственно командующему своего взвода и высшему руководящему составу. В случае отсутствия командира подразделения, командование переходит к его заместителю/инструктору.</span>
-		</p>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section5">
-		<h2 style="text-align: center;">
-			5. Обязанности
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">5.1 &mdash;</span> Обязанности касающиеся всех военнослужащих:<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.1 &mdash;</span> Беззаветно служить народу Республики Провинция, мужественно и умело защищать Республику.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.2 &mdash;</span> Соблюдать все законодательные акты и уставы Республики.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.3 &mdash;</span> Беспрекословно выполнять приказы вышестоящих.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.4 &mdash;</span> Совершенствовать свои навыки, которые как-либо помогут в защите Республики.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.5 &mdash;</span> Содержать в постоянной готовности к применению вооружение и технику, беречь военное имущество.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.6 &mdash;</span> Быть дисциплинированным, бдительным, хранить государственную тайну.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.7 &mdash;</span> Дорожить воинской честью и боевой славой Министерства Обороны, своей воинской части, честью своего воинского звания и товарищами, с достоинством нести высокое звание защитника Республики Провинция.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.8 &mdash;</span> Военнослужащий обязан уважать честь и достоинство других военнослужащих, выручать их из опасности, помогать им словом и делом, удерживать от недостойных поступков, не допускать в отношении себя и других военнослужащих грубости и издевательства, содействовать командирам (начальникам) и старшим в поддержании порядка и дисциплины.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.9 &mdash;</span> Знать в лицо Старший и Руководящий состав.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.10 &mdash;</span> Вести фото/видео фиксацию всех происшествий происходящих во время службы, а также иметь доказательства нарушений на выданные наказания.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.1.11 &mdash;</span> Если сотрудники правоохранительных органов принимают решение о задержании и посадке в КПЗ военнослужащего, то он обязан снять форму и добровольно сдаться сотрудникам полиции.<br>
-			<span style="color:#32cd32; font-weight: bold;">5.2 &mdash;</span> Обязанности касающиеся военнослужащих на срочной основе:<br>
-			<span style="color:#32cd32; font-weight: bold;">5.2.1 &mdash;</span> Предоставить скриншот статистики с timestamp за 48 часов после зачисления на службу. <span style="color:#ec743b; font-weight: bold;">[Срочники: Увольнение с ЖБ]</span><br>
-			<span style="color:#32cd32; font-weight: bold;">5.2.2 &mdash;</span> Уведомить Маршала перед сменой никнейма. Никнейм разрешено изменить только после получения разрешения от Маршала и Следящего. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 600 минут; Контракт: Выговор]</span><br>
-			<span style="color:#32cd32; font-weight: bold;">5.2.3 &mdash;</span> Уведомить Высший Руководящий Состав перед сменой ссылки на страницу ВКонтакте и/или удалять её. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 300 минут/Увольнение с ЖБ; Контракт: Выговор]</span><br>
-			<span style="color:#32cd32; font-weight: bold;">5.2.4 &mdash;</span> Уведомить Высший Руководящий Состав об окончании службы любым возможным способом.</span>
-		</p>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section6">
-		<h2 style="text-align: center;">
-			6. Запреты
-		</h2>
-
-		<section id="sub-section61">
-			<h2 style="text-align: center;">
-				Общение
-			</h2>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.1 &mdash;</span> Оскорблять сотрудников гос.структур, других военнослужащих, а также гражданских. <span style="color:#ec743b; font-weight: bold;">[Срочники: карцер 45 минут, Контракт: Предупреждение/Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Если гражданский или гос.служащий грубо отвечает, то сотрудник может ответить тем же, но в рамках морали.</span>
-					</p>
-				</div>
-			</div>
-
-			<div style="max-height: 3px;">
-				&nbsp;
-			</div>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Без формы не наказуемо.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.1.1 &mdash;</span> Провоцировать конфликт и/или оскорблять Следящую Администрацию, Маршалу, Генералов или других военнослужащего путём сообщений в рацию, официальные беседы, официальный дискорд, официальные сообщества Армии и сервера. <span style="color:#ec743b; font-weight: bold;">[Срочники: карцер 600 минут, Контракт: Строгий выговор/Увольнение]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.2 &mdash;</span> Подрывать уважение к Следящей Администрации, Маршалу или Генералам любым из существующих способов: сообщения в беседах фракции, публикации постов в различных группах, слова в рацию и прочее. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 600 минут, Контракт: Строгий выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.2.1 &mdash;</span> Агитировать военнослужащих и/или других гос.служащих и создавать группы лиц или сопротивлений, целью которых является намеренное вредительство следящим и лидеру фракции. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 600 минут. Контракт: Строгий выговор/Увольнение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Создание бесед, призыв к каким-либо действиям, связанным на прямую с данным пунктом и т.п.</span>
-					</p>
-				</div>
-			</div>
-
-			<div style="max-height: 3px;">
-				&nbsp;
-			</div>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">На применение санкций по этому пункту требуются достаточно детальные доказательства, полностью и точно подтверждающие нарушение военнослужащего(-их). </span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.3 &mdash;</span> Выпрашивать ускоренное продвижение по службе, выдачу увольнительного листа, проверку отчёта, выдачу баллов, выдачу доступа к таблице. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 90 минут [Может быть выдано х2, x3], Контракт: Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">К этому также относятся просьбы о увольнении/принятии на контракт/проверке рапортов на гос.портале.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.4 &mdash;</span> Игнорировать запросы или приказы без видимой на то причины. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 90/150 минут, Контракт: Предупреждение/Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.5 &mdash;</span> Засорять рацию (включать музыку, чавкать, кричать, петь, чрезмерно/необоснованно использовать нецензурную брань, всячески нарушать пункты из Главы 8), флудить в текстовую рацию, писать без тега. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 200 минут [Может быть выдано х2, x3], Контракт: Предупреждение/Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.6 &mdash;</span> Обращаться напрямую к Маршалу/Генералу, если по данной вертикали есть связывающее звено, через которое можно донести информацию. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 60 минут, Контракт: Устное предупреждение/Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Солдат срочной службы должен обратиться к сотрудникам Старшего Состава, который, в свою очередь, донесёт информацию к Генералу/Маршалу.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.6.1 &mdash;</span> Вопросы о выдаче увольнительного листа, а также остальные, не имеющие государственной важности, адресованные Генералу/Маршалу, будут проигнорированы. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 60 минут]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.7 &mdash;</span> Обманывать, вводить в заблуждение с целью получения выгоды Старший Состав, Высший Руководящий Состав и сотрудников других гос.структур. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 90 минут [Может быть выдано х2], Контракт: Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.8 &mdash;</span> Нарушать субординацию, а также любой пункт из Главы 7. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 200 минут, Контракт: Предупреждение/Выговор]</span></span>
-			</p>
-		</section>
-
-		<hr class="echpohmak-hr">
-		<section id="sub-section62">
-			<h2 style="text-align: center;">
-				Амуниция
-			</h2>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.9 &mdash;</span> Безосновательно открывать огонь по другим военнослужащим, сотрудникам гос. структур, а также всем гражданским лицам без видимой на то причины. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 300 минут, Контракт: Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">В том случае, если военнослужащий замечает действия, которые можно расценивать как причину для открытия огня, он, прежде чем произвести расстрел, обязан объективно оценить ситуацию и открыть огонь только в случае неопровержимой и безоговорочной уверенности в появлении одной из угроз, описанных в данном пункте Устава.</span>
-					</p>
-				</div>
-			</div>
-
-			<div style="max-height: 3px;">
-				&nbsp;
-			</div>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Основания для применения оружия:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Угроза безопасности первых лиц Провинции.<br>
-						Угроза безопасности Воинской части.<br>
-						Угроза жизни военнослужащих.<br>
-						В целях самообороны.<br>
-						Гражданин игнорирует приказ военнослужащего.<br>
-						Гражданин портит гос. имущество, в том числе заборы, столбы (полное уничтожение столба/забора).<br>
-						<span style="color:#32cd32; font-weight: bold;">Примечание</span>: Относится к территории ВЧ и мэрии Приволжска при проведении призыва.&nbsp;<br>
-						Гражданин создаёт помеху мероприятию/призыву/тренировке, в том числе влезает в колонну из военных машин.<br>
-						<span style="color:#32cd32; font-weight: bold;">Примечание</span>: При помехе мероприятию/призыву/тренировке сначала следует попросить гражданина перестать мешать. При игнорировании просьбы расстрел.<br>
-						Чрезмерное оскорбление военнослужащих.<br>
-						<span style="color:#32cd32; font-weight: bold;">Примечание</span>: Для начала просите гражданина перестать оскорблять. При игнорировании просьбы расстрел.</span>
-					</p>
-				</div>
-			</div>
-
-			<div style="max-height: 3px;">
-				&nbsp;
-			</div>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Порядок открытия огня:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Для начала необходимо убедиться в том, что вы действуете правильно.<br>
-						Даёте приказ гражданину покинуть территорию/иной приказ в зависимости от ситуации.<br>
-						Делаете отсчёт 10 секунд.<br>
-						Производите предупредительный выстрел в воздух<br>
-						Расстрел.<br>
-						<span style="color:#32cd32; font-weight: bold;">Примечание</span>: Разрешено отклоняться от данного порядка при нападении на военнослужащего(-их), проникновении в Красную Зону, намеренном таране военной техники.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.10 &mdash;</span> Брать оружие и обмундирование без разрешения Капитана и выше. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Разрешено брать любое оружие(кроме указанных в пунктах 6.10.1-6.10.4) без разрешения при проникновении на ВЧ (либо /alert, либо объявление в рацию о нападении).</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.10.1 &mdash;</span> Брать МР-443 Грач без разрешения Майора и выше. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Разрешено брать сотрудникам ВП для осуществления патрулей и авто-постов, а также сотрудникам МТО при осуществлении поставок.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.10.2 &mdash;</span> Брать СВД без разрешения Генерала и выше. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">На Код-0 разрешено брать не более 3-х СВД.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.10.3 &mdash;</span> Брать Нож без разрешения Маршала. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.10.4 &mdash;</span> Брать РГД-42 без разрешения Маршала. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.10.5 &mdash;</span> Сотрудникам запрещено покидать территорию воинской части без амуниции. <span style="color:#ec743b; font-weight: bold;">[Контракт: Устное предупреждение\Предупреждение\Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.10.6 &mdash;</span> Если вы надеваете парашют, то его необходимо настроить. Парашют не должен быть огромным или слишком маленьким, не должен висеть в воздухе, проходить сквозь персонажа. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение/Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Пример правильной настройки парашюта:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: center;">
-						&nbsp;
-					</p>
-
-					<p style="text-align:center;">
-						<a bis_size="{&quot;x&quot;:613,&quot;y&quot;:7392,&quot;w&quot;:500,&quot;h&quot;:22,&quot;abs_x&quot;:613,&quot;abs_y&quot;:7392}" data-fileid="undefined" data-ipslightbox="" data-ipslightbox-group="undefined" data-wrappedlink="" href="https://i.imgur.com/4NX9GGI.png" rel="external nofollow" title="Увеличить изображение"><img alt="4NX9GGI.png" bis_id="bn_i8m5fc64rwq98w6i9ah7wp" bis_size="{&quot;x&quot;:613,&quot;y&quot;:7154,&quot;w&quot;:500,&quot;h&quot;:500,&quot;abs_x&quot;:613,&quot;abs_y&quot;:7154}" class="ipsImage ipsImage_thumbnailed" data-loaded="true" data-ratio="117.36" data-src="https://i.imgur.com/4NX9GGI.png" height="750" src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png" style="height:auto;width:500px;" width="639"></a>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.11 &mdash;</span> Использовать амуницию в личных целях. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 300 минут, Контракт: Выговор]</span></span>
-			</p>
-		</section>
-
-		<hr class="echpohmak-hr">
-		<section id="sub-section63">
-			<h2 style="text-align: center;">
-				Техника и личный транспорт
-			</h2>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.12 &mdash;</span> Намеренно портить военную технику или иной гос. транспорт. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 300 минут, Контракт: Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.13 &mdash;</span> Заезжать на личном транспорте солдатам срочной службы на территорию ВЧ. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 60 минут][Может быть выдано х2, х3]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.14 &mdash;</span> Парковать ЛТС вне определенной парковки. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение/Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Парковка у КПП предназначена для СС и ВРС, а парковка за казармой для остальных сотрудников. Парковать ЛТС возле КПП запрещено, но можно оставить за вторым столбиком.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.15 &mdash;</span> Допускать нахождение на территории ВЧ более одного транспортного средства, владельцем которого является один военнослужащий. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение/Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Высший Руководящий Состав.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.16 &mdash;</span> Двигать, толкать, перемещать военную технику, которая стоит на территории ВЧ. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 60 минут, Контракт: Карцер 60 минут]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.17 &mdash;</span> Дрифтить, кататься, выполнять различные трюки на любом транспортном средстве на плацу, а так же на всей территории ВЧ. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение/Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.17.1 &mdash;</span> Сотрудникам запрещается превышать скорость без уважительной причины. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Вне города &mdash; 120 км/ч.<br>
-						В городе &mdash; 80 км/ч.<br>
-						На территории ВЧ &mdash; 30 км/ч.<br>
-						При подъезде к КПП &mdash; 20 км/ч.</span>
-					</p>
-				</div>
-			</div>
-
-			<div style="max-height: 3px;">
-				&nbsp;
-			</div>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">ОРМ, Код-0, нападение на ВЧ, проникновение на территорию ВЧ, нападение на поставку, погоня, МП панель от Администрации, тренировки\МП\МФМП, если потребуется превысить скорость.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.17.2 &mdash;</span> Скорость в наряде патруля жёлтой зоны не должна превышать 30 км/ч. <span style="color:#ec743b; font-weight: bold;">[Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Превышение данного скоростного режима возможно только в следующих случаях: Код-0, угроза проникновения, проникновение на территорию ВЧ.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.18 &mdash;</span> Брать военную технику без разрешения Майора и выше. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.18.1 &mdash;</span> Брать Су-30М2 без разрешения Генерала и выше. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Сотрудники ВВС.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.18.2 &mdash;</span> Управлять Су-30М2 без лицензии пилота военной авиации. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение/Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Сотрудники Лётной Школы ВВС.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.18.3 &mdash;</span> Брать Боевой вертолёт без разрешения Генерала и выше. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Сотрудники ВВС.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.18.4 &mdash;</span> Брать Тополь-М без разрешения Следящей Администрации. <span style="color:#ec743b; font-weight: bold;">[Контракт: Строгий выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.19 &mdash;</span> Летать на воздушной технике ниже крыш домов и деревьев. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Код-0, МП, тренировка, учения.</span>
-					</p>
-				</div>
-			</div>
-
-			<div style="max-height: 3px;">
-				&nbsp;
-			</div>
-		</section>
-
-		<hr class="echpohmak-hr">
-		<section id="sub-section64">
-			<h2 style="text-align: center;">
-				Рабочий день и AFK
-			</h2>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.20 &mdash;</span> Солдатам срочной службы запрещено находиться в AFK больше двух минут, когда они не находятся в наряде, &nbsp;и более одной минуты во время наряда.&nbsp; <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 45 минут] [Может быть выдано до х7]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Срочникам разрешается находиться в АФК не более пяти минут при первоначальном вступлении в службу, во время настройки биндов. Нахождение в АФК в карцере не считается нарушением устава; в карцере разрешен AFK до 30 минут. </span>
-					</p>
-				</div>
-			</div>
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.20.1 &mdash;</span> Солдатам контрактной службы запрещено находиться AFK в наряде более двух минут. <span style="color:#ec743b; font-weight: bold;">[Контракт: Устное предупреждение/Предупреждение]</span><br>
-			<span style="color:#32cd32; font-weight: bold;">6.21 &mdash;</span> Умышленно прятаться с целью AFK. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 150 минут [Может быть выдано х2, х3 ,х4], Контракт: Выговор]</span></span>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">В туалетах, в медпункте, в бункере, ангаре, столовой и т.д.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.22 &mdash;</span> Снимать форму и покидать территорию ВЧ во время рабочего дня без разрешения ВРС. <span style="color:#ec743b; font-weight: bold;">[Контракт: Наказание согласно 2.8 УСФ]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Для снятия формы во время рабочего дня должна быть весомая причина (оплата ЖКХ/бизнеса). Сделки по купле/продаже имущества, пополнение счёта, заправка ЛТС и прочее к весомым причинам не относятся. Отгул выдаётся по решению Маршала(если он не может ответить - по решению Генерала).</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.23 &mdash;</span> Бездельничать в форме, а также проявлять бездействие во время угрозы безопасности ВЧ. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 120 минут, Контракт: Предупреждение/Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.24 &mdash;</span> Уведомлять в рацию о проведении построения менее чем за 20 минут до его начала. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.25 &mdash;</span> Мешать проведению построения/лекции/тренировки всеми существующими способами (в том числе разговоры с проводящими не по теме и отдача приказов тем, кто стоит в строю). <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 100 минут [Может быть выдано х2, х3, х4], Контракт: Предупреждение/Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.26 &mdash;</span> Принимать участие в любых действиях интимного характера на территории ВЧ или во время рабочего дня. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер до 100 минут, Контрактники: Предупреждение/Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.27 &mdash;</span> Запрещено ношение любых шапок/масок, аксессуаров, рюкзаков в форме, также запрещено использование ивентовых предметов. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 30 минут. Контракт: Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">МП, где медицинские маски необходимы (после МП все маски должны быть сняты).</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.28 &mdash;</span> Запрещено носить форму спецназа сотрудникам, не состоящим в соответствующих подразделениях. <span style="color:#ec743b; font-weight: bold;">[Контракт: Устное предупреждение/Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">ВРС, сотрудники ВП, день открытых дверей, ПСН, блок-пост, ОРМ.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.28.1 &mdash;</span> Сотрудники, не состоящие в ВП, не обретают анонимность и не вправе скрывать личность. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение]</span></span>
-			</p>
-		</section>
-
-		<hr class="echpohmak-hr">
-		<section id="sub-section65">
-			<h2 style="text-align: center;">
-				Наряды и посты
-			</h2>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.29 &mdash;</span> Находиться на КПП без амуниции (бронежилет и АК-74м). <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 30 минут, Контракт: Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">ВРС, если нет возможности взять оружие, нет никого из Майоров и выше. </span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.30 &mdash;</span> Посторонние действия в наряде. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 120 минут [Может быть выдано х2, х3, х4], Контракт: Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Использовать телефон в нарядах, анимации, бег по территории КПП, нахождение в столовой и мед.части.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.31 &mdash;</span> Пребывать в любом наряде без оружия в руках. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 60 минут, Контракт: Карцер 120 минут]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.32 &mdash;</span> Патрулировать плац в наряде &quot;Патруль&quot;. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 30 минут, Контракт: Карцер 60 минут]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.33 &mdash;</span> Патрулирование в наряде &quot;Патруль&quot; должно происходить медленным шагом(на alt`е), бег разрешён только при чрезвычайных ситуациях. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 30 минут, Контракт: Карцер 60 минут]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.34 &mdash;</span> Открывать/закрывать шлагбаум (баловаться им) без веской причины, приказа. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 120 минут, Контракт: Предупреждение]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.35 &mdash;</span> Пребывание на КПП более одного военнослужащего без наряда. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер до 120 минут, Контракт: Предупреждение/Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">СС с веской причиной. Нахождение сотрудника ВРС никак не влияет на право остальных сотрудников пребывать на КПП. Например: если на КПП уже находится сотрудник ВРС - сотрудник МС может выйти на КПП для помощи сотрудникам в наряде. Сотрудники ВРС могут находиться на КПП вне зависимости от количества сотрудников и наличия причин.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.36 &mdash;</span> Брать посторонний наряд, если на КПП менее 2-х человек. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 60 минут, Контракт: Карцер 120 минут]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.37 &mdash;</span> Не докладывать в рацию о заступлении и сдаче поста/наряда. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 60 минут, Контракт: Карцер 120 минут]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.37.1 &mdash;</span> Доклады в рацию должны соответствовать форме, приведённой ниже. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 60 минут, Контракт: Карцер 120 минут/Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Форма докладов:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">КПП</span>:<br>
-						/r [ТЕГ][Пост:КПП] Код-1. Заступил на пост. Конец связи...<br>
-						/r [ТЕГ][Пост:КПП] Код-1. Конец связи...<br>
-						/r [ТЕГ][Пост:КПП] Код-1. Пост сдал. Конец связи...<br>
-						<span style="color:#32cd32; font-weight: bold;">Патруль территории</span>:&nbsp;<br>
-						/r [ТЕГ][Наряд:Патруль] Код-1. Заступил в патруль. Конец связи...<br>
-						/r [ТЕГ][Наряд:Патруль] Код-1. Конец связи...<br>
-						/r [ТЕГ][Наряд:Патруль] Код-1. Закончил патруль. Конец связи...<br>
-						<span style="color:#32cd32; font-weight: bold;">Вышка</span>:&nbsp;<br>
-						/r [ТЕГ][Пост:Вышка] Код-1. Заступил на пост. Конец связи...<br>
-						/r [ТЕГ][Пост:Вышка] Код-1. Конец связи...<br>
-						/r [ТЕГ][Пост:Вышка] Код-1. Пост сдал. Конец связи...<br>
-						<span style="color:#32cd32; font-weight: bold;">Патруль ЖЗ</span>:<br>
-						/r [ТЕГ][Наряд:Патруль ЖЗ] Код-1. Заступил на пост. Конец связи...<br>
-						/r [ТЕГ][Наряд:Патруль ЖЗ] Код-1. Конец связи...<br>
-						/r [ТЕГ][Наряд:Патруль ЖЗ] Код-1. Покинул пост. Конец связи...<br>
-						<span style="color:#32cd32; font-weight: bold;">Пост Бункер</span>:<br>
-						/r [ТЕГ][Пост:Бункер] Код-1. Заступил на пост. Конец связи...<br>
-						/r [ТЕГ][Пост:Бункер] Код-1. Конец связи...<br>
-						/r [ТЕГ][Пост:Бункер] Код-1. Покинул пост. Конец связи...<br>
-						<span style="color:#32cd32; font-weight: bold;">Пост Ангар</span>:<br>
-						/r [ТЕГ][Пост:Ангар] Код-1. Заступил на пост. Конец связи...<br>
-						/r [ТЕГ][Пост:Ангар] Код-1. Конец связи...<br>
-						/r [ТЕГ][Пост:Ангар] Код-1. Покинул пост. Конец связи...<br>
-						<span style="color:#32cd32; font-weight: bold;">Пост Плац</span>:<br>
-						/r [ТЕГ][Пост:Плац] Код-1. Заступил на пост. Конец связи...<br>
-						/r [ТЕГ][Пост:Плац] Код-1. Конец связи...<br>
-						/r [ТЕГ][Пост:Плац] Код-1. Покинул пост. Конец связи...<br>
-						<span style="color:#32cd32; font-weight: bold;">Пост БТР</span>:<br>
-						/r [ТЕГ][Пост:БТР] Код-1. Заступил на пост. Конец связи...<br>
-						/r [ТЕГ][Пост:БТР] Код-1. Конец связи...<br>
-						/r [ТЕГ][Пост:БТР] Код-1. Покинул пост. Конец связи...<br>
-						<span style="color:#32cd32; font-weight: bold;">Уборка территории ВЧ</span>(Не системный доп.наряд):<br>
-						/r [ТЕГ][Наряд: Уборка] Приступил к уборке *Территория*.<br>
-						/r [ТЕГ][Наряд: Уборка] Завершил уборку *Территория*.</span>
-					</p>
-				</div>
-			</div>
-
-			<div style="max-height: 3px;">
-				&nbsp;
-			</div>
-		</section>
-
-		<hr class="echpohmak-hr">
-		<section id="sub-section66">
-			<h2 style="text-align: center;">
-				Воинская часть и её территория
-			</h2>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.38 &mdash;</span> Приводить, пропускать на территорию В/Ч третьих лиц без разрешения от руководящего состава. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 600 минут, Контракт: Строгий выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.39 &mdash;</span> Производить ложную тревогу на воинской части. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 30 минут [Может быть выдано х2, x3], Контракт: Предупреждение/Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.40 &mdash;</span> Залезать на крышу любого здания на территории ВЧ, в том числе на крышу Ангара. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 90 минут, Контракт: Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Крыша гаража с вертолетными площадками, крыша котельной. При проникновении на ВЧ с целью нейтрализации нарушителя.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.41 &mdash;</span> Вприпрыжку передвигаться по территории ВЧ (BH). Передвигаться вприпрыжку в форме. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 90 минут, Контракт: Карцер 180 минут/Предупреждение]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.42 &mdash;</span> Солдатам срочной службы и военнослужащим до звания Капитан включительно запрещено посещать штаб без разрешения СС и/или ВРС. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 120 минут, Контракт: Карцер 240 минут]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.42.1 &mdash;</span> Открывать и посещать склад с боеприпасами не во время поставок МТО. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 300 минут, Контракт: Предупреждение/Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">ВРС.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.43 &mdash;</span> Производить ложные вызовы государственных структур (полиция, такси, скорая помощь), а также работников пиццерии и работников СТО на воинскую часть. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 120 минут, Контракт: Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Вызов работников пиццерии при подготовке к Код-0/ОРМ.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.44 &mdash;</span> Запрещено размещать на территории ВЧ любые временные объекты (знаки аварийной остановки, колонки, палатки и т.д.). <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 30 минут, Контракт: Предупреждение]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">Ящики с боеприпасами.</span>
-					</p>
-				</div>
-			</div>
-
-			<div style="max-height: 3px;">
-				&nbsp;
-			</div>
-		</section>
-
-		<hr class="echpohmak-hr">
-		<section id="sub-section67">
-			<h2 style="text-align: center;">
-				Прочее
-			</h2>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.45 &mdash;</span> Запрещено подделывать доказательства в целях личной выгоды. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 600 минут, Контракт: Увольнение]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.46 &mdash;</span> Нарушать правила подачи отчетов (составлять отчёт не по форме, вне установленного срока, либо просто отсутствие отчета без предупреждения вышестоящего руководства). <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение/Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.47 &mdash;</span> Военнослужащим запрещено проводить тренировки/мероприятия на территории баз преступных группировок. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор проводящему тренировку/МП]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.48 &mdash;</span> Участник официальной беседы фракции обязан соблюдать правила, которые прописаны в закреплённом сообщении беседы. <span style="color:#ec743b; font-weight: bold;">[Наказание указано в закреплённом сообщении]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">К этому пункту относится соблюдение обязанностей, прописанных в закреплённых сообщений.</span>
-					</p>
-				</div>
-			</div>
-
-			<p style="text-align: justify;">
-				<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.49 &mdash;</span> Невыполнение обязанностей, изложенных в Главе 5 данного Устава. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер до 600 минут, Контракт: Предупреждение/Выговор]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.50 &mdash;</span> Нарушать любые уставные указания, изложенные в информационных темах каждого взвода. <span style="color:#ec743b; font-weight: bold;">[Наказание указано во взводном Уставе]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.51 &mdash;</span> Осуществлять слив склада, то есть несанкционированное изъятие, использование или распространение боеприпасов со склада. <span style="color:#ec743b; font-weight: bold;">[Срочники: Увольнение с Белым билетом, Контракт: Увольнение с ОЧС 60 дней]</span><br>
-				<span style="color:#32cd32; font-weight: bold;">6.52 &mdash;</span> Военнослужащим запрещено оформлять жалобы на форуме на сотрудников своей государственной организации. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер до 250 минут, Контракт: Предупреждение/Выговор]</span></span>
-			</p>
-
-			<div class="echpohmak-spoiler-container">
-				<div class="echpohmak-spoiler-header">
-					<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-				</div>
-
-				<div class="echpohmak-spoiler-contents">
-					<p style="text-align: justify;">
-						<span style="font-size:18px;">В случае, если военнослужащий стал свидетелем нарушения со стороны своего коллеги, он обязан незамедлительно предоставить доказательства старшему или высшему руководящему составу в личных сообщениях в социальной сети ВКонтакте.</span>
-					</p>
-				</div>
-			</div>
-
-			<div style="max-height: 3px;">
-				&nbsp;
-			</div>
-		</section>
-	</section>
-
-	<p style="text-align: justify;">
-		<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">6.53 &mdash;</span> Военнослужащему запрещается играть в азартные игры, в том числе в &laquo;монетку&raquo;. <strong><span style="color:#ec743b;">[Срочники: карцер 60 минут, Контракт:&nbsp;<span style="font-weight: bold;">Предупреждение/Выговор</span>]</span></strong></span>
-	</p>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section7">
-		<h2 style="text-align: center;">
-			7. Субординация
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">7.1 &mdash;</span> Устное общение между военнослужащими строго регламентируется правилами субординации.<br>
-			<span style="color:#32cd32; font-weight: bold;">7.2 &mdash;</span> Обращаться к старшим по званию нужно строго на &ldquo;Вы&rdquo;.<br>
-			<span style="color:#32cd32; font-weight: bold;">7.3 &mdash;</span> Существуют следующие нормы общения:</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Нормы общения</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Если вы согласны с чем-либо, нужно говорить &ldquo;Так точно!&rdquo;<br>
-					Если вы не согласны с чем-либо, нужно говорить &ldquo;Никак нет &rdquo;<br>
-					Если вам поступил приказ, нужно ответить &ldquo;Есть&rdquo;<br>
-					Если вы хотите обратиться к кому-либо, нужно сказать &ldquo;Товарищ *звание*, разрешите обратиться&rdquo;<br>
-					Если вы не знаете ответа на полученный вопрос, нужно ответить &ldquo;Не могу знать&rdquo;</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">7.4 &mdash;</span> Вышеуказанные нормы обращения могут опускаться при обращении старшего военнослужащего к младшему, но лучше всегда придерживаться субординации, то есть, если военнослужащий младше вас по званию, вы не можете общаться с ним как захотите.<br>
-			<span style="color:#32cd32; font-weight: bold;">7.5 &mdash;</span> Общение с гражданскими лицами должно быть официальным, подобающее военному, за нарушение вы будете наказаны по Уставу.</span>
-		</p>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section8">
-		<h2 style="text-align: center;">
-			8. Рация
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">8.1 &mdash;</span> Все военнослужащие при общении в эфире обязаны проговаривать название своего взвода.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">[МТО].</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">8.2 &mdash;</span> В эфире запрещено:<br>
-			<span style="color:#32cd32; font-weight: bold;">8.2.1 &mdash;</span> Заниматься куплей/продажей какого-либо имущества;<br>
-			<span style="color:#32cd32; font-weight: bold;">8.2.2 &mdash;</span> Общаться на темы, не имеющие отношения к несению службы;<br>
-			<span style="color:#32cd32; font-weight: bold;">8.2.3 &mdash;</span> Засорять волну белым шумом;<br>
-			<span style="color:#32cd32; font-weight: bold;">8.2.4 &mdash;</span> Засорять волну частыми повторениями одного и того же сообщения.<br>
-			<span style="color:#32cd32; font-weight: bold;">8.3 &mdash;</span> Все военнослужащие, находящиеся на постах или в патруле, обязаны докладывать в рацию состояние через каждые 5 минут.<br>
-			<span style="color:#32cd32; font-weight: bold;">8.4 &mdash;</span> Запрещено отключать рацию во время рабочего дня без уважительной причины. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 30 минут, Контракт: Предупреждение]</span></span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">При заходе в игру прописываете /fracvoice 2.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">8.5 &mdash;</span> За нарушение любого из пунктов 8.1-8.3 военнослужащий может быть наказан согласно пункту 6.5 данного Устава.</span>
-		</p>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section9">
-		<h2 style="text-align: center;">
-			9. Правила поведения в строю
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">9.1 &mdash;</span> Строй - это способ расстановки военнослужащих формирований, вооружения и военной техники.<br>
-			<span style="color:#32cd32; font-weight: bold;">9.2 &mdash;</span> Для участия в построении, нужно подойти к организатору построения и спросить у него разрешение на присоединение к мероприятию (Разрешите встать в строй?). При разрешении военнослужащий должен встать в конец строя (последнюю свободную клетку, если построение на плацу).<br>
-			<span style="color:#32cd32; font-weight: bold;">9.3 &mdash;</span> В пешем строю на плацу все военнослужащие должны стоять каждый в своей клетке.<br>
-			<span style="color:#32cd32; font-weight: bold;">9.4 &mdash;</span> Разговаривать в строю строго запрещено.<br>
-			<span style="color:#32cd32; font-weight: bold;">9.5 &mdash;</span> Если вам нужно обратиться к организатору построения, вы должны сделать шаг из строя и сказать: &quot;Товарищ <em>звание</em> <em>фамилия</em>, разрешите обратиться?&quot;. При разрешении, задаёте свой вопрос и встаёте на своё место. При запрете просто встаёте на своё место;<br>
-			<span style="color:#32cd32; font-weight: bold;">9.5.1 &mdash;</span> Если вам нужно уйти из строя по какой-либо причине, делайте всё, что сказано в пункте 9.5 и спрашивайте разрешение на уход из строя.<br>
-			<span style="color:#32cd32; font-weight: bold;">9.6 &mdash;</span> Построение считается законченным, если организатор сказал: &quot;Все свободны&quot;.<br>
-			<span style="color:#32cd32; font-weight: bold;">9.7 &mdash;</span> Управление строем осуществляется командами и приказаниями, которые подаются организатором построения.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Основные команды в строю:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Направо - Поворот направо на 90 градусов (/animarmy 8)<br>
-					Налево - Поворот налево на 90 градусов (/animarmy 7)<br>
-					Кругом - Поворот на 180 градусов (/animarmy 6)<br>
-					Смирно - Поза, где всё тело вытянуто, руки по швам (/animarmy 4)<br>
-					Упор лёжа принять - принятие упора лёжа (/animarmy 1)<br>
-					Марш/Начали - команда, означающая начало выполнения какого-либо действия<br>
-					Отставить/Закончили - команда, означающая завершение выполнения какого-либо действия<br>
-					Принять положение полтора - принятие положения &quot;Полтора&quot; (/animarmy 9)<br>
-					За мной - команда, после которой вы должны идти за организатором<br>
-					Бегом (Марш) - команда, после которой вы должны побежать<br>
-					Шагом (Марш) - команда, после которой вы должны пойти медленным шагом<br>
-					Сели - команда, после которой вы должны сесть (Нажать [С])<br>
-					Гуськом - команда после которой вы должны в приседе выполнить задание<br>
-					За мной (Шагом/Бегом Марш) - команда после которой вы должны пойти за организатором таким образом, как он сказал пойти</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">9.8 &mdash;</span> Многие команды могут комбинироваться, например:</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">- Сесть! Гуськом 2 круга вокруг плаца марш!<br>
-					- За мной бегом марш!</span>
-				</p>
-			</div>
-		</div>
-
-		<div style="max-height: 3px;">
-			&nbsp;
-		</div>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section10">
-		<h2 style="text-align: center;">
-			10. Территория Воинской Части
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">10.1 &mdash;</span> Ниже приведена карта воинской части и фотография КПП. Военнослужащий вправе потребовать гражданина, находящегося на территории, обозначенной желтым цветом, покинуть её, после чего, в случае неподчинения, в течение 10 секунд, открыть по гражданину огонь на поражение. Военнослужащий вправе открыть огонь без предупреждения по гражданину, проникшему в красную зону.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Карта ВЧ:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: center;">
-					&nbsp;
-				</p>
-
-				<p style="text-align:center;">
-					<a bis_size="{&quot;x&quot;:363,&quot;y&quot;:13544,&quot;w&quot;:1000,&quot;h&quot;:22,&quot;abs_x&quot;:363,&quot;abs_y&quot;:13544}" data-fileid="undefined" data-ipslightbox="" data-ipslightbox-group="undefined" data-wrappedlink="" href="https://i.imgur.com/jU2KXmD.jpg" rel="external nofollow" title="Увеличить изображение"><img alt="spacer.png" bis_id="bn_i3oj3r3rfibfe698swoyfv" bis_size="{&quot;x&quot;:363,&quot;y&quot;:13056,&quot;w&quot;:1000,&quot;h&quot;:1000,&quot;abs_x&quot;:363,&quot;abs_y&quot;:13056}" class="ipsImage ipsImage_thumbnailed" data-loaded="true" data-ratio="56.25" data-src="https://i.imgur.com/jU2KXmD.jpg" height="562" src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png" style="height:auto;" width="1000"></a>
-				</p>
-
-				<p style="text-align:center;">
-					<a bis_size="{&quot;x&quot;:744,&quot;y&quot;:14231,&quot;w&quot;:238,&quot;h&quot;:22,&quot;abs_x&quot;:744,&quot;abs_y&quot;:14231}" data-fileid="undefined" data-ipslightbox="" data-ipslightbox-group="undefined" data-wrappedlink="" href="https://i.imgur.com/ivznpAh.jpg" rel="external nofollow" title="Увеличить изображение"><img alt="spacer.png" bis_id="bn_8u88av577vx5v9sdmsga38" bis_size="{&quot;x&quot;:744,&quot;y&quot;:14056,&quot;w&quot;:238,&quot;h&quot;:375,&quot;abs_x&quot;:744,&quot;abs_y&quot;:14056}" class="ipsImage ipsImage_thumbnailed" data-loaded="true" data-ratio="157.56" data-src="https://i.imgur.com/ivznpAh.jpg" height="375" src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png" style="height:auto;" width="238"></a>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">10.2 &mdash;</span> Все гражданские лица, находящиеся в жёлтой зоне без веской причины, а также гос.служащие, обязаны находиться за вторым столбом.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Сотрудники МЗ при проведении поставки медикаментов в случае, если нет возможности провести их на территорию ВЧ.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">10.2.1 &mdash;</span> Все автовладельцы, независимо от статуса, обязаны оставлять своё транспортное средство за вторым столбом.<br>
-			<span style="color:#32cd32; font-weight: bold;">10.3 &mdash;</span> Желтая зона &mdash; зона от второго столба на юге, до железной дороги на восток, до вершины горы на запад и на 30 метров от забора ВЧ на север.<br>
-			<span style="color:#32cd32; font-weight: bold;">10.4 &mdash;</span> Если у гражданина есть вопрос, он должен подойти к военнослужащему, задать его и после ответа покинуть охраняемую территорию &mdash; жёлтую зону, при этом, оставив транспортное средство за вторым столбом.</span>
-		</p>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section11">
-		<h2 style="text-align: center;">
-			11. Регламент Контрольно-Пропускного пункта Воинской Части
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">11.1 &mdash;</span> Все военнослужащие обязаны предъявлять документы перед пересечением линии с красной зоной на КПП.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Если Вы вышли из красной зоны, и не уходили дальше первого столба, то проверка документов не обязательна.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">11.2 &mdash;</span> Если в автомобиле с военнослужащим сидит гражданское лицо, то вы обязаны уточнить цель проведения гражданина на Воинскую Часть. <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 90 минут [Может быть выдано х2, х3 ,х4], Контракт: Предупреждение/Выговор]</span><br>
-			<span style="color:#32cd32; font-weight: bold;">11.3 &mdash;</span> Автомобили с чёрными государственными номерами формата &quot;0000АА00&quot; проверяются только при наличии гражданина в транспортном средстве.<br>
-			<span style="color:#32cd32; font-weight: bold;">11.4 &mdash;</span> Запрещено не предъявлять документы перед пересечением линии красной зоной. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор]</span></span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Исключение:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Военнослужащие в форме.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">11.5 &mdash;</span> Документом, доступным для проверки на КПП, является удостоверение, для гражданских лиц &mdash; паспорт.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">С использованием /ud с ID постового.</span>
-				</p>
-			</div>
-		</div>
-
-		<div style="max-height: 3px;">
-			&nbsp;
-		</div>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Вы подъезжаете на КПП, прописываете &quot;/ud с ID&quot; постового и проезжаете на территорию ВЧ.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">11.6 &mdash;</span> Военнослужащие, находящиеся в наряде КПП, обязаны стоять каждый возле одной из будок. Расстановка начинается с первой правой будки (если смотреть по направлению от ВЧ) и далее против часовой стрелки. Разрешено отходить от будок только в случае чрезвычайных ситуаций (проникновение, нападение и т.д.), а также для проверки документов (касается военнослужащих, стоящих возле будок на границе зон). <span style="color:#ec743b; font-weight: bold;">[Срочники: Карцер 30 минут, Контракт: Карцер 60 минут]</span></span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Если военнослужащий находится в наряде один, то необходимо стоять по середине границы Красной и Желтой зон. </span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">11.6.1 &mdash;</span> В случае ухода с поста одного из военнослужащих, остальные обязаны совершить переход по часовой стрелке на освободившееся место.<br>
-			<span style="color:#32cd32; font-weight: bold;">11.7 &mdash;</span> Запрещено фотографировать или вести видеофиксацию воинской части и КПП. Военнослужащий имеет право открыть огонь после предупреждения.<br>
-			<span style="color:#32cd32; font-weight: bold;">11.8 &mdash;</span> Запрещается доставать холодное и огнестрельное оружие вблизи КПП и в пределах жёлтой зоны. Военнослужащий имеет право открыть огонь после предупреждения. Если оружие будет применено или направлено на военнослужащих, огонь может быть открыт без предупреждения.<br>
-			<span style="color:#32cd32; font-weight: bold;">11.9 &mdash;</span> Любому лицу запрещено портить имущество воинской части, КПП, и прилегающей к ней территории, к которым относятся: стенки заборов, фонари, дорожные столбы, специальные расставленные знаки, транспортные средства, спецгрузы и прочее. Военнослужащий имеет право открыть огонь после предупреждения.<br>
-			<span style="color:#32cd32; font-weight: bold;">11.10 &mdash;</span> Не допускаются никакие провокационные действия в отношении военнослужащих, такие как троллинг, злоупотребление клаксоном или подстрекательство других лиц к противоправным поступкам. Военнослужащий имеет право открыть огонь только после предварительного предупреждения.<br>
-			<span style="color:#32cd32; font-weight: bold;">11.10.1 &mdash;</span> К провокационным действиям также относятся случаи, когда гражданин, покинув территорию воинской части, прилегающей к ней территории, КПП или красную зону по требованию военнослужащего, возвращается обратно. После требования покинуть территорию гражданин не имеет права возвращаться в течение 30 минут. В противном случае военнослужащий может открыть огонь без предупреждения, основываясь на предыдущих предупреждениях.<br>
-			<span style="color:#32cd32; font-weight: bold;">11.11 &mdash;</span> Военнослужащий имеет право потребовать водителя переместить транспорт на парковку в жёлтой зоне. За неподчинение, военнослужащий имеет право применить силу только в том случае, если транспорт препятствует или создаёт помеху движущейся колонне военной техники, а также, если транспорт препятствует легальному въезду/выезду любого транспорта на территорию воинской части.</span>
-		</p>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section12">
-		<h2 style="text-align: center;">
-			12. Действия при угрозе
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">12.1 &mdash;</span> При возникновении угрозы жизни и здоровью военнослужащего и/или целостности техники, военнослужащие имеют право открыть огонь на поражение без предупреждений.<br>
-			<span style="color:#32cd32; font-weight: bold;">12.2 &mdash;</span> Любая угроза должна подтверждаться соответствующим докладом в рацию.</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Пример:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">/r [МТО] Код-0! Нападение на поставку возле гоночного трека.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">12.3 &mdash;</span> В случае непрямых угроз (блокирование проезда колонны, угрозы огнестрельным оружием (не стрельба), оскорбления) необходимо руководствоваться пунктом 6.9.<br>
-			<span style="color:#32cd32; font-weight: bold;">12.4 &mdash;</span> В случае ограбления поставки военнослужащие, находящиеся на ВЧ, имеют право взять АК-74М, МР-443 Грач, тазер, бронежилет и любое легковое авто без разрешения и выехать на подмогу.<br>
-			<span style="color:#32cd32; font-weight: bold;">12.5 &mdash;</span> На Код-0 от сотрудников МВД выезжать могут все военнослужащие контрактной основы, если сотрудник со званием Майор и выше принял запрос (/d [МО]-[Фракция] Принято, выдвигаемся. Требуется поддержка с воздуха?). <span style="color:#ec743b; font-weight: bold;">[Контракт: Устное предупреждение/Предупреждение]</span><br>
-			<span style="color:#32cd32; font-weight: bold;">12.5.1 &mdash;</span> Если запрос был принят, то разрешается взять АК-74М, МР-443 Грач, тазер, бронежилет и любое легковое авто.<br>
-			<span style="color:#32cd32; font-weight: bold;">12.5.2 &mdash;</span> По завершении Код-0 все военнослужащие обязаны сдать амуницию на склад, а технику в ангар. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение]</span></span>
-		</p>
-	</section>
-
-	<hr class="echpohmak-hr">
-	<section id="sub-section13">
-		<h2 style="text-align: center;">
-			13. Регламент использования Боевого вертолёта
-		</h2>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">13.1 &mdash;</span> Боевой вертолёт разрешено использовать для сопровождения в следующих случаях:</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Перечень:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">- Поставка МТО (как наземная, так и воздушная)<br>
-					- ПСН<br>
-					- Призыв<br>
-					- Вывоз срочников для оплаты ЖКХ</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">13.2 &mdash;</span> Открывать огонь из пулемётов Боевого вертолёта разрешено в следующих случаях:</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Перечень:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">- Убит один или несколько военнослужащих<br>
-					- Ведётся огонь по Боевому вертолёту<br>
-					- Проникновение на территорию ВЧ<br>
-					- Приказ военнослужащего со званием Полковник и выше<br>
-					- Запрос от сотрудников МВД на Код-0</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">13.3 &mdash;</span> При открытии огня, в зоне поражения не должно быть гражданских лиц и сотрудников гос. структур.<br>
-			<span style="color:#32cd32; font-weight: bold;">13.4 &mdash;</span> Перед открытием огня пилот обязан доложить об этом в рацию (на Код-0 в общую рацию).</span>
-		</p>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примеры докладов:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">/r [Ком.Округа] Внимание, открываю огонь из пулемётов.<br>
-					/d [Армия] Внимание, открываю огонь из пулемётов, всем сотрудникам покинуть зону поражения.</span>
-				</p>
-			</div>
-		</div>
-
-		<div style="max-height: 3px;">
-			&nbsp;
-		</div>
-
-		<div class="echpohmak-spoiler-container">
-			<div class="echpohmak-spoiler-header">
-				<span style="color:#32cd32;"><span style="font-size:18px;">Примечание:</span></span>
-			</div>
-
-			<div class="echpohmak-spoiler-contents">
-				<p style="text-align: justify;">
-					<span style="font-size:18px;">Если используется два вертолёта, то доклад делает один из пилотов.</span>
-				</p>
-			</div>
-		</div>
-
-		<p style="text-align: justify;">
-			<span style="font-size:18px;"><span style="color:#32cd32; font-weight: bold;">13.5 &mdash;</span> Если объявляется Код-0, сотрудник, принявший запрос на подмогу, обязан узнать, требуется ли поддержка с воздуха.<br>
-			<span style="color:#32cd32; font-weight: bold;">13.5.1 &mdash;</span> На Код-0 разрешено использовать не более двух Боевых вертолётов. <span style="color:#ec743b; font-weight: bold;">[Контракт: Выговор каждому пилоту Боевого вертолёта]</span><br>
-			<span style="color:#32cd32; font-weight: bold;">13.5.2 &mdash;</span> Если требуется поддержка с воздуха, это не означает, что должны прилететь только два вертолёта, вне зависимости от этого должны выехать военнослужащие на наземном транспорте.<br>
-			<span style="color:#32cd32; font-weight: bold;">13.6 &mdash;</span> За нарушение любого из пунктов 13 Главы военнослужащий может быть наказан. <span style="color:#ec743b; font-weight: bold;">[Контракт: Предупреждение/Выговор]</span></span>
-		</p>
-	</section>
+  <div class="echpohmak-header">Единая система повышений и отработок для членов ОПГ</div>
+
+  <div class="opg-tabs">
+    <nav class="tabs-nav">
+      <a href="#" class="tab-link active" data-target="tab-promote">Повышения</a>
+      <a href="#" class="tab-link"        data-target="tab-penalties">Снятие взысканий</a>
+      <a href="#" class="tab-link"        data-target="tab-points">Начисление баллов</a>
+      <a href="#" class="tab-link"        data-target="tab-reports">Отчётность</a>
+      <a href="#" class="tab-link"        data-target="tab-notes">Примечания</a>
+      <div class="tab-indicator"></div>
+    </nav>
+
+    <div class="tabs-content">
+      <!-- ===================== ПОВЫШЕНИЯ ===================== -->
+      <section id="tab-promote" class="tab-content active">
+        <div class="sections">
+          <div class="section col-12">
+            <div class="badge">Критерии для повышения бойцов ОПГ</div>
+            <p class="muted" style="margin-top:6px;">
+              Все пункты должны быть подтверждены доказательствами с <b>/timestamp</b> или временем/датой над HUD (если не указано иное).
+            </p>
+          </div>
+
+          <div class="section col-6">
+            <h3>Шнырь (1) ⇒ Фраер (2)</h3>
+            <ul>
+              <li>Сменить никнейм, согласовав его с СС/РС.</li>
+              <li>Принять участие в <b>3</b> тренировках.</li>
+              <li>Принять участие в <b>2</b> мероприятиях.</li>
+              <li>Купить скин по дресс-коду ОПГ (указан в инфо-разделе конкретного ОПГ).</li>
+              <li>Иметь обязательные бинды: <b>отправка SOS</b>, <b>принятие SOS</b> (каждый — с /timestamp или временем над HUD).</li>
+              <li>Перекрасить авто в цвет ОПГ.</li>
+            </ul>
+          </div>
+
+          <div class="section col-6">
+            <h3>Фраер (2) ⇒ Барыга (3)</h3>
+            <ul>
+              <li>Принять участие в <b>3</b> тренировках.</li>
+              <li>Патруль базы <b>1 раз</b> (30 минут).</li>
+              <li>Пост на входе в базу <b>1 раз</b> (30 минут).</li>
+              <li>РП-задание от СС/РС: <b>не менее 10 строк</b> с /me, /do, /try.</li>
+              <li>Обязательные бинды (все): поставить/снять заточку, предупреждение о покидании базы (10 сек),
+                  предупреждение о покидании территории другому члену ПГ (1 мин), бинд на кляп
+                  (каждый — с /timestamp или временем над HUD).</li>
+              <li>Получить роль в едином Discord ОПГ.</li>
+              <li>После проверенного отчёта пройти обзвон на переход в Младший состав.</li>
+            </ul>
+          </div>
+
+          <div class="section col-6">
+            <h3>Барыга (3) ⇒ Доверенный (4)</h3>
+            <ul>
+              <li>Принять участие в <b>3</b> тренировках.</li>
+              <li>Патруль базы <b>1 раз</b> (30 минут).</li>
+              <li>Пост на входе в базу <b>1 раз</b> (30 минут).</li>
+              <li>РП-задание от СС/РС: <b>не менее 15 строк</b> с /me, /do, /try.</li>
+              <li>Отыгровка <b>3</b> РП-ситуаций преступного характера (взломы через /try, закладка и т.д.) — <b>минимум 5 строк</b>.</li>
+              <li>Ограбление инкассации по ПОИ (x1): <b>Начало ⇒ Середина ⇒ Конец</b>.</li>
+            </ul>
+          </div>
+
+          <div class="section col-6">
+            <h3>Доверенный (4) ⇒ Бывалый (5)</h3>
+            <ul>
+              <li>Принять участие в <b>5</b> тренировках.</li>
+              <li>Ограбление инкассации по ПОИ (x2): <b>Начало ⇒ Середина ⇒ Конец</b>.</li>
+              <li>Участие в секретной поставке (x1): <b>Начало ⇒ Середина ⇒ Конец</b>.</li>
+              <li>Принять участие в МП от ОПГ <b>5 раз</b>.</li>
+              <li>Отыгровка <b>5</b> РП-ситуаций преступного характера — <b>минимум 15 строк</b>.</li>
+            </ul>
+          </div>
+
+          <div class="section col-12">
+            <h3>Бывалый (5) ⇒ Авторитет (6)</h3>
+            <div class="divider"></div>
+            <ul>
+              <li>Принять участие в <b>7</b> тренировках.</li>
+              <li>Патруль базы <b>4 раза</b> (по 30 минут).</li>
+              <li>Пост на входе в базу <b>4 раза</b> (по 30 минут).</li>
+              <li>Принять участие в МП от ОПГ <b>15 раз</b>.</li>
+              <li>Отыгровка <b>7</b> РП-ситуаций преступного характера — <b>минимум 15 строк</b>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== СНЯТИЕ ВЗЫСКАНИЙ ===================== -->
+      <section id="tab-penalties" class="tab-content">
+        <div class="sections">
+          <div class="section col-6">
+            <h3>Предупреждение</h3>
+            <ul>
+              <li><b>1–3 ранг</b> — 10 баллов + участие в мероприятии (x1)</li>
+              <li><b>4–6 ранг</b> — 15 баллов + участие в мероприятии (x1)</li>
+              <li><b>7–8 ранг (СС)</b> — 30 баллов + проведение мероприятия (x2)</li>
+              <li><b>9 ранг</b> — 40 баллов</li>
+            </ul>
+          </div>
+
+          <div class="section col-6">
+            <h3>Выговор</h3>
+            <ul>
+              <li><b>1–3 ранг</b> — 15 баллов + участие в мероприятиях (x2)</li>
+              <li><b>4–6 ранг</b> — 25 баллов + участие в мероприятиях (x2)</li>
+              <li><b>7–8 ранг (СС)</b> — 55 баллов + проведение тренировок (x3) + организация мероприятий (x2)</li>
+              <li><b>9 ранг</b> — 65 баллов + принятие в состав (x3) + проведение мероприятий (x5)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== НАЧИСЛЕНИЕ БАЛЛОВ ===================== -->
+      <section id="tab-points" class="tab-content">
+        <div class="sections">
+          <div class="section col-12">
+            <h3>Критерии получения баллов</h3>
+            <ul>
+              <li>Участие в тренировке — <b>3</b> балла</li>
+              <li>Участие в МП от ОПГ — <b>5</b> баллов</li>
+              <li>Пост на входе в базу — <b>5</b> баллов</li>
+              <li>Участие в мероприятиях — <b>5</b> баллов</li>
+              <li>Патруль/пост базы — <b>5</b> баллов</li>
+              <li>Участие в МП панели — <b>10</b> баллов</li>
+              <li>Участие в ГМП (3+ фракций, напр. код-0) — <b>10</b> баллов</li>
+              <li>Продажа оружия/наркотиков (по РП, не менее 10 строк для 4+ рангов) — <b>5</b> баллов</li>
+              <li>Ограбление инкассации — <b>8</b> баллов</li>
+              <li>Организация мелкого РП по ПГ-деятельности — <b>3</b> балла
+                <span class="muted">(4+ ранги: 5+ строк; 1–3 ранги: 3+ строки; пример: закладка)</span></li>
+              <li>Принятие в состав — <b>5</b> баллов</li>
+              <li>Организация тренировки — <b>6</b> баллов</li>
+              <li>Организация мероприятия — <b>8</b> баллов</li>
+              <li>Организация ГМП (3+ фракций) — <b>15</b> баллов</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ОТЧЁТНОСТЬ ===================== -->
+      <section id="tab-reports" class="tab-content">
+        <div class="sections">
+          <div class="section col-12">
+            <h3>Критерии заполнения отчёта</h3>
+            <p>
+              Отчёт на повышение и отработку дисциплинарного взыскания должен быть составлен
+              по шаблону <b>Google Forms</b>. Каждое задание — <b>в отдельной ссылке</b>.
+            </p>
+            <p>
+              Доказательства обязаны содержать <b>/timestamp</b> или <b>время и дату над HUD</b>.
+              При фиксации середины тренировки/мероприятия и т.д. должно отображаться <b>ваше действие</b>.
+              <b>[Иначе отчёт аннулируется]</b>.
+            </p>
+            <div class="divider"></div>
+            <p><b>Важно:</b> каждое задание должно быть в отдельной ссылке по формату:</p>
+            <p class="muted" style="margin-bottom:0;">
+              Тренировка(Название) / Мероприятие(Название) / Пост / Патруль — ссылка.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== ПРИМЕЧАНИЯ ===================== -->
+      <section id="tab-notes" class="tab-content">
+        <div class="sections">
+          <div class="section col-12">
+            <h3>Примечание</h3>
+            <ul>
+              <li>За одну тренировку в день нельзя получить баллы повторно.</li>
+              <li>Все скриншоты/видео должны быть сделаны <b>после получения наказания</b>.</li>
+              <li>Баллы запрещено <b>дарить или передавать</b>.</li>
+              <li><b>1–2 ранги</b> отрабатывают наказание <b>без оружия</b>, выполняя задания вроде взломов (без перестрелок).
+                Оружие — только после повышения до <b>3+</b> ранга, доказав доверие ОПГ.</li>
+              <li>Дисциплинарное взыскание снимается только через <b>3 дня</b>.</li>
+              <li>Повышение на <b>3+ ранг</b> — не чаще <b>1 раза в неделю</b>.</li>
+              <li>Одно задание нельзя выполнять более <b>5 раз за 24 часа</b>.</li>
+              <li>Отчёты о повышениях и снятии взысканий должны быть в <b>закрытой группе ОПГ</b>
+                (можно Google Forms, но с обязательной привязкой к таблице).</li>
+              <li>Запрещено повышать сотрудника при наличии <b>выговора</b>.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
 </div>
+
+<script>
+  (function(){
+    const wrapper = document.querySelector('.opg-tabs');
+    if (!wrapper) return;
+
+    const nav    = wrapper.querySelector('.tabs-nav');
+    const tabs   = nav.querySelectorAll('.tab-link');
+    const panels = wrapper.querySelectorAll('.tab-content');
+    const indi   = nav.querySelector('.tab-indicator');
+
+    function moveIndicator(to){
+      indi.style.left  = to.offsetLeft + 'px';
+      indi.style.width = to.offsetWidth + 'px';
+    }
+
+    // init
+    const activeTab = nav.querySelector('.tab-link.active') || tabs[0];
+    moveIndicator(activeTab);
+
+    tabs.forEach(tab => {
+      tab.addEventListener('click', e => {
+        e.preventDefault();
+        const tgt = tab.dataset.target;
+
+        tabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        panels.forEach(p => p.classList.toggle('active', p.id === tgt));
+        moveIndicator(tab);
+      });
+    });
+
+    // keep indicator correct on resize
+    window.addEventListener('resize', () => {
+      const current = nav.querySelector('.tab-link.active') || tabs[0];
+      moveIndicator(current);
+    }, { passive: true });
+  })();
+</script>

@@ -1,0 +1,89 @@
+<div id="gh-topic-root"></div>
+
+<script>
+(async function () {
+  const BASE = "https://cdn.jsdelivr.net/gh/echpohmak/forum-topics@main/topics";
+  const SLUG = "test";
+
+  const root = document.getElementById("gh-topic-root");
+  if (!root) return;
+
+  const v = Date.now(); 
+
+  async function runScriptsSequentially(scope) {
+    const scripts = Array.from(scope.querySelectorAll("script"));
+
+    const queue = scripts.map(old => {
+      const info = {
+        src: old.getAttribute("src"),
+        type: old.getAttribute("type"),
+        text: old.textContent || "",
+        attrs: Array.from(old.attributes).map(a => [a.name, a.value])
+      };
+      old.remove();
+      return info;
+    });
+
+    for (const item of queue) {
+      await new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        for (const [k, val] of item.attrs) s.setAttribute(k, val);
+
+        if (item.src) {
+          const hasQuery = item.src.includes("?");
+          s.src = item.src + (hasQuery ? "&" : "?") + "v=" + v;
+          s.onload = resolve;
+          s.onerror = reject;
+        } else {
+          s.text = item.text;
+          resolve();
+        }
+        document.head.appendChild(s);
+      });
+    }
+  }
+
+  const READY_EVENT = "gh:content-ready";
+  const originalAdd = document.addEventListener;
+  const originalRemove = document.removeEventListener;
+
+  function enableDomContentLoadedShim() {
+    document.addEventListener = function(type, listener, options) {
+      if (type === "DOMContentLoaded") {
+        return originalAdd.call(document, READY_EVENT, listener, options);
+      }
+      return originalAdd.call(document, type, listener, options);
+    };
+    document.removeEventListener = function(type, listener, options) {
+      if (type === "DOMContentLoaded") {
+        return originalRemove.call(document, READY_EVENT, listener, options);
+      }
+      return originalRemove.call(document, type, listener, options);
+    };
+  }
+
+  function disableDomContentLoadedShim() {
+    document.addEventListener = originalAdd;
+    document.removeEventListener = originalRemove;
+  }
+
+  try {
+    const r = await fetch(`${BASE}/${SLUG}.html?v=${v}`, { cache: "no-store" });
+    if (!r.ok) throw new Error(`HTML fetch failed: HTTP ${r.status}`);
+
+    const html = await r.text();
+
+    root.innerHTML = html;
+    await new Promise(requestAnimationFrame);
+    enableDomContentLoadedShim();
+    await runScriptsSequentially(root);
+    disableDomContentLoadedShim();
+    document.dispatchEvent(new Event(READY_EVENT));
+
+  } catch (e) {
+    console.error(e);
+    disableDomContentLoadedShim();
+    root.innerHTML = "<div style='padding:10px;border:1px solid #ec3e3e;border-radius:8px;'>Ошибка загрузки/инициализации.</div>";
+  }
+})();
+</script>
