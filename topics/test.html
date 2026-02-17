@@ -72,18 +72,31 @@
     /* special thanks to Sokolin for the styles that hide the standard message design */
 </style>
 <link rel="stylesheet" href="https://storage.yandexcloud.net/mta-province-4-forum-styles/forumStylesOPG.css">
-
 <style type="text/css">
   :root{
-    --opg-accent: #7f8c8d;   /* акцентный цвет */
+    --opg-accent: #7f8c8d;
     --opg-bg: #1e1e2d;
     --opg-border: #5d5e74;
     --opg-text: #e9e9f1;
     --opg-muted: #b9bacb;
   }
 
-  /* ===== TABS NAVIGATION ===== */
-  .opg-tabs { color: var(--opg-text); }
+  .opg-tabs{
+    color: var(--opg-text);
+    display: block;
+    width: 100%;
+  }
+
+  .opg-tabs .sections,
+  .opg-tabs .section{
+    min-width: 0;
+  }
+
+  .opg-tabs .section p,
+  .opg-tabs .section li{
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
 
   .opg-tabs .tabs-nav{
     position: relative;
@@ -94,7 +107,7 @@
   }
 
   .opg-tabs .tab-link{
-    flex: 1;
+    flex: 1 1 0;
     padding: 12px;
     text-align: center;
     text-decoration: none !important;
@@ -106,6 +119,7 @@
     user-select: none;
     transition: color .3s ease, transform .3s ease, opacity .2s ease;
     opacity: .95;
+    white-space: nowrap;
   }
 
   .opg-tabs .tab-link:hover{
@@ -132,7 +146,6 @@
       background-color .3s ease;
   }
 
-  /* ===== TAB CONTENT ===== */
   @keyframes contentFadeIn {
     from { opacity: 0; transform: translateY(16px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -159,11 +172,11 @@
     animation: contentFadeIn .45s ease-out both;
   }
 
-  /* ===== SECTION LAYOUT ===== */
   .opg-tabs .sections{
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     gap: 20px;
+    width: 100%;
   }
 
   .opg-tabs .section{
@@ -205,15 +218,6 @@
     color: var(--opg-text);
   }
 
-  .opg-tabs {
-    display: inline-block;
-    padding: 4px 10px;
-    color: var(--opg-text);
-    font-weight: 700;
-    font-size: 14px;
-    margin: 0 0 10px 0;
-  }
-
   .opg-tabs .divider{
     height: 1px;
     background: rgba(255,255,255,.08);
@@ -221,19 +225,19 @@
     border-radius: 999px;
   }
 
-  /* ===== DESKTOP GRID HELPERS ===== */
   .col-12{ grid-column: span 12; }
   .col-8 { grid-column: span 8; }
   .col-6 { grid-column: span 6; }
   .col-4 { grid-column: span 4; }
   .col-3 { grid-column: span 3; }
 
-  /* ===== MOBILE ===== */
   @media (max-width: 768px){
     .opg-tabs .tabs-nav{
       flex-wrap: nowrap;
       overflow-x: auto;
       scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      overscroll-behavior-x: contain;
     }
     .opg-tabs .tabs-nav::-webkit-scrollbar{ display:none; }
 
@@ -241,6 +245,7 @@
       flex: 0 0 auto;
       padding: 10px 14px;
       font-size: 16px;
+      white-space: nowrap;
     }
 
     .opg-tabs .tab-content:not(.active){ display:none !important; }
@@ -256,6 +261,7 @@
       display:flex !important;
       flex-direction: column;
       gap: 16px;
+      width: 100%;
     }
 
     .opg-tabs .section{ padding: 12px; }
@@ -271,15 +277,14 @@
   <div class="opg-tabs">
     <nav class="tabs-nav">
       <a href="#" class="tab-link active" data-target="tab-promote">Повышения</a>
-      <a href="#" class="tab-link"        data-target="tab-penalties">Снятие взысканий</a>
-      <a href="#" class="tab-link"        data-target="tab-points">Начисление баллов</a>
-      <a href="#" class="tab-link"        data-target="tab-reports">Отчётность</a>
-      <a href="#" class="tab-link"        data-target="tab-notes">Примечания</a>
+      <a href="#" class="tab-link" data-target="tab-penalties">Снятие взысканий</a>
+      <a href="#" class="tab-link" data-target="tab-points">Начисление баллов</a>
+      <a href="#" class="tab-link" data-target="tab-reports">Отчётность</a>
+      <a href="#" class="tab-link" data-target="tab-notes">Примечания</a>
       <div class="tab-indicator"></div>
     </nav>
 
     <div class="tabs-content">
-      <!-- ===================== ПОВЫШЕНИЯ ===================== -->
       <section id="tab-promote" class="tab-content active">
         <div class="sections">
           <div class="section col-12">
@@ -353,7 +358,6 @@
         </div>
       </section>
 
-      <!-- ===================== СНЯТИЕ ВЗЫСКАНИЙ ===================== -->
       <section id="tab-penalties" class="tab-content">
         <div class="sections">
           <div class="section col-6">
@@ -378,7 +382,6 @@
         </div>
       </section>
 
-      <!-- ===================== НАЧИСЛЕНИЕ БАЛЛОВ ===================== -->
       <section id="tab-points" class="tab-content">
         <div class="sections">
           <div class="section col-12">
@@ -404,7 +407,6 @@
         </div>
       </section>
 
-      <!-- ===================== ОТЧЁТНОСТЬ ===================== -->
       <section id="tab-reports" class="tab-content">
         <div class="sections">
           <div class="section col-12">
@@ -427,7 +429,6 @@
         </div>
       </section>
 
-      <!-- ===================== ПРИМЕЧАНИЯ ===================== -->
       <section id="tab-notes" class="tab-content">
         <div class="sections">
           <div class="section col-12">
@@ -462,29 +463,47 @@
     const panels = wrapper.querySelectorAll('.tab-content');
     const indi   = nav.querySelector('.tab-indicator');
 
+    const isMobile = () => window.matchMedia("(max-width: 768px)").matches;
+
     function moveIndicator(to){
+      if (!to || !indi) return;
       indi.style.left  = to.offsetLeft + 'px';
       indi.style.width = to.offsetWidth + 'px';
     }
 
-    // init
+    function scrollTabIntoView(tab){
+      if (!tab || !isMobile()) return;
+      tab.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+
+    function activateTab(tab){
+      const tgt = tab.dataset.target;
+      if (!tgt) return;
+
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      panels.forEach(p => p.classList.toggle('active', p.id === tgt));
+
+      moveIndicator(tab);
+      scrollTabIntoView(tab);
+    }
+
     const activeTab = nav.querySelector('.tab-link.active') || tabs[0];
-    moveIndicator(activeTab);
+    if (activeTab) {
+      requestAnimationFrame(() => {
+        moveIndicator(activeTab);
+        scrollTabIntoView(activeTab);
+      });
+    }
 
     tabs.forEach(tab => {
       tab.addEventListener('click', e => {
         e.preventDefault();
-        const tgt = tab.dataset.target;
-
-        tabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        panels.forEach(p => p.classList.toggle('active', p.id === tgt));
-        moveIndicator(tab);
+        activateTab(tab);
       });
     });
 
-    // keep indicator correct on resize
     window.addEventListener('resize', () => {
       const current = nav.querySelector('.tab-link.active') || tabs[0];
       moveIndicator(current);
