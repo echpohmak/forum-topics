@@ -1,89 +1,1534 @@
-<div id="gh-topic-root"></div>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style type="text/css">
+/* --- forum cleanup --- */
+#elComment_7837086 .ipsResponsive_hidePhone{display:none}
+#elComment_7837086 .ipsComment_author{display:none}
+#elComment_7837086 .ipsComment_meta{display:none}
+#elComment_7837086 .ipsType_reset{display:none}
+#elComment_7837086{border-radius:8px}
+.ipsPager,.ipsHr,.ipsPhotoPanel_small,.cTopicPostArea,.ipsList_inline,
+.ipsToolList.ipsToolList_horizontal.ipsClearfix.ipsSpacer_both,
+.ipsPageHeader.ipsClearfix,
+.cAuthorPane.cAuthorPane_mobile{display:none}
+.md-toast-warning{font-size:19px;line-height:1.1}
+#elComment_7837086 .ipsType_normal.ipsType_richText.ipsContained{font-family:Montserrat,Helvetica,sans-serif}
+#elComment_7837086 .ipsComment.ipsModerated:not(.ipsComment_selected),
+.ipsComment.ipsModerated.ipsBox:not(.ipsBox_transparent):not(.ipsComment_selected){
+  background:transparent;border:1px solid #ec3e3e;
+}
+.ipsComment,.ipsComment.ipsBox:not(.ipsBox_transparent):not(.ipsModerated){border:1px solid transparent;background:transparent}
+.ipsComment.ipsComment_highlighted:not(.ipsComment_selected):not(.ipsModerated):not(.ipsComment_popular),
+.ipsComment.ipsComment_highlighted.ipsBox:not(.ipsComment_selected):not(.ipsModerated):not(.ipsComment_popular):not(.ipsBox_transparent){
+  border-color:transparent;background:transparent
+}
+#elComment_7837086 .ipsModerated{background:transparent}
+#elComment_7837086 .ipsBox,#elComment_7837086 .ipsComment{border:1px solid transparent}
+.ipsApp select{font-size:18px!important}
+
+
+/* --- правила и таблица цен --- */
+.rules-list{margin:10px 0 0 0!important;padding-left:28px!important}
+.rules-list li{margin-bottom:12px!important;padding-left:5px!important;line-height:1.5!important;text-align:justify!important;color:#ecf0f1!important;font-size:18px!important}
+.rules-list li:last-child{margin-bottom:0!important}
+.price-table-wrap{overflow-x:auto;margin:14px 0 20px 0}
+.price-table{width:100%;border-collapse:collapse;font-family:'Montserrat',sans-serif;font-size:15px;color:#ecf0f1}
+.price-table th,.price-table td{border:1px solid rgba(105,173,252,.3);padding:10px 8px;text-align:center;vertical-align:middle}
+.price-table th{background-color:#34495e;color:#ecf0f1;font-weight:bold}
+.price-table td:first-child,.price-table th:first-child{text-align:left}
+.price-table td{background-color:#2c3e50}
+.rules-list > .echpohmak-spoiler-container{margin-top:-4px!important;margin-bottom:12px!important}
+
+/* --- modal --- */
+.echpohmak-modal{display:flex;align-items:center;justify-content:center;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,.4);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s ease}
+.echpohmak-modal.show{opacity:1;visibility:visible}
+.echpohmak-modal-content{background-color:#1e1e2d;padding:20px;border:1px solid #c0392b;width:80%;max-width:500px;border-radius:10px;color:#ecf0f1;font-size:18px;transition:transform .3s ease;transform:translateY(30px);opacity:0}
+.echpohmak-modal.show .echpohmak-modal-content{transform:translateY(0);opacity:1}
+.echpohmak-close{color:#ecf0f1;position:relative;float:right;text-align:center;width:32px;right:-10px;top:-10px;font-size:26px;font-weight:bold;transition:color .3s ease;cursor:pointer}
+.echpohmak-close:hover,.echpohmak-close:focus{color:#c0392b}
+.echpohmak-h3{font-family:'Montserrat',sans-serif;font-weight:bold;font-size:20px;color:#c0392b;margin-top:0;margin-bottom:5px;display:flex;align-items:center}
+.echphmak-p-modal{font-family:'Montserrat',sans-serif;margin-bottom:0;font-size:16px}
+.input-error{border-color:#e74c3c!important;box-shadow:0 0 0 2px rgba(231,76,60,.7)!important}
+
+/* ====== ДВА ОКНА ====== */
+.pmu-duo{
+  font-family:'Montserrat',sans-serif;
+  display:flex;flex-wrap:wrap;align-items:stretch;
+  gap:24px;
+  max-width:1320px;
+  margin:20px auto!important;
+}
+.pmu-duo > .pmu-window{flex:1 1 0;min-width:0;max-width:none}
+
+.pmu-window,
+.pmu-window *{box-sizing:border-box!important}
+
+.pmu-window{
+  font-family:'Montserrat',sans-serif!important;
+  text-align:left!important;
+  height:660px;
+  display:flex;flex-direction:column;
+  background-color:#1e1e2d!important;
+  border:1px solid #c0392b!important;
+  border-radius:10px!important;
+  box-shadow:0 0 14px rgba(0,0,0,.5);
+  color:#ecf0f1;
+  overflow:hidden;
+}
+.pmu-window [hidden]{display:none!important}
+.pmu-window h3,.pmu-window p{margin:0!important;padding:0!important}
+
+/* --- шапка --- */
+.pmu-head{
+  flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:8px 14px!important;
+  background-color:#2c3e50!important;
+  border-bottom:1px solid rgba(105,173,252,.3)!important;
+}
+.pmu-head-left{display:flex;align-items:center;gap:10px;min-width:0}
+.pmu-cross{flex:none;width:28px;height:28px;border-radius:7px;background-color:#c0392b!important;display:flex;align-items:center;justify-content:center;box-shadow:0 0 10px rgba(192,57,43,.45)}
+.pmu-cross svg{width:14px;height:14px;display:block}
+.pmu-title{font-weight:700;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:#ecf0f1!important;line-height:1.25}
+.pmu-sub{font-size:10px;color:#bdc3c7!important;margin-top:1px!important}
+.pmu-head-right{flex:none;text-align:right}
+.pmu-date{font-size:10.5px;font-weight:600;color:#ecf0f1!important}
+.pmu-sync{display:flex;align-items:center;justify-content:flex-end;gap:6px;margin-top:3px!important;font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#bdc3c7}
+.pmu-dot{flex:none;width:6px;height:6px;border-radius:50%;background-color:#2EC46F!important;box-shadow:0 0 8px rgba(46,196,111,.8);animation:pmuPulse 2.2s ease-in-out infinite}
+@keyframes pmuPulse{0%,100%{opacity:1}50%{opacity:.35}}
+.pmu-refresh{flex:none;width:20px;height:20px;display:grid;place-items:center;border:1px solid rgba(105,173,252,.4)!important;border-radius:6px!important;background-color:transparent!important;color:#bdc3c7!important;cursor:pointer;transition:color .15s ease,border-color .15s ease}
+.pmu-refresh:hover{color:#ecf0f1!important;border-color:#4f90df!important}
+.pmu-refresh svg{width:11px;height:11px;display:block}
+.pmu-refresh.busy svg{animation:pmuSpin .8s linear infinite}
+
+/* ====== ЛЕВОЕ ОКНО: ФОРМА ====== */
+.pmu-formbody{
+  flex:1 1 auto;min-height:0;
+  overflow-y:auto;overflow-x:hidden;
+  overscroll-behavior:contain;
+  padding:12px 14px 4px!important;
+  scrollbar-width:thin;scrollbar-color:#c0392b #15151f;
+}
+.pmu-formbody::-webkit-scrollbar{width:12px}
+.pmu-formbody::-webkit-scrollbar-track{background:#15151f;border-left:1px solid rgba(105,173,252,.15)}
+.pmu-formbody::-webkit-scrollbar-thumb{background:#c0392b;border-radius:8px;border:3px solid #15151f}
+.pmu-formbody::-webkit-scrollbar-thumb:hover{background:#4f90df}
+
+.pmu-field{margin:0 0 10px!important;text-align:left}
+.pmu-field > label{display:block!important;margin:0 0 4px!important;font-size:12px!important;font-weight:600;color:#ecf0f1!important}
+
+.pmu-window .pmu-field input,
+.pmu-window .pmu-field select,
+.pmu-window .pmu-time input{
+  width:100%!important;max-width:100%!important;
+  padding:8px 10px!important;
+  border:1px solid #c0392b!important;
+  border-radius:10px!important;
+  background-color:#2c3e50!important;
+  background-image:none!important;
+  color:#ecf0f1!important;
+  font-family:'Montserrat',sans-serif!important;
+  font-size:14px!important;font-weight:500;
+  outline:none!important;
+  box-sizing:border-box!important;
+  transition:border-color .2s ease,background-color .2s ease,box-shadow .2s ease!important;
+}
+.pmu-window .pmu-field input:focus,
+.pmu-window .pmu-field select:focus,
+.pmu-window .pmu-time input:focus{
+  border-color:#4f90df!important;
+  background-color:#34495e!important;
+  box-shadow:0 0 10px rgba(79,144,223,.35)!important;
+}
+.pmu-window .pmu-field input::placeholder{color:#7f8c8d}
+
+.pmu-window .pmu-field select{
+  -webkit-appearance:none!important;appearance:none!important;
+  padding-right:30px!important;
+  cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23bdc3c7' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;
+  background-position:right 11px center!important;
+  background-size:10px 6px!important;
+}
+.pmu-window .pmu-field select option{background-color:#2c3e50;color:#ecf0f1}
+
+.pmu-time{display:flex;align-items:center;gap:10px}
+.pmu-time .pmu-tin{flex:1;min-width:0}
+.pmu-time .pmu-tdash{flex:none;color:#bdc3c7;font-weight:700}
+.pmu-window .pmu-time input{text-align:center}
+input[type=time]::-webkit-calendar-picker-indicator{filter:invert(1);cursor:pointer}
+input[type=time]::-webkit-datetime-edit,
+input[type=time]::-webkit-datetime-edit-fields-wrapper{color:#ecf0f1;font-family:'Montserrat',sans-serif}
+.pmu-hint{margin-top:5px!important;font-size:10.5px!important;color:#95a5a6!important;text-align:center!important;line-height:1.4!important}
+
+.pmu-submitbar{flex:none;padding:8px 14px 10px!important;background-color:#1e1e2d!important;border-top:1px solid rgba(105,173,252,.18)!important}
+.pmu-submit{
+  width:100%;padding:10px 14px!important;
+  background-color:#c0392b!important;color:#fff!important;
+  border:none!important;border-radius:10px!important;
+  font-family:'Montserrat',sans-serif!important;font-size:15px!important;font-weight:700;
+  text-align:center;cursor:pointer;user-select:none;
+  transition:background-color .25s ease,box-shadow .25s ease!important;
+}
+.pmu-submit:hover{background-color:#4f90df!important;box-shadow:0 4px 12px rgba(0,0,0,.25)}
+.pmu-submit:active{background-color:#3a7aca!important}
+.pmu-submit.pmu-busy{opacity:.65;pointer-events:none}
+
+/* --- подвал --- */
+.pmu-foot{
+  flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:7px 14px!important;
+  background-color:#2c3e50!important;
+  border-top:1px solid rgba(105,173,252,.3)!important;
+}
+.pmu-foot-info{font-size:10px;color:#bdc3c7!important;line-height:1.5}
+.pmu-counters{display:flex;gap:16px;flex:none}
+.pmu-cnt{text-align:center}
+.pmu-cnt b{display:block;font-size:15px;font-weight:700;color:#ecf0f1!important;line-height:1.1}
+.pmu-cnt span{display:inline-flex;align-items:center;gap:5px;margin-top:2px;font-size:7.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#95a5a6!important;white-space:nowrap}
+.pmu-cnt i{width:12px;height:2px;border-radius:2px;background-color:var(--pmu-c,#bdc3c7)}
+.pmu-c-red{--pmu-c:#c0392b}
+.pmu-c-blue{--pmu-c:#4f90df}
+
+/* ====== ПРАВОЕ ОКНО: ЖУРНАЛ ====== */
+.pmu-searchbar{
+  flex:none;display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;
+  padding:9px 14px!important;
+  background-color:#1e1e2d!important;
+  border-bottom:1px solid rgba(105,173,252,.3)!important;
+}
+.pmu-search-field{position:relative;display:flex;align-items:center;flex:1 1 220px;max-width:320px}
+.pmu-ico{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:#bdc3c7;pointer-events:none}
+.pmu-window .pmu-search{
+  width:100%!important;max-width:100%!important;
+  padding:8px 32px 8px 33px!important;
+  border:1px solid #c0392b!important;
+  border-radius:10px!important;
+  background-color:#2c3e50!important;
+  background-image:none!important;
+  color:#ecf0f1!important;
+  font-family:'Montserrat',sans-serif!important;
+  font-size:14px!important;font-weight:500;
+  outline:none!important;
+  transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease!important;
+}
+.pmu-window .pmu-search:focus{border-color:#4f90df!important;box-shadow:0 0 10px rgba(79,144,223,.35)!important}
+.pmu-window .pmu-search::placeholder{color:#7f8c8d}
+.pmu-window .pmu-clear{
+  position:absolute;right:4px;top:50%;transform:translateY(-50%);
+  width:24px;height:24px;display:grid;place-items:center;
+  border:0!important;border-radius:7px!important;
+  background-color:transparent!important;
+  color:#bdc3c7!important;cursor:pointer;
+  transition:background-color .15s ease,color .15s ease;
+}
+.pmu-window .pmu-clear:hover{color:#ecf0f1!important;background-color:rgba(236,240,241,.12)!important}
+.pmu-clear svg{width:11px;height:11px}
+
+/* ====== ФИЛЬТР ПО БОЛЬНИЦЕ В ЖУРНАЛЕ ====== */
+.pmu-hosp-filter{position:relative;display:flex;align-items:center;flex:1 1 160px;max-width:230px}
+.pmu-hosp-ico{position:absolute;left:11px;top:50%;transform:translateY(-50%);width:14px;height:14px;color:#bdc3c7;pointer-events:none;z-index:1}
+.pmu-window .pmu-hosp-filter select{
+  width:100%!important;max-width:100%!important;
+  padding:8px 30px 8px 33px!important;
+  border:1px solid #c0392b!important;
+  border-radius:10px!important;
+  background-color:#2c3e50!important;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%23bdc3c7' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")!important;
+  background-repeat:no-repeat!important;
+  background-position:right 11px center!important;
+  background-size:10px 6px!important;
+  color:#ecf0f1!important;
+  font-family:'Montserrat',sans-serif!important;
+  font-size:13px!important;font-weight:500;
+  outline:none!important;cursor:pointer;
+  -webkit-appearance:none!important;appearance:none!important;
+  transition:border-color .2s ease,box-shadow .2s ease!important;
+}
+.pmu-window .pmu-hosp-filter select:focus{border-color:#4f90df!important;box-shadow:0 0 10px rgba(79,144,223,.35)!important}
+.pmu-window .pmu-hosp-filter select.pmu-hosp-on{border-color:#4f90df!important;box-shadow:0 0 10px rgba(79,144,223,.3)!important}
+.pmu-window .pmu-hosp-filter select option{background-color:#2c3e50;color:#ecf0f1}
+
+.pmu-meta{flex:1 1 auto;display:flex;align-items:center;justify-content:flex-end;gap:10px;flex-wrap:nowrap;font-size:12px;color:#bdc3c7!important}
+.pmu-meta>span{white-space:nowrap}
+.pmu-meta b{color:#ecf0f1!important;font-weight:700}
+.pmu-wait{display:inline-flex;align-items:center;gap:7px;font-weight:600}
+.pmu-spin{flex:none;width:11px;height:11px;border:2px solid rgba(236,240,241,.25);border-top-color:#4f90df!important;border-radius:50%;animation:pmuSpin .7s linear infinite}
+@keyframes pmuSpin{to{transform:rotate(360deg)}}
+
+.pmu-list{
+  flex:1 1 auto;min-height:0;
+  overflow-y:auto;overflow-x:hidden;
+  overscroll-behavior:contain;
+  scrollbar-width:thin;scrollbar-color:#c0392b #15151f;
+}
+.pmu-list::-webkit-scrollbar{width:12px}
+.pmu-list::-webkit-scrollbar-track{background:#15151f;border-left:1px solid rgba(105,173,252,.15)}
+.pmu-list::-webkit-scrollbar-thumb{background:#c0392b;border-radius:8px;border:3px solid #15151f}
+.pmu-list::-webkit-scrollbar-thumb:hover{background:#4f90df}
+.pmu-list::-webkit-scrollbar-corner{background:#15151f}
+
+.pmu-bar{
+  position:sticky;top:0;z-index:5;
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:6px 12px!important;
+  background-color:#1e1e2d!important;
+  border-bottom:1px solid rgba(105,173,252,.25)!important;
+  font-size:9px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:#bdc3c7!important;
+}
+.pmu-order{display:inline-flex;align-items:center;gap:5px;color:#c0392b!important;white-space:nowrap}
+.pmu-order svg{width:10px;height:10px}
+
+#pmuRecords{min-width:0}
+@keyframes pmuIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* --- служебные состояния --- */
+.pmu-idle,.pmu-empty{padding:40px 20px 34px!important;text-align:center;animation:pmuIn .3s ease backwards}
+.pmu-idle svg,.pmu-empty svg{width:38px;height:38px;color:#c0392b;filter:drop-shadow(0 0 8px rgba(192,57,43,.35))}
+.pmu-window .pmu-idle h3,.pmu-window .pmu-empty h3{margin-top:10px!important;font-size:15px;font-weight:700;color:#ecf0f1!important}
+.pmu-window .pmu-idle p,.pmu-window .pmu-empty p{margin-top:5px!important;font-size:12px;color:#bdc3c7!important;line-height:1.5}
+.pmu-window .pmu-btn{
+  font-family:'Montserrat',sans-serif!important;
+  font-weight:700;font-size:12.5px;letter-spacing:.02em;
+  color:#ecf0f1!important;
+  background-color:transparent!important;
+  border:1.5px solid #c0392b!important;
+  border-radius:8px!important;
+  padding:8px 18px!important;
+  cursor:pointer;
+  margin-top:14px!important;
+  transition:background-color .2s ease,box-shadow .2s ease;
+}
+.pmu-window .pmu-btn:hover{background-color:#c0392b!important;box-shadow:0 0 12px rgba(192,57,43,.45)}
+
+/* --- скелетоны --- */
+.pmu-skel{margin:10px 12px 0!important;padding:13px 14px!important;background-color:#2c3e50!important;border:1px solid rgba(105,173,252,.15)!important;border-radius:10px!important}
+.pmu-skel:last-child{margin-bottom:12px!important}
+.pmu-skel .l{height:10px;border-radius:6px;background-color:rgba(236,240,241,.08);margin-top:10px;position:relative;overflow:hidden}
+.pmu-skel .l:first-child{margin-top:0;width:38%}
+.pmu-skel .l:nth-child(2){width:62%}
+.pmu-skel .l:nth-child(3){width:90%}
+.pmu-skel .l:nth-child(4){width:74%}
+.pmu-skel .l::after{content:'';position:absolute;inset:0;transform:translateX(-100%);background:linear-gradient(90deg,transparent,rgba(236,240,241,.09),transparent);animation:pmuShimmer 1.2s ease-in-out infinite}
+@keyframes pmuShimmer{to{transform:translateX(100%)}}
+
+@media (max-width:1040px){
+  .pmu-duo{flex-direction:column}
+  .pmu-duo > .pmu-window{width:100%!important;flex:none}
+}
+@media (max-width:640px){
+  .pmu-window{height:560px}
+  .pmu-formwin{height:auto!important}
+  .pmu-formwin .pmu-formbody{overflow:visible}
+  .pmu-sub{display:none}
+  .pmu-window .pmu-nick,.pmu-window .pmu-line{padding-right:0!important}
+  .pmu-stampwrap{position:static;width:184px;text-align:left;margin-top:12px!important;--pmu-r:0deg}
+  .pmu-grid>div{border-left:0;padding:0;width:50%}
+  .pmu-grid b{white-space:normal}
+  .pmu-foot{flex-direction:column;align-items:flex-start;gap:8px}
+  .pmu-counters{width:100%;justify-content:space-between}
+  .pmu-hosp-filter{flex:1 1 100%;max-width:none}
+}
+@media (prefers-reduced-motion:reduce){
+  .pmu-rec,.pmu-stampwrap,.pmu-idle,.pmu-empty,.pmu-dot,.pmu-skel .l::after,.pmu-spin,.pmu-refresh.busy svg{animation:none!important}
+}
+
+/* ===== ОБЫЧНЫЙ ШРИФТ ВНЕ ФОРМЫ ===== */
+.rules-list,
+.rules-list *,
+.price-table,
+.price-table *,
+.echpohmak-header,
+#sub-section1 > h2,
+#sub-section2 > h2,
+.linkss,
+.linkss *,
+.note,
+.note *,
+.echpohmak-modal,
+.echpohmak-modal *{
+  font-weight:400!important;
+}
+
+.echpohmak-container > h2,
+.echpohmak-container h2{
+  font-weight:400!important;
+}
+
+/* =========================================================
+   ПЕРЕБИВАЕМ ФОРУМНЫЕ СТИЛИ IPS ВНУТРИ НАШИХ ОКОН
+   (без этого на форуме ломается вёрстка: вертикальный текст,
+   наложение штампа, рамки у label, фон у полей и т.п.)
+   ========================================================= */
+
+/* 1. Сброс форумных рамок/фона у label внутри окон */
+#paidMedicalServicesForm label,
+#pmuWindow label{
+  display:block!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+  padding:0!important;
+  margin:0 0 4px 0!important;
+  color:#ecf0f1!important;
+  font-family:'Montserrat',sans-serif!important;
+  font-weight:600!important;
+  font-size:12px!important;
+  text-transform:none!important;
+  letter-spacing:normal!important;
+}
+#paidMedicalServicesForm label *,
+#pmuWindow label *{
+  background:transparent!important;
+  border:0!important;
+  box-shadow:none!important;
+}
+
+/* 2. Сброс форумных обёрток вокруг полей */
+#paidMedicalServicesForm .ipsFieldRow,
+#paidMedicalServicesForm .ipsFieldRow_content,
+#paidMedicalServicesForm .ipsFieldRow_label,
+#paidMedicalServicesForm .ipsFieldRow_fullWidth,
+#pmuWindow .ipsFieldRow,
+#pmuWindow .ipsFieldRow_content,
+#pmuWindow .ipsFieldRow_label,
+#pmuWindow .ipsFieldRow_fullWidth{
+  background:transparent!important;
+  border:0!important;
+  padding:0!important;
+  margin:0!important;
+  box-shadow:none!important;
+}
+
+/* 3. Сброс форумных стилей у input/select внутри окон */
+#paidMedicalServicesForm input,
+#paidMedicalServicesForm select,
+#paidMedicalServicesForm textarea,
+#pmuWindow input,
+#pmuWindow select,
+#pmuWindow textarea{
+  box-shadow:none!important;
+  outline:none!important;
+}
+#paidMedicalServicesForm select option,
+#pmuWindow select option{
+  background-color:#2c3e50!important;
+  color:#ecf0f1!important;
+}
+
+/* 4. .pmu-bar — принудительно в строку, без вертикального текста */
+.pmu-bar{
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  justify-content:space-between!important;
+  flex-wrap:nowrap!important;
+  white-space:nowrap!important;
+}
+.pmu-bar > *{
+  white-space:nowrap!important;
+  writing-mode:horizontal-tb!important;
+}
+
+/* 7. Основные flex-контейнеры */
+.pmu-window{display:flex!important;flex-direction:column!important}
+.pmu-duo{display:flex!important;flex-wrap:wrap!important}
+
+</style>
+
+
+<style type="text/css">
+/* --- forum cleanup: по структуре Kodik_MZ(2) --- */
+.ipsResponsive_hidePhone,
+.ipsComment_author,
+.ipsComment_meta,
+.ipsType_reset{
+  display:none;
+}
+
+.ipsPager,
+.ipsHr,
+.ipsPhotoPanel_small,
+.cTopicPostArea,
+.ipsList_inline,
+.ipsToolList.ipsToolList_horizontal.ipsClearfix.ipsSpacer_both,
+.ipsPageHeader.ipsClearfix,
+.cAuthorPane.cAuthorPane_mobile{
+  display:none;
+}
+
+.md-toast-warning{
+  font-size:19px;
+  line-height:1.1;
+}
+
+.ipsComment.ipsModerated:not(.ipsComment_selected),
+.ipsComment.ipsModerated.ipsBox:not(.ipsBox_transparent):not(.ipsComment_selected){
+  background:transparent;
+  border:1px solid #ec3e3e;
+}
+
+.ipsComment,
+.ipsComment.ipsBox:not(.ipsBox_transparent):not(.ipsModerated){
+  border:1px solid transparent;
+  background:transparent;
+}
+
+.ipsComment.ipsComment_highlighted:not(.ipsComment_selected):not(.ipsModerated):not(.ipsComment_popular),
+.ipsComment.ipsComment_highlighted.ipsBox:not(.ipsComment_selected):not(.ipsModerated):not(.ipsComment_popular):not(.ipsBox_transparent){
+  border-color:transparent;
+  background:transparent;
+}
+
+.ipsModerated{background:transparent}
+.ipsBox,.ipsComment{border:1px solid transparent}
+
+.ipsApp select{
+  font-size:18px!important;
+}
+</style>
+
+<link href="https://storage.yandexcloud.net/mta-province-4-forum-styles/forumStylesMZ.css" rel="stylesheet">
+
+<style type="text/css">
+/* --- spoiler: схема Kodik_MZ(2) --- */
+.echpohmak-spoiler-contents{
+  max-height:0;
+  overflow:hidden;
+  opacity:0;
+  transition:max-height .35s ease, opacity .25s ease;
+}
+.echpohmak-spoiler-container.open .echpohmak-spoiler-contents{
+  opacity:1;
+}
+.echpohmak-spoiler-header{
+  cursor:pointer;
+}
+</style>
+
+
+<div class="echpohmak-container">
+
+  <div class="echpohmak-header">
+    Платные медицинские услуги
+  </div>
+
+  <hr class="echpohmak-hr">
+
+  <h2 style="text-align:center!important;">
+    Оглавление
+  </h2>
+
+  <ul class="linkss" style="padding-left:15px; margin-top:3px;">
+    <li>
+      <a class="toc-link" href="#sub-section1" rel="">1. Электронная регистратура: подача заявки и проверка статуса</a>
+    </li>
+    <li>
+      <a class="toc-link" href="#sub-section2" rel="">2. Правила оказания платных медицинских услуг</a>
+    </li>
+  </ul>
+
+  <hr class="echpohmak-hr">
+
+  <!-- ====== ГЛАВА 1 ====== -->
+  <section id="sub-section1">
+
+    <h2 style="text-align:center!important;">
+      1. Электронная регистратура: подача заявки и проверка статуса
+    </h2>
+
+    <div class="pmu-duo">
+
+      <!-- ЛЕВОЕ ОКНО: подача заявления -->
+      <div class="pmu-window pmu-formwin" id="paidMedicalServicesForm">
+
+        <div class="pmu-head">
+          <div class="pmu-head-left">
+            <div class="pmu-cross" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#ecf0f1" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="5" y="4.5" width="14" height="16.5" rx="2"/>
+                <rect x="9" y="2.5" width="6" height="4" rx="1"/>
+                <path d="m9.5 13.2 2 2 3.5-4"/>
+              </svg>
+            </div>
+            <div>
+              <div class="pmu-title">Новое заявление</div>
+              <div class="pmu-sub">Платные мед. услуги · электронная форма</div>
+            </div>
+          </div>
+          <div class="pmu-head-right">
+            <div class="pmu-date" id="pmuFormDate">—</div>
+            <div class="pmu-sync"><i class="pmu-dot" aria-hidden="true"></i><span>приём заявок · онлайн</span></div>
+          </div>
+        </div>
+
+        <div class="pmu-formbody">
+
+          <div class="pmu-field">
+            <label for="hospitalField">Выберите больницу:</label>
+            <select id="hospitalField">
+              <option disabled="disabled" selected="selected" value="">Выберите больницу</option>
+              <option value="ЦГБ г. Приволжск">ЦГБ г. Приволжск</option>
+              <option value="ОКБ г. Мирный">ОКБ г. Мирный</option>
+              <option value="ЦГБ г. Невский">ЦГБ г. Невский</option>
+            </select>
+          </div>
+
+          <div class="pmu-field">
+            <label for="nicknameField">Ваш NickName:</label>
+            <input id="nicknameField" placeholder="Mavel_Porello" type="text">
+          </div>
+
+          <div class="pmu-field">
+            <label for="passportField">Паспорт:</label>
+            <input id="passportField" placeholder="https://imgur.com/... или другой фотохостинг" type="text">
+          </div>
+
+          <div class="pmu-field">
+            <label for="dateField">Выберите дату:</label>
+            <select id="dateField">
+              <option disabled="disabled" selected="selected" value="">Выберите дату</option>
+            </select>
+            <div class="pmu-hint">Запись возможна только на даты через 2–4 дня от сегодняшней (3 доступных дня)</div>
+          </div>
+
+          <div class="pmu-field">
+            <label>Выберите промежуток времени:</label>
+            <div class="pmu-time">
+              <div class="pmu-tin">
+                <input id="timeStartField" type="time" step="1800" min="11:00" max="20:00" value="11:00">
+              </div>
+              <span class="pmu-tdash">—</span>
+              <div class="pmu-tin">
+                <input id="timeEndField" type="time" step="1800" min="11:00" max="20:00" value="11:30">
+              </div>
+            </div>
+            <div class="pmu-hint">Доступное время: с 11:00 до 15:00 и с 16:00 до 20:00 (шаг 30 минут)</div>
+          </div>
+
+          <div class="pmu-field">
+            <label for="serviceField">Выберите услугу:</label>
+            <select id="serviceField">
+              <option disabled="disabled" selected="selected" value="">Выберите услугу</option>
+              <option value="Оформление мед. карты">Оформление мед. карты</option>
+              <option value="Вакцинация от наркозависимости">Вакцинация от наркозависимости</option>
+              <option value="Вакцинация">Вакцинация</option>
+              <option value="Принятие родов">Принятие родов</option>
+              <option value="Пересадка органов">Пересадка органов</option>
+              <option value="Вакцинация от бешенства">Вакцинация от бешенства</option>
+              <option value="Клизма">Клизма</option>
+              <option value="МРТ">МРТ</option>
+              <option value="ЭЭГ">ЭЭГ</option>
+              <option value="Проверка на Covid-19">Проверка на Covid-19</option>
+              <option value="УЗИ">УЗИ</option>
+              <option value="ЭКГ">ЭКГ</option>
+              <option value="Компьютерная Томография">Компьютерная Томография</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="pmu-submitbar">
+          <div class="pmu-submit" id="submitPaidMedicalServiceBtn" role="button" tabindex="0">Отправить заявление</div>
+        </div>
+
+        <div class="pmu-foot">
+          <div class="pmu-foot-info">
+            NickName — латиница, формат Имя_Фамилия.<br>
+            Запись — за 2–4 дня вперёд.
+          </div>
+          <div class="pmu-counters">
+            <div class="pmu-cnt pmu-c-red"><b>13</b><span><i></i>услуг</span></div>
+            <div class="pmu-cnt pmu-c-blue"><b>3</b><span><i></i>больницы</span></div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ПРАВОЕ ОКНО: журнал заявлений -->
+      <div class="pmu-window" id="pmuWindow">
+
+        <div class="pmu-head">
+          <div class="pmu-head-left">
+            <div class="pmu-cross" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9.6 3h4.8v6.6H21v4.8h-6.6V21H9.6v-6.6H3V9.6h6.6V3z" fill="#ecf0f1"/></svg>
+            </div>
+            <div>
+              <div class="pmu-title">Журнал заявлений</div>
+              <div class="pmu-sub">Платные мед. услуги · регистратура</div>
+            </div>
+          </div>
+          <div class="pmu-head-right">
+            <div class="pmu-date" id="pmuDate">—</div>
+            <div class="pmu-sync">
+              <i class="pmu-dot" aria-hidden="true"></i>
+              <span id="pmuSyncTime">загрузка…</span>
+              <button class="pmu-refresh" id="pmuRefresh" type="button" data-pmu-action="refresh" aria-label="Обновить журнал" title="Обновить журнал">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pmu-searchbar">
+          <label class="pmu-search-field">
+            <svg class="pmu-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input class="pmu-search" id="pmuSearch" type="text" placeholder="Поиск по NickName…" autocomplete="off" spellcheck="false">
+            <button class="pmu-clear" id="pmuClear" type="button" hidden data-pmu-action="clear" aria-label="Очистить поиск">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+          </label>
+          <label class="pmu-hosp-filter">
+            <svg class="pmu-hosp-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 21V8l8-5 8 5v13"/><path d="M2 21h20"/><path d="M12 10v4M10 12h4"/></svg>
+            <select id="pmuHospFilter" aria-label="Фильтр по больнице" title="Показать заявления конкретной больницы">
+              <option value="">Все больницы</option>
+              <option value="ЦГБ г. Приволжск">ЦГБ г. Приволжск</option>
+              <option value="ОКБ г. Мирный">ОКБ г. Мирный</option>
+              <option value="ЦГБ г. Невский">ЦГБ г. Невский</option>
+            </select>
+          </label>
+          <div class="pmu-meta" id="pmuMeta"></div>
+        </div>
+
+        <div class="pmu-list" id="pmuList">
+          <div class="pmu-bar">
+            <span>Книга учёта · ожидают рассмотрения</span>
+            <span class="pmu-order">сначала новые
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14m0 0 5-5m-5 5-5-5"/></svg>
+            </span>
+          </div>
+          <div id="pmuRecords" hidden></div>
+          <div class="pmu-idle" id="pmuIdle" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v13l-3.5 3.5H7.5L4 17V4Z"/><path d="M8 9h8M8 13h5"/></svg>
+            <h3 id="pmuIdleTitle">Общий список недоступен</h3>
+            <p id="pmuIdleText">Сервер таблицы отвечает только на поиск по точному NickName и пока не выгружает весь журнал. Свои заявления можно найти поиском выше.</p>
+            <button class="pmu-btn" type="button" data-pmu-action="retry">Обновить журнал</button>
+          </div>
+          <div class="pmu-empty" id="pmuEmpty" hidden>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 13h4l1.5 2.5h5L16 13h4"/><path d="M5.5 5h13l1.5 8v4a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-4l1.5-8Z"/></svg>
+            <h3>Заявлений не найдено</h3>
+            <p id="pmuEmptyText">По запросу совпадений в журнале нет.</p>
+            <button class="pmu-btn" type="button" data-pmu-action="resetAll">Сбросить поиск и фильтр</button>
+          </div>
+        </div>
+
+        <div class="pmu-foot">
+          <div class="pmu-foot-info">
+            Приём: 11:00–15:00, 16:00–20:00 · шаг 30 мин.<br>
+            Запись за 2–4 дня · оплата врачу до начала приёма.
+          </div>
+          <div class="pmu-counters">
+            <div class="pmu-cnt pmu-st-approve"><b id="pmuCntA">0</b><span><i></i>одобрено</span></div>
+            <div class="pmu-cnt pmu-st-pending"><b id="pmuCntP">0</b><span><i></i>на рассмотрении</span></div>
+            <div class="pmu-cnt pmu-st-reject"><b id="pmuCntR">0</b><span><i></i>отклонено</span></div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <p class="note">
+      <span style="font-size:18px;">После отправки заявления журнал справа обновляется автоматически: свежая заявка появляется сверху и подсвечивается. Поиск работает по NickName без учёта регистра; фильтр по больнице включается выпадающим списком «Все больницы»; история заявлений листается ползунком справа.</span>
+    </p>
+
+  </section>
+
+  <hr class="echpohmak-hr">
+
+  <!-- ====== ГЛАВА 2: ПРАВИЛА ====== -->
+  <section id="sub-section2">
+    <h2 style="text-align:center;">
+      2. Правила оказания платных медицинских услуг
+    </h2>
+
+    <ol class="rules-list">
+      <li>
+        <span style="font-size:18px;">Цены на платные медицинские услуги устанавливаются без учёта дополнительной платы за оформление медицинской карты в размере 2 249 рублей.</span>
+      </li>
+
+      <div class="echpohmak-spoiler-container">
+        <div class="echpohmak-spoiler-header">
+          <span style="color:#c0392b;"><span style="font-size:18px;">Перечень и стоимость платных медицинских услуг</span></span>
+        </div>
+
+        <div class="echpohmak-spoiler-contents">
+          <div class="price-table-wrap">
+            <table class="price-table">
+              <thead>
+                <tr>
+                  <th>Услуги</th>
+                  <th>Без записи</th>
+                  <th>По записи</th>
+                  <th>Гос. Структуры</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Мед. Карта</td><td>7 500 ₽</td><td>5 000 ₽</td><td>2 500 ₽</td></tr>
+                <tr><td>Вакцинация от наркозависимости</td><td>15 000 ₽</td><td>9 000 ₽</td><td>Не предоставляется</td></tr>
+                <tr><td>Вакцинация</td><td>3 000 ₽</td><td>2 250 ₽</td><td>1 250 ₽</td></tr>
+                <tr><td>Принятие родов</td><td>50 000 ₽</td><td>30 000 ₽</td><td>Не предоставляется</td></tr>
+                <tr><td>Пересадка органов</td><td>50 000 ₽</td><td>30 000 ₽</td><td>Не предоставляется</td></tr>
+                <tr><td>Вакцинация от бешенства</td><td>6 000 ₽</td><td>4 500 ₽</td><td>2 500 ₽</td></tr>
+                <tr><td>Клизма</td><td>5 000 ₽</td><td>2 500 ₽</td><td>Не предоставляется</td></tr>
+                <tr><td>МРТ</td><td>7 500 ₽</td><td>3 250 ₽</td><td>Не предоставляется</td></tr>
+                <tr><td>ЭЭГ</td><td>7 500 ₽</td><td>3 250 ₽</td><td>Не предоставляется</td></tr>
+                <tr><td>Проверка на Covid-19</td><td>4 500 ₽</td><td>3 000 ₽</td><td>1 500 ₽</td></tr>
+                <tr><td>УЗИ</td><td>7 500 ₽</td><td>3 250 ₽</td><td>Не предоставляется</td></tr>
+                <tr><td>ЭКГ</td><td>7 500 ₽</td><td>3 250 ₽</td><td>Не предоставляется</td></tr>
+                <tr><td>Компьютерная Томография</td><td>7 500 ₽</td><td>3 250 ₽</td><td>Не предоставляется</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <li>
+        <span style="font-size:18px;">Запись на приём осуществляется только врачами-терапевтами и врачами с рангом выше. Врачи с рангом ниже терапевта обязаны принимать пациентов без предварительной записи, за исключением случаев, когда терапевты и врачи вышестоящих рангов отсутствуют — в таком случае они вправе осуществлять приём по записи.</span>
+      </li>
+      <li>
+        <span style="font-size:18px;">Оплата услуги производится пациентом непосредственно врачу до начала её оказания.</span>
+      </li>
+      <li>
+        <span style="font-size:18px;">Взимание платы допускается исключительно за услуги, включённые в утверждённый перечень, и строго в соответствии с установленными в нём ценами.</span>
+      </li>
+      <li>
+        <span style="font-size:18px;">Предварительная запись на приём осуществляется на даты, наступающие не ранее чем через 2 дня и не позднее чем через 4 дня от даты записи. Например, если запись осуществляется 1-го числа, то записаться можно на 3-е, 4-е или 5-е число.</span>
+      </li>
+      <li>
+        <span style="font-size:18px;">При нарушении пациентом установленных правил оказания услуги денежные средства, внесённые в качестве оплаты, возврату не подлежат.</span>
+      </li>
+      <li>
+        <span style="font-size:18px;">В случае неявки пациента в течение 10 минут с момента назначенного времени приёма скидка на медицинскую услугу аннулируется.</span>
+      </li>
+    </ol>
+  </section>
+
+  <hr class="echpohmak-hr">
+
+</div>
+
+<!-- Модальное окно -->
+<div class="echpohmak-modal" id="modal">
+  <div class="echpohmak-modal-content">
+    <span class="echpohmak-close" id="modalClose">&times;</span>
+    <h3 class="echpohmak-h3">Уведомление</h3>
+    <p class="echphmak-p-modal" id="modalMessage">&nbsp;</p>
+  </div>
+</div>
+
+<iframe name="hiddenFrame" style="display:none;"></iframe>
+
+<template id="pmuRecordStyles">
+<style>
+/* --- карточка --- */
+.pmu-rec{
+  position:relative;
+  margin:10px 12px 0!important;
+  padding:11px 13px 12px 15px!important;
+  background-color:#2c3e50!important;
+  border:1px solid rgba(105,173,252,.25)!important;
+  border-radius:10px!important;
+  animation:pmuIn .35s ease backwards;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.pmu-rec:last-child{margin-bottom:12px!important}
+.pmu-rec:hover{border-color:rgba(105,173,252,.6)!important;box-shadow:0 0 12px rgba(105,173,252,.18)}
+@keyframes pmuIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.pmu-rec::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background-color:var(--pmu-c,#bdc3c7)}
+.pmu-st-approve{--pmu-c:#2EC46F}
+.pmu-st-pending{--pmu-c:#63A3ED}
+.pmu-st-reject{--pmu-c:#D5493C}
+
+/* ====== ПЕЧАТЬ СТАТУСА: одинаковый размер у всех ====== */
+.pmu-stampwrap{
+  position:absolute;
+  top:38px;
+  right:14px;
+  width:190px;
+  text-align:center;
+  transform:rotate(var(--pmu-r,0deg));
+  animation:pmuStamp .5s cubic-bezier(.2,1.6,.4,1) backwards;
+  pointer-events:none;
+}
+@keyframes pmuStamp{
+  from{transform:rotate(var(--pmu-r,0deg)) scale(1.9);opacity:0}
+  65%{transform:rotate(var(--pmu-r,0deg)) scale(.95);opacity:1}
+  to{transform:rotate(var(--pmu-r,0deg)) scale(1);opacity:1}
+}
+.pmu-stamp{
+  display:flex;align-items:center;justify-content:center;
+  width:184px;height:62px;
+  padding:6px 10px!important;
+  border:3px solid currentColor!important;
+  border-radius:10px!important;
+  font-weight:800;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  line-height:1.45;
+  text-align:center;
+  opacity:.95;
+}
+.pmu-stamp::after{content:'';position:absolute;inset:3px;border:1px solid currentColor;border-radius:7px;opacity:.55}
+.pmu-st-approve .pmu-stamp{color:#2EC46F!important;text-shadow:0 0 14px rgba(46,196,111,.75)}
+.pmu-st-pending .pmu-stamp{color:#63A3ED!important;text-shadow:0 0 14px rgba(99,163,237,.75)}
+.pmu-st-reject .pmu-stamp{color:#D5493C!important;text-shadow:0 0 14px rgba(213,73,60,.75)}
+.pmu-st-none .pmu-stamp{color:#bdc3c7!important}
+.pmu-rest{display:block;margin-top:6px!important;font-size:10.5px;font-weight:600;color:#bdc3c7!important;line-height:1.4}
+
+.pmu-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:10px;font-weight:600}
+.pmu-no{letter-spacing:.07em;text-transform:uppercase;color:#bdc3c7!important;white-space:nowrap}
+.pmu-sent{color:#bdc3c7!important;white-space:nowrap}
+.pmu-sent b{color:#ecf0f1!important;font-weight:700}
+.pmu-nick{margin-top:5px!important;font-size:16.5px;font-weight:700;color:#ecf0f1!important;line-height:1.25;word-break:break-word;padding-right:222px}
+.pmu-line{margin-top:6px!important;font-size:12.5px;color:#ecf0f1!important;line-height:1.4;padding-right:222px}
+.pmu-lbl{display:inline-block;margin-right:7px;font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#95a5a6!important;vertical-align:1px}
+.pmu-line-svc{font-size:13.5px!important;font-weight:700}
+.pmu-line-hosp{color:#bdc3c7!important;font-weight:500}
+
+/* раскраска больниц */
+.pmu-hosp{font-weight:700}
+.pmu-hosp-red{color:#c0392b!important;text-shadow:0 0 8px rgba(192,57,43,.45)}
+.pmu-hosp-blue{color:#4f90df!important;text-shadow:0 0 8px rgba(79,144,223,.45)}
+.pmu-hosp-green{color:#2EC46F!important;text-shadow:0 0 8px rgba(46,196,111,.45)}
+
+.pmu-chip{
+  display:inline-flex;align-items:center;gap:6px;max-width:100%;
+  padding:3px 9px!important;
+  border:1px solid #c0392b!important;
+  border-radius:7px!important;
+  color:#ecf0f1!important;text-decoration:none!important;
+  font-size:11px;font-weight:600;
+  transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease;
+}
+a.pmu-chip:hover{border-color:#4f90df!important;background-color:rgba(79,144,223,.12)!important;box-shadow:0 0 10px rgba(79,144,223,.25)}
+.pmu-chip svg{width:10px;height:10px;flex:none;color:#c0392b}
+a.pmu-chip:hover svg{color:#4f90df}
+.pmu-chip-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pmu-grid{display:flex;flex-wrap:wrap;row-gap:8px;margin-top:10px!important}
+.pmu-grid>div{display:flex;flex-direction:column;gap:2px;padding:0 12px;border-left:1px solid rgba(105,173,252,.3)}
+.pmu-grid>div:first-child{padding-left:0;border-left:0}
+.pmu-grid label{font-size:8px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#95a5a6!important}
+.pmu-grid b{font-size:11.5px;font-weight:700;color:#ecf0f1!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.pmu-v-empty{color:#7f8c8d!important;font-weight:500}
+
+/* Примечание (столбец K): длинный текст переносится, мягкий золотистый оттенок */
+.pmu-grid b.pmu-k{
+  white-space:normal!important;overflow:visible!important;text-overflow:clip!important;
+  line-height:1.35!important;word-break:break-word;
+  color:#e0b45c!important;font-weight:600;
+}
+
+/* свежая заявка после отправки */
+.pmu-rec.pmu-just{border-color:#4f90df!important;animation:pmuIn .35s ease backwards,pmuJust 2.8s ease .35s!important}
+@keyframes pmuJust{
+  0%,100%{box-shadow:0 0 0 rgba(79,144,223,0)}
+  10%,40%,70%{box-shadow:0 0 22px rgba(79,144,223,.55)}
+  25%,55%{box-shadow:0 0 5px rgba(79,144,223,.18)}
+}
+.pmu-noanim .pmu-rec,.pmu-noanim .pmu-stampwrap{animation:none!important}
+.pmu-noanim .pmu-rec.pmu-just{animation:none!important;box-shadow:0 0 22px rgba(79,144,223,.45)!important}
+
+/* кнопка дозагрузки */
+.pmu-more{
+  display:block;margin:0 12px 12px;padding:8px;
+  background-color:#2c3e50!important;
+  border:1px dashed rgba(105,173,252,.45)!important;
+  border-radius:10px!important;
+  color:#ecf0f1!important;
+  font-family:'Montserrat',sans-serif!important;font-size:12px;font-weight:600;
+  text-align:center;cursor:pointer;
+  transition:border-color .2s ease,background-color .2s ease;
+}
+.pmu-more:hover{border-color:#4f90df!important;background-color:#34495e!important}
+
+
+/* Keep record layout independent of forum styles and viewport width. */
+:host{display:block;min-width:0;container-type:inline-size;font-family:'Montserrat',sans-serif;color:#ecf0f1;font-size:12px;line-height:1.4;text-align:left;letter-spacing:normal;white-space:normal;writing-mode:horizontal-tb;word-break:normal;text-transform:none;direction:ltr}
+*,*::before,*::after{box-sizing:border-box}
+h3,p{margin:0;padding:0}
+.pmu-rec{display:grid;grid-template-columns:minmax(0,1fr) 190px;column-gap:16px;row-gap:6px;min-width:0}
+.pmu-top{grid-column:1 / -1;grid-row:1;flex-wrap:wrap;min-width:0}
+.pmu-stampwrap{position:relative;top:auto;right:auto;grid-column:2;grid-row:2 / span 4;align-self:start;width:190px;margin:6px 0 0}
+.pmu-stamp{position:relative;max-width:100%;letter-spacing:0}
+.pmu-rest{overflow-wrap:anywhere}
+.pmu-nick,.pmu-line{grid-column:1;min-width:0;padding-right:0!important;overflow-wrap:anywhere}
+.pmu-nick{grid-row:2}
+.pmu-line{margin-top:0!important}
+.pmu-grid{grid-column:1 / -1;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px 12px;min-width:0}
+.pmu-grid>div{min-width:0;padding:0;border:0}
+.pmu-grid label{display:block;line-height:1.4}
+.pmu-grid b{white-space:normal;overflow-wrap:anywhere}
+.pmu-chip{max-width:100%;text-decoration:none}
+.pmu-more{width:calc(100% - 24px)}
+@container (max-width:540px){
+  .pmu-rec{grid-template-columns:minmax(0,1fr)}
+  .pmu-stampwrap{grid-column:1;grid-row:6;transform:none;animation:none;margin:6px 0 0}
+  .pmu-grid{grid-row:7}
+  .pmu-top{gap:4px 10px}
+  .pmu-no,.pmu-sent{white-space:normal;overflow-wrap:anywhere}
+}
+@media (prefers-reduced-motion:reduce){.pmu-rec,.pmu-stampwrap{animation:none!important}}
+</style>
+</template>
 
 <script>
-(async function () {
-  const BASE = "https://raw.githubusercontent.com/echpohmak/forum-topics/main/topics";
-  const SLUG = "test";
+const GOOGLE_SHEETS_URL="https://script.google.com/macros/s/AKfycbw3kAlr3wa01TTSsioqey9ilVGzpRxrBuZTb35Rt-Lak9Op6o57zHoaCR02ac_xxNIF/exec";
+const SCRIPT_URL=GOOGLE_SHEETS_URL;
 
-  const root = document.getElementById("gh-topic-root");
-  if (!root) return;
+const $=id=>document.getElementById(id);
+const pad2=n=>String(n).padStart(2,"0");
+const clean=v=>String(v??"").trim();
+const escapeHtml=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const emptyHtml='<span class="pmu-v-empty">—</span>';
 
-  const v = Date.now(); 
+function showModal(message){
+  const modal=$("modal");
+  $("modalMessage").textContent=message;
+  modal.classList.add("show");
+  const close=()=>modal.classList.remove("show");
+  $("modalClose").onclick=close;
+  window.onclick=e=>{if(e.target===modal)close()};
+}
 
-  async function runScriptsSequentially(scope) {
-    const scripts = Array.from(scope.querySelectorAll("script"));
+function fieldError(message,id){
+  showModal(message);
+  const el=$(id);
+  if(!el)return;
+  el.classList.add("input-error");
+  el.focus();
+  setTimeout(()=>el.classList.remove("input-error"),1500);
+}
 
-    const queue = scripts.map(old => {
-      const info = {
-        src: old.getAttribute("src"),
-        type: old.getAttribute("type"),
-        text: old.textContent || "",
-        attrs: Array.from(old.attributes).map(a => [a.name, a.value])
-      };
-      old.remove();
-      return info;
+const isValidNickname=nick=>/^[A-Za-z]+_[A-Za-z]+$/.test(nick);
+const isValidHttpsUrl=url=>/^https:\/\/[^\s]+$/.test(url);
+
+function gas(action,params={},timeout=10000){
+  return new Promise((resolve,reject)=>{
+    const cb="__cb_"+Date.now()+"_"+Math.random().toString(16).slice(2);
+    const script=document.createElement("script");
+    let finished=false;
+
+    const cleanup=()=>{
+      try{delete window[cb]}catch(e){window[cb]=undefined}
+      script.remove();
+    };
+
+    const timer=setTimeout(()=>{
+      if(finished)return;
+      finished=true;
+      cleanup();
+      reject(new Error("timeout"));
+    },timeout);
+
+    window[cb]=data=>{
+      if(finished)return;
+      finished=true;
+      clearTimeout(timer);
+      cleanup();
+      resolve(data);
+    };
+
+    script.onerror=()=>{
+      if(finished)return;
+      finished=true;
+      clearTimeout(timer);
+      cleanup();
+      reject(new Error("jsonp"));
+    };
+
+    script.src=GOOGLE_SHEETS_URL+"?"+new URLSearchParams({
+      action,
+      ...params,
+      callback:cb,
+      _:Date.now()
     });
+    document.body.appendChild(script);
+  });
+}
 
-    for (const item of queue) {
-      await new Promise((resolve, reject) => {
-        const s = document.createElement("script");
-        for (const [k, val] of item.attrs) s.setAttribute(k, val);
+/* ===== ЖУРНАЛ ===== */
+(()=>{
+  const win=$("pmuWindow");
+  if(!win)return;
 
-        if (item.src) {
-          const hasQuery = item.src.includes("?");
-          s.src = item.src + (hasQuery ? "&" : "?") + "v=" + v;
-          s.onload = resolve;
-          s.onerror = reject;
-        } else {
-          s.text = item.text;
-          resolve();
-        }
-        document.head.appendChild(s);
-      });
+  const input=$("pmuSearch");
+  const clearBtn=$("pmuClear");
+  const refreshBtn=$("pmuRefresh");
+  const listEl=$("pmuList");
+  const recordsEl=$("pmuRecords");
+  // Isolate dynamic records from the forum theme and other topic styles.
+  const recordRoot=recordsEl.attachShadow({mode:"open"});
+  recordRoot.append($("pmuRecordStyles").content.cloneNode(true));
+  const recordList=document.createElement("div");
+  recordRoot.append(recordList);
+  const metaEl=$("pmuMeta");
+  const idleEl=$("pmuIdle");
+  const idleTitle=$("pmuIdleTitle");
+  const idleText=$("pmuIdleText");
+  const emptyEl=$("pmuEmpty");
+  const emptyTextEl=$("pmuEmptyText");
+  const hospFilter=$("pmuHospFilter");
+  const syncEl=$("pmuSyncTime");
+  const counters={
+    approve:$("pmuCntA"),
+    pending:$("pmuCntP"),
+    reject:$("pmuCntR")
+  };
+
+  const LINK_ICON='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 11 13"/><path d="M18 14v4.5A1.5 1.5 0 0 1 16.5 20h-11A1.5 1.5 0 0 1 4 18.5v-11A1.5 1.5 0 0 1 5.5 6H10"/></svg>';
+  const ROT=[-3.5,2.5,-2,3.5,-2.5,1.5];
+  const PAGE=30;
+  const sheetTimeFmt=new Intl.DateTimeFormat("ru-RU",{
+    timeZone:"Europe/Moscow",
+    hour:"2-digit",
+    minute:"2-digit",
+    hourCycle:"h23"
+  });
+
+  let cache=[];
+  let cacheOK=false;
+  let shown=PAGE;
+  let timer=null;
+  let lastLoad=0;
+  let highlightNick="";
+
+  function sheetTime(v){
+    const s=clean(v);
+    if(!/^1899-12-\d{2}T\d{2}:\d{2}/.test(s))return null;
+    const d=new Date(s);
+    return isNaN(d)?null:sheetTimeFmt.format(d);
+  }
+
+  function fmtTime(v){
+    const s=clean(v);
+    if(!s)return "";
+    const fromSheet=sheetTime(s);
+    if(fromSheet)return fromSheet;
+    let m=s.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/);
+    if(m)return pad2(m[1])+":"+m[2];
+    m=s.match(/^\d{4}-\d{2}-\d{2}T(\d{2}):(\d{2})/);
+    if(m)return m[1]+":"+m[2];
+    return s.replace(/(\d{1,2}:\d{2}):\d{2}/g,"$1");
+  }
+
+  function parseTs(v){
+    const s=clean(v);
+    if(!s)return NaN;
+    const direct=Date.parse(s);
+    if(!isNaN(direct))return direct;
+    const m=s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})(?:[,\s]+(\d{1,2}):(\d{2}))?/);
+    return m?new Date(+m[3],+m[2]-1,+m[1],+(m[4]||0),+(m[5]||0)).getTime():NaN;
+  }
+
+  function fmtDate(v){
+    const s=clean(v);
+    if(!s)return "";
+    let m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);
+    if(m)return pad2(m[3])+"."+pad2(m[2])+"."+m[1];
+    m=s.match(/^(\d{1,2})\.(\d{1,2})\.(\d{4})/);
+    if(m)return pad2(m[1])+"."+pad2(m[2])+"."+m[3];
+    const d=new Date(s);
+    return isNaN(d)?s:pad2(d.getDate())+"."+pad2(d.getMonth()+1)+"."+d.getFullYear();
+  }
+
+  function fmtSent(v){
+    const t=parseTs(v);
+    if(isNaN(t))return clean(v);
+    const d=new Date(t);
+    return pad2(d.getDate())+"."+pad2(d.getMonth()+1)+"."+d.getFullYear()+", "+pad2(d.getHours())+":"+pad2(d.getMinutes());
+  }
+
+  function statusInfo(v){
+    const raw=clean(v);
+    const m=raw.match(/^(Ожидает рассмотрения|Одобрено|Отказано|Ожидаем в больнице)(.*)$/i);
+    const word=m?m[1]:(raw||"—");
+    const rest=m?clean(m[2]):"";
+    const s=word.toLowerCase();
+    const cls=s.includes("отказ")?"reject":s.includes("одобр")?"approve":s.includes("ожида")?"pending":"none";
+    return {word,rest,cls};
+  }
+
+  function passportHtml(v){
+    const s=clean(v);
+    if(!s)return emptyHtml;
+    const content=LINK_ICON+'<span class="pmu-chip-t">'+( /^https?:\/\//i.test(s) ? "Открыть паспорт" : escapeHtml(s) )+"</span>";
+    return /^https?:\/\//i.test(s)
+      ?'<a class="pmu-chip" href="'+escapeHtml(s)+'" target="_blank" rel="noopener">'+content+"</a>"
+      :'<span class="pmu-chip">'+content+"</span>";
+  }
+
+  function hospHtml(v){
+    const s=clean(v);
+    if(!s)return emptyHtml;
+    const l=s.toLowerCase();
+    const cls=l.includes("приволжск")||l.includes("цгб-п")||l.includes("цгб п")?" pmu-hosp-red":
+              l.includes("мирный")||l.includes("окб-м")||l.includes("окб м")?" pmu-hosp-blue":
+              l.includes("невск")||l.includes("цгб-н")||l.includes("цгб н")?" pmu-hosp-green":"";
+    return '<span class="pmu-hosp'+cls+'">'+escapeHtml(s)+"</span>";
+  }
+
+  function prepare(rows){
+    const list=(rows||[]).filter(r=>r&&clean(r.B));
+    list.sort((a,b)=>{
+      const ta=parseTs(a.G),tb=parseTs(b.G);
+      return (isNaN(tb)?-Infinity:tb)-(isNaN(ta)?-Infinity:ta);
+    });
+    list.forEach((r,i)=>r.__n=list.length-i);
+    return list;
+  }
+
+  function valueHtml(v){
+    const s=clean(v);
+    return s?escapeHtml(s):emptyHtml;
+  }
+
+  function recHtml(r,i){
+    const st=statusInfo(r.H);
+    const delay=Math.min(i*55,330);
+    const just=highlightNick&&clean(r.B).toLowerCase()===highlightNick.toLowerCase();
+
+    return '<div class="pmu-rec pmu-st-'+st.cls+(just?" pmu-just":"")+'" style="animation-delay:'+delay+'ms">'+
+      '<div class="pmu-stampwrap" style="--pmu-r:'+ROT[i%ROT.length]+'deg;animation-delay:'+(delay+140)+'ms">'+
+        '<span class="pmu-stamp">'+escapeHtml(st.word)+"</span>"+
+        (st.rest?'<span class="pmu-rest">'+escapeHtml(st.rest)+"</span>":"")+
+      "</div>"+
+      '<div class="pmu-top"><span class="pmu-no">Заявление № '+(clean(r.N)||r.__n)+'</span><span class="pmu-sent">отправлено <b>'+(fmtSent(r.G)||"—")+"</b></span></div>"+
+      '<h3 class="pmu-nick">'+escapeHtml(clean(r.B))+"</h3>"+
+      '<p class="pmu-line"><span class="pmu-lbl">Паспорт</span>'+passportHtml(r.C)+"</p>"+
+      '<p class="pmu-line pmu-line-svc"><span class="pmu-lbl">Услуга</span>'+valueHtml(r.F)+"</p>"+
+      '<p class="pmu-line pmu-line-hosp"><span class="pmu-lbl">Больница</span>'+hospHtml(r.A)+"</p>"+
+      '<div class="pmu-grid">'+
+        "<div><label>Дата приёма</label><b>"+valueHtml(fmtDate(r.D))+"</b></div>"+
+        "<div><label>Время приёма</label><b>"+valueHtml(fmtTime(r.E))+"</b></div>"+
+        "<div><label>Кем проверено</label><b>"+valueHtml(r.I)+"</b></div>"+
+        "<div><label>Назначенное время</label><b>"+valueHtml(fmtTime(r.J))+"</b></div>"+
+        '<div><label>Примечание</label><b class="pmu-k">'+valueHtml(r.K)+"</b></div>"+
+      "</div></div>";
+  }
+
+  function hospMatch(rowVal,filterVal){
+    if(!filterVal)return true;
+    return clean(rowVal).toLowerCase()===clean(filterVal).toLowerCase();
+  }
+
+  function filtered(){
+    const q=clean(input.value).toLowerCase();
+    const h=hospFilter?clean(hospFilter.value):"";
+    return cache.filter(r=>{
+      if(q&&clean(r.B).toLowerCase()!==q)return false;
+      if(h&&!hospMatch(r.A,h))return false;
+      return true;
+    });
+  }
+
+  function setCounters(rows){
+    const c={approve:0,pending:0,reject:0};
+    rows.forEach(r=>{const k=statusInfo(r.H).cls;if(k in c)c[k]++});
+    Object.keys(c).forEach(k=>counters[k].textContent=c[k]);
+  }
+
+  function render(){
+    const q=clean(input.value);
+    const h=hospFilter?clean(hospFilter.value):"";
+    const rows=filtered();
+    const visible=rows.slice(0,shown);
+
+    recordList.innerHTML=visible.map(recHtml).join("")+
+      (shown<rows.length?'<button class="pmu-more" type="button" data-pmu-action="more">Показать ещё · осталось '+(rows.length-shown)+"</button>":"");
+
+    recordsEl.hidden=!rows.length;
+    idleEl.hidden=true;
+    emptyEl.hidden=!((q||h)&&!rows.length);
+    if((q||h)&&!rows.length){
+      emptyTextEl.textContent=q&&h
+        ?"По запросу «"+q+"» в больнице «"+h+"» совпадений в журнале нет."
+        :q?"По запросу «"+q+"» совпадений в журнале нет. Проверьте написание ника — регистр букв не влияет на поиск."
+          :"В больнице «"+h+"» заявлений не найдено. Сбросьте фильтр, чтобы увидеть весь журнал.";
+    }
+
+    metaEl.innerHTML=(q||h)
+      ?'<span>Найдено: <b>'+rows.length+"</b></span>"
+      :'<span>Ожидают рассмотрения: <b>'+rows.length+"</b></span>";
+
+    clearBtn.hidden=!q;
+    setCounters(rows);
+  }
+
+  function showFail(){
+    recordsEl.hidden=true;
+    emptyEl.hidden=true;
+    idleEl.hidden=false;
+    idleTitle.textContent="Общий список недоступен";
+    idleText.textContent="Не удалось получить список заявлений из Google Таблицы.";
+    syncEl.textContent="нет данных";
+    metaEl.innerHTML="<span>Полный список недоступен</span>";
+    setCounters([]);
+  }
+
+  async function getRows(){
+    const q=clean(input.value);
+
+    const attempts=q
+      ?[
+          ()=>gas("searchByA",{query:q})
+        ]
+      :[
+          ()=>gas("getAll"),
+          ()=>gas("searchByA",{query:""})
+        ];
+
+    for(const attempt of attempts){
+      try{
+        const d=await attempt();
+        if(d&&!d.error&&Array.isArray(d.rows))return d.rows;
+      }catch(e){}
+    }
+
+    throw new Error("load");
+  }
+
+  async function reload(keepScroll=false){
+    const scroll=keepScroll?listEl.scrollTop:0;
+    refreshBtn.classList.add("busy");
+    syncEl.textContent="обновление…";
+
+    try{
+      cache=prepare(await getRows());
+      cacheOK=true;
+      lastLoad=Date.now();
+      shown=PAGE;
+      render();
+      const n=new Date();
+      syncEl.textContent="обновлено "+pad2(n.getHours())+":"+pad2(n.getMinutes());
+      listEl.scrollTop=scroll;
+      if(highlightNick)setTimeout(()=>{highlightNick="";render()},2800);
+    }catch(e){
+      if(!cacheOK)showFail();
+      else syncEl.textContent="обновление не удалось";
+    }finally{
+      refreshBtn.classList.remove("busy");
     }
   }
 
-  const READY_EVENT = "gh:content-ready";
-  const originalAdd = document.addEventListener;
-  const originalRemove = document.removeEventListener;
+  input.addEventListener("input",()=>{
+    clearTimeout(timer);
+    timer=setTimeout(()=>{
+      shown=PAGE;
+      reload(false);
+    },350);
+  });
 
-  function enableDomContentLoadedShim() {
-    document.addEventListener = function(type, listener, options) {
-      if (type === "DOMContentLoaded") {
-        return originalAdd.call(document, READY_EVENT, listener, options);
-      }
-      return originalAdd.call(document, type, listener, options);
-    };
-    document.removeEventListener = function(type, listener, options) {
-      if (type === "DOMContentLoaded") {
-        return originalRemove.call(document, READY_EVENT, listener, options);
-      }
-      return originalRemove.call(document, type, listener, options);
-    };
+  input.addEventListener("keydown",e=>{
+    if(e.key==="Escape"){
+      input.value="";
+      shown=PAGE;
+      reload(false);
+    }
+    if(e.key==="Enter"){
+      e.preventDefault();
+      clearTimeout(timer);
+      shown=PAGE;
+      reload(false);
+    }
+  });
+
+  if(hospFilter)hospFilter.addEventListener("change",()=>{
+    hospFilter.classList.toggle("pmu-hosp-on",!!clean(hospFilter.value));
+    shown=PAGE;
+    render();
+  });
+
+  function resetAll(){
+    input.value="";
+    if(hospFilter){
+      hospFilter.value="";
+      hospFilter.classList.remove("pmu-hosp-on");
+    }
+    shown=PAGE;
+    reload(false);
+    input.focus();
   }
 
-  function disableDomContentLoadedShim() {
-    document.addEventListener = originalAdd;
-    document.removeEventListener = originalRemove;
-  }
+  win.addEventListener("click",e=>{
+    const b=e.composedPath().find(el=>el.matches?.("[data-pmu-action]"));
+    if(!b)return;
+    const a=b.dataset.pmuAction;
+    if(a==="clear"){input.value="";shown=PAGE;reload(false);input.focus()}
+    else if(a==="resetAll")resetAll();
+    else if(a==="refresh"||a==="retry")reload(false);
+    else if(a==="more"){shown+=PAGE;render()}
+  });
 
-  try {
-    const r = await fetch(`${BASE}/${SLUG}.html?v=${v}`, { cache: "no-store" });
-    if (!r.ok) throw new Error(`HTML fetch failed: HTTP ${r.status}`);
+  listEl.addEventListener("scroll",()=>{
+    const rows=filtered();
+    if(shown>=rows.length)return;
+    if(listEl.scrollTop+listEl.clientHeight>=listEl.scrollHeight-240){
+      shown+=PAGE;
+      render();
+    }
+  },{passive:true});
 
-    const html = await r.text();
+  window.PmuJournal={
+    refreshAfterSubmit(nick){
+      if(!nick)return;
+      input.value=nick;
+      highlightNick=nick;
+      setTimeout(()=>reload(false),1400);
+      setTimeout(()=>reload(false),4200);
+    }
+  };
 
-    root.innerHTML = html;
-    await new Promise(requestAnimationFrame);
-    enableDomContentLoadedShim();
-    await runScriptsSequentially(root);
-    disableDomContentLoadedShim();
-    document.dispatchEvent(new Event(READY_EVENT));
+  setInterval(()=>{
+    if(cacheOK&&!document.hidden&&Date.now()-lastLoad>=60000)reload(true);
+  },30000);
 
-  } catch (e) {
-    console.error(e);
-    disableDomContentLoadedShim();
-    root.innerHTML = "<div style='padding:10px;border:1px solid #ec3e3e;border-radius:8px;'>Ошибка загрузки/инициализации.</div>";
-  }
+  document.addEventListener("visibilitychange",()=>{
+    if(!document.hidden&&cacheOK&&Date.now()-lastLoad>=60000)reload(true);
+  });
+
+  const d=new Date();
+  const today="сегодня · "+pad2(d.getDate())+"."+pad2(d.getMonth()+1)+"."+d.getFullYear();
+  const dateEl=$("pmuDate");
+  if(dateEl)dateEl.textContent=today;
+
+  reload(false);
 })();
+
+/* ===== ФОРМА ПОДАЧИ ===== */
+(()=>{
+  const btn=$("submitPaidMedicalServiceBtn");
+  if(!btn)return;
+
+  const hospital=$("hospitalField");
+  const nick=$("nicknameField");
+  const passport=$("passportField");
+  const dateSel=$("dateField");
+  const tStart=$("timeStartField");
+  const tEnd=$("timeEndField");
+  const service=$("serviceField");
+  const formDateEl=$("pmuFormDate");
+
+  const DAYS=["воскресенье","понедельник","вторник","среда","четверг","пятница","суббота"];
+  const now=new Date();
+
+  if(formDateEl)formDateEl.textContent="сегодня · "+pad2(now.getDate())+"."+pad2(now.getMonth()+1)+"."+now.getFullYear();
+
+  for(let i=2;i<=4;i++){
+    const dt=new Date(now.getFullYear(),now.getMonth(),now.getDate()+i);
+    const val=dt.getFullYear()+"-"+pad2(dt.getMonth()+1)+"-"+pad2(dt.getDate());
+    const label=pad2(dt.getDate())+"."+pad2(dt.getMonth()+1)+"."+dt.getFullYear()+" · "+DAYS[dt.getDay()];
+    const opt=document.createElement("option");
+    opt.value=val;
+    opt.textContent=label;
+    dateSel.appendChild(opt);
+  }
+
+  const toMin=t=>{
+    const m=/^(\d{1,2}):(\d{2})$/.exec(clean(t));
+    return m?(+m[1])*60+(+m[2]):NaN;
+  };
+  const SLOTS=[[660,900],[960,1200]];
+  const inSlots=(a,b)=>SLOTS.some(s=>a>=s[0]&&b<=s[1]);
+
+  let busy=false;
+
+  async function submit(){
+    if(busy)return;
+
+    const h=clean(hospital.value);
+    const n=clean(nick.value);
+    const p=clean(passport.value);
+    const dt=clean(dateSel.value);
+    const ts=clean(tStart.value);
+    const te=clean(tEnd.value);
+    const svc=clean(service.value);
+
+    if(!h)return fieldError("Выберите больницу.","hospitalField");
+    if(!isValidNickname(n))return fieldError("NickName указан неверно. Используйте формат Имя_Фамилия (латиница).","nicknameField");
+    if(!isValidHttpsUrl(p))return fieldError("Ссылка на паспорт указана неверно: ссылка должна начинаться с https://","passportField");
+    if(!dt)return fieldError("Выберите дату приёма. Запись доступна на даты через 2–4 дня.","dateField");
+
+    const a=toMin(ts),b=toMin(te);
+    if(isNaN(a)||isNaN(b))return fieldError("Укажите время начала и окончания приёма.","timeStartField");
+    if(a%30||b%30)return fieldError("Время приёма должно быть кратно 30 минутам.","timeStartField");
+    if(a>=b)return fieldError("Время окончания приёма должно быть позже времени начала.","timeEndField");
+    if(!inSlots(a,b))return fieldError("Доступное время приёма: 11:00–15:00 и 16:00–20:00.","timeStartField");
+    if(!svc)return fieldError("Выберите услугу.","serviceField");
+
+    busy=true;
+    btn.textContent="Отправка…";
+    btn.classList.add("pmu-busy");
+
+    try{
+      const res=await gas("add",{
+        hospital:h,
+        nickname:n,
+        passport:p,
+        date:dt,
+        timeStart:ts,
+        timeEnd:te,
+        time:ts+" — "+te,
+        service:svc
+      });
+
+      if(!res||res.error)throw new Error("server");
+
+      showModal("Заявление успешно отправлено! Оно появится в журнале справа и будет подсвечено.");
+      nick.value="";
+      passport.value="";
+      hospital.value="";
+      dateSel.value="";
+      service.value="";
+      tStart.value="11:00";
+      tEnd.value="11:30";
+
+      if(window.PmuJournal&&typeof window.PmuJournal.refreshAfterSubmit==="function"){
+        window.PmuJournal.refreshAfterSubmit(n);
+      }
+    }catch(e){
+      showModal("Не удалось отправить заявление. Проверьте соединение и попробуйте ещё раз.");
+    }finally{
+      busy=false;
+      btn.textContent="Отправить заявление";
+      btn.classList.remove("pmu-busy");
+    }
+  }
+
+  btn.addEventListener("click",submit);
+  btn.addEventListener("keydown",e=>{
+    if(e.key==="Enter"||e.key===" "){
+      e.preventDefault();
+      submit();
+    }
+  });
+})();
+
+/* ===== СПОЙЛЕР: СХЕМА KODIK_MZ(2) ===== */
+document.addEventListener('DOMContentLoaded', function() {
+  const spoilerContainers = document.querySelectorAll('.echpohmak-spoiler-container');
+
+  spoilerContainers.forEach(function(spoilerContainer) {
+    const spoilerHeader = spoilerContainer.querySelector('.echpohmak-spoiler-header');
+    const spoilerContents = spoilerContainer.querySelector('.echpohmak-spoiler-contents');
+
+    if (!spoilerHeader || !spoilerContents) return;
+
+    spoilerHeader.addEventListener('click', function() {
+      if (spoilerContainer.classList.contains('open')) {
+        spoilerContents.style.maxHeight = '0';
+        spoilerContainer.classList.remove('open');
+      } else {
+        spoilerContents.style.maxHeight = spoilerContents.scrollHeight + 'px';
+        spoilerContainer.classList.add('open');
+      }
+    });
+  });
+});
+
 </script>
+
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px; padding: 15px 0; border-top: 1px solid #34495e; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; line-height: 1.2; letter-spacing: .02em; opacity: .75; color: #ffffff;">
+	made by Robert_Dobrov, Evgeniy_Holmes
+</div>
