@@ -1,21 +1,22 @@
+
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style type="text/css">
 /* --- forum cleanup --- */
-#elComment_7364249 .ipsResponsive_hidePhone{display:none}
-#elComment_7364249 .ipsComment_author{display:none}
-#elComment_7364249 .ipsComment_meta{display:none}
-#elComment_7364249 .ipsType_reset{display:none}
-#elComment_7364249{border-radius:8px}
+#elComment_7837086 .ipsResponsive_hidePhone{display:none}
+#elComment_7837086 .ipsComment_author{display:none}
+#elComment_7837086 .ipsComment_meta{display:none}
+#elComment_7837086 .ipsType_reset{display:none}
+#elComment_7837086{border-radius:8px}
 .ipsPager,.ipsHr,.ipsPhotoPanel_small,.cTopicPostArea,.ipsList_inline,
 .ipsToolList.ipsToolList_horizontal.ipsClearfix.ipsSpacer_both,
 .ipsPageHeader.ipsClearfix,
 .cAuthorPane.cAuthorPane_mobile{display:none}
 .md-toast-warning{font-size:19px;line-height:1.1}
-#elComment_7364249 .ipsType_normal.ipsType_richText.ipsContained{font-family:Montserrat,Helvetica,sans-serif}
-#elComment_7364249 .ipsComment.ipsModerated:not(.ipsComment_selected),
+#elComment_7837086 .ipsType_normal.ipsType_richText.ipsContained{font-family:Montserrat,Helvetica,sans-serif}
+#elComment_7837086 .ipsComment.ipsModerated:not(.ipsComment_selected),
 .ipsComment.ipsModerated.ipsBox:not(.ipsBox_transparent):not(.ipsComment_selected){
   background:transparent;border:1px solid #ec3e3e;
 }
@@ -24,8 +25,8 @@
 .ipsComment.ipsComment_highlighted.ipsBox:not(.ipsComment_selected):not(.ipsModerated):not(.ipsComment_popular):not(.ipsBox_transparent){
   border-color:transparent;background:transparent
 }
-#elComment_7364249 .ipsModerated{background:transparent}
-#elComment_7364249 .ipsBox,#elComment_7364249 .ipsComment{border:1px solid transparent}
+#elComment_7837086 .ipsModerated{background:transparent}
+#elComment_7837086 .ipsBox,#elComment_7837086 .ipsComment{border:1px solid transparent}
 .ipsApp select{font-size:18px!important}
 
 
@@ -281,8 +282,124 @@ input[type=time]::-webkit-datetime-edit-fields-wrapper{color:#ecf0f1;font-family
 .pmu-order{display:inline-flex;align-items:center;gap:5px;color:#c0392b!important;white-space:nowrap}
 .pmu-order svg{width:10px;height:10px}
 
-#pmuRecords{min-width:0}
+/* --- карточка --- */
+.pmu-rec{
+  position:relative;
+  margin:10px 12px 0!important;
+  padding:11px 13px 12px 15px!important;
+  background-color:#2c3e50!important;
+  border:1px solid rgba(105,173,252,.25)!important;
+  border-radius:10px!important;
+  animation:pmuIn .35s ease backwards;
+  transition:border-color .2s ease,box-shadow .2s ease;
+}
+.pmu-rec:last-child{margin-bottom:12px!important}
+.pmu-rec:hover{border-color:rgba(105,173,252,.6)!important;box-shadow:0 0 12px rgba(105,173,252,.18)}
 @keyframes pmuIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.pmu-rec::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background-color:var(--pmu-c,#bdc3c7)}
+.pmu-st-approve{--pmu-c:#2EC46F}
+.pmu-st-pending{--pmu-c:#63A3ED}
+.pmu-st-reject{--pmu-c:#D5493C}
+
+/* ====== ПЕЧАТЬ СТАТУСА: одинаковый размер у всех ====== */
+.pmu-stampwrap{
+  position:absolute;
+  top:38px;
+  right:14px;
+  width:190px;
+  text-align:center;
+  transform:rotate(var(--pmu-r,0deg));
+  animation:pmuStamp .5s cubic-bezier(.2,1.6,.4,1) backwards;
+  pointer-events:none;
+}
+@keyframes pmuStamp{
+  from{transform:rotate(var(--pmu-r,0deg)) scale(1.9);opacity:0}
+  65%{transform:rotate(var(--pmu-r,0deg)) scale(.95);opacity:1}
+  to{transform:rotate(var(--pmu-r,0deg)) scale(1);opacity:1}
+}
+.pmu-stamp{
+  display:flex;align-items:center;justify-content:center;
+  width:184px;height:62px;
+  padding:6px 10px!important;
+  border:3px solid currentColor!important;
+  border-radius:10px!important;
+  font-weight:800;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  line-height:1.45;
+  text-align:center;
+  opacity:.95;
+}
+.pmu-stamp::after{content:'';position:absolute;inset:3px;border:1px solid currentColor;border-radius:7px;opacity:.55}
+.pmu-st-approve .pmu-stamp{color:#2EC46F!important;text-shadow:0 0 14px rgba(46,196,111,.75)}
+.pmu-st-pending .pmu-stamp{color:#63A3ED!important;text-shadow:0 0 14px rgba(99,163,237,.75)}
+.pmu-st-reject .pmu-stamp{color:#D5493C!important;text-shadow:0 0 14px rgba(213,73,60,.75)}
+.pmu-st-none .pmu-stamp{color:#bdc3c7!important}
+.pmu-rest{display:block;margin-top:6px!important;font-size:10.5px;font-weight:600;color:#bdc3c7!important;line-height:1.4}
+
+.pmu-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:10px;font-weight:600}
+.pmu-no{letter-spacing:.07em;text-transform:uppercase;color:#bdc3c7!important;white-space:nowrap}
+.pmu-sent{color:#bdc3c7!important;white-space:nowrap}
+.pmu-sent b{color:#ecf0f1!important;font-weight:700}
+.pmu-window .pmu-nick{margin-top:5px!important;font-size:16.5px;font-weight:700;color:#ecf0f1!important;line-height:1.25;word-break:break-word;padding-right:222px}
+.pmu-window .pmu-line{margin-top:6px!important;font-size:12.5px;color:#ecf0f1!important;line-height:1.4;padding-right:222px}
+.pmu-lbl{display:inline-block;margin-right:7px;font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#95a5a6!important;vertical-align:1px}
+.pmu-line-svc{font-size:13.5px!important;font-weight:700}
+.pmu-line-hosp{color:#bdc3c7!important;font-weight:500}
+
+/* раскраска больниц */
+.pmu-hosp{font-weight:700}
+.pmu-hosp-red{color:#c0392b!important;text-shadow:0 0 8px rgba(192,57,43,.45)}
+.pmu-hosp-blue{color:#4f90df!important;text-shadow:0 0 8px rgba(79,144,223,.45)}
+.pmu-hosp-green{color:#2EC46F!important;text-shadow:0 0 8px rgba(46,196,111,.45)}
+
+.pmu-window .pmu-chip{
+  display:inline-flex;align-items:center;gap:6px;max-width:100%;
+  padding:3px 9px!important;
+  border:1px solid #c0392b!important;
+  border-radius:7px!important;
+  color:#ecf0f1!important;text-decoration:none!important;
+  font-size:11px;font-weight:600;
+  transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease;
+}
+.pmu-window a.pmu-chip:hover{border-color:#4f90df!important;background-color:rgba(79,144,223,.12)!important;box-shadow:0 0 10px rgba(79,144,223,.25)}
+.pmu-chip svg{width:10px;height:10px;flex:none;color:#c0392b}
+.pmu-window a.pmu-chip:hover svg{color:#4f90df}
+.pmu-chip-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pmu-grid{display:flex;flex-wrap:wrap;row-gap:8px;margin-top:10px!important}
+.pmu-grid>div{display:flex;flex-direction:column;gap:2px;padding:0 12px;border-left:1px solid rgba(105,173,252,.3)}
+.pmu-grid>div:first-child{padding-left:0;border-left:0}
+.pmu-grid label{font-size:8px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#95a5a6!important}
+.pmu-window .pmu-grid b{font-size:11.5px;font-weight:700;color:#ecf0f1!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.pmu-v-empty{color:#7f8c8d!important;font-weight:500}
+
+/* Примечание (столбец K): длинный текст переносится, мягкий золотистый оттенок */
+.pmu-window .pmu-grid b.pmu-k{
+  white-space:normal!important;overflow:visible!important;text-overflow:clip!important;
+  line-height:1.35!important;word-break:break-word;
+  color:#e0b45c!important;font-weight:600;
+}
+
+/* свежая заявка после отправки */
+.pmu-rec.pmu-just{border-color:#4f90df!important;animation:pmuIn .35s ease backwards,pmuJust 2.8s ease .35s!important}
+@keyframes pmuJust{
+  0%,100%{box-shadow:0 0 0 rgba(79,144,223,0)}
+  10%,40%,70%{box-shadow:0 0 22px rgba(79,144,223,.55)}
+  25%,55%{box-shadow:0 0 5px rgba(79,144,223,.18)}
+}
+.pmu-noanim .pmu-rec,.pmu-noanim .pmu-stampwrap{animation:none!important}
+.pmu-noanim .pmu-rec.pmu-just{animation:none!important;box-shadow:0 0 22px rgba(79,144,223,.45)!important}
+
+/* кнопка дозагрузки */
+.pmu-more{
+  display:block;margin:0 12px 12px;padding:8px;
+  background-color:#2c3e50!important;
+  border:1px dashed rgba(105,173,252,.45)!important;
+  border-radius:10px!important;
+  color:#ecf0f1!important;
+  font-family:'Montserrat',sans-serif!important;font-size:12px;font-weight:600;
+  text-align:center;cursor:pointer;
+  transition:border-color .2s ease,background-color .2s ease;
+}
+.pmu-more:hover{border-color:#4f90df!important;background-color:#34495e!important}
 
 /* --- служебные состояния --- */
 .pmu-idle,.pmu-empty{padding:40px 20px 34px!important;text-align:center;animation:pmuIn .3s ease backwards}
@@ -433,10 +550,95 @@ input[type=time]::-webkit-datetime-edit-fields-wrapper{color:#ecf0f1;font-family
   writing-mode:horizontal-tb!important;
 }
 
+/* 5. Гарантируем absolute-позиционирование штампа */
+.pmu-rec{position:relative!important}
+.pmu-stampwrap{
+  position:absolute!important;
+  top:38px!important;
+  right:14px!important;
+  width:190px!important;
+}
+.pmu-nick,
+.pmu-line{padding-right:222px!important}
+
+/* 6. Сетка полей */
+.pmu-grid{display:flex!important;flex-wrap:wrap!important}
+.pmu-grid > div{display:flex!important;flex-direction:column!important}
+
 /* 7. Основные flex-контейнеры */
 .pmu-window{display:flex!important;flex-direction:column!important}
 .pmu-duo{display:flex!important;flex-wrap:wrap!important}
 
+
+/* ===== FIX: карточки журнала в реальной ширине IPS-форума ===== */
+#pmuWindow, #pmuWindow .pmu-list, #pmuWindow #pmuRecords,
+#pmuWindow .pmu-rec { min-width:0!important; max-width:100%!important; }
+#pmuWindow .pmu-rec { overflow:visible!important; overflow-wrap:anywhere!important; }
+#pmuWindow .pmu-rec .pmu-nick,
+#pmuWindow .pmu-rec .pmu-line {
+  padding-right:0!important;
+  min-width:0!important;
+  width:auto!important;
+  max-width:100%!important;
+  writing-mode:horizontal-tb!important;
+  overflow-wrap:anywhere!important;
+}
+/* Штамп больше не перекрывает содержимое даже в узкой колонке */
+#pmuWindow .pmu-rec .pmu-stampwrap {
+  position:relative!important;
+  top:auto!important; right:auto!important;
+  width:min(100%,190px)!important;
+  max-width:100%!important;
+  margin:12px 0 8px auto!important;
+  transform:none!important;
+  animation:none!important;
+  writing-mode:horizontal-tb!important;
+}
+#pmuWindow .pmu-rec .pmu-stamp {
+  width:100%!important; height:auto!important; min-height:62px!important;
+  white-space:normal!important;
+  overflow-wrap:normal!important;
+  word-break:normal!important;
+  writing-mode:horizontal-tb!important;
+}
+#pmuWindow .pmu-rec .pmu-top {flex-wrap:wrap!important;min-width:0!important}
+#pmuWindow .pmu-rec .pmu-grid {display:grid!important;grid-template-columns:repeat(auto-fit,minmax(min(100%,145px),1fr))!important;gap:10px!important;min-width:0!important}
+#pmuWindow .pmu-rec .pmu-grid>div {min-width:0!important;width:auto!important;padding:0!important;border-left:0!important}
+#pmuWindow .pmu-rec .pmu-grid label {white-space:normal!important;overflow-wrap:anywhere!important;writing-mode:horizontal-tb!important}
+#pmuWindow .pmu-rec .pmu-grid b {white-space:normal!important;overflow-wrap:anywhere!important;max-width:100%!important}
+#pmuWindow .pmu-bar {min-width:0!important;flex-wrap:wrap!important;white-space:normal!important}
+#pmuWindow .pmu-bar>* {white-space:normal!important;overflow-wrap:anywhere!important}
+#pmuWindow .pmu-searchbar>* {min-width:0!important}
+@media(max-width:640px){#pmuWindow .pmu-rec .pmu-stampwrap {margin-left:0!important}}
+
+
+#pmuWindow .pmu-rec .pmu-stampwrap{margin:8px 0 12px auto!important;}
+@media(max-width:640px){#pmuWindow .pmu-rec .pmu-stampwrap{margin-left:auto!important;}}
+/* FIX: статус справа под «отправлено», без пустого ряда перед NickName */
+@media (min-width:641px) {
+  #pmuWindow .pmu-rec { position:relative!important; }
+  #pmuWindow .pmu-rec .pmu-stampwrap {
+    position:absolute!important;
+    top:38px!important;
+    right:14px!important;
+    width:190px!important;
+    margin:0!important;
+    transform:none!important;
+  }
+  #pmuWindow .pmu-rec .pmu-nick,
+  #pmuWindow .pmu-rec .pmu-line {
+    padding-right:215px!important;
+  }
+}
+@media (max-width:640px) {
+  #pmuWindow .pmu-rec .pmu-stampwrap {
+    position:relative!important;
+    top:auto!important;right:auto!important;
+    margin:8px 0 8px 0!important;
+  }
+  #pmuWindow .pmu-rec .pmu-nick,
+  #pmuWindow .pmu-rec .pmu-line {padding-right:0!important;}
+}
 </style>
 
 
@@ -822,157 +1024,6 @@ input[type=time]::-webkit-datetime-edit-fields-wrapper{color:#ecf0f1;font-family
 
 <iframe name="hiddenFrame" style="display:none;"></iframe>
 
-<template id="pmuRecordStyles">
-<style>
-/* --- карточка --- */
-.pmu-rec{
-  position:relative;
-  margin:10px 12px 0!important;
-  padding:11px 13px 12px 15px!important;
-  background-color:#2c3e50!important;
-  border:1px solid rgba(105,173,252,.25)!important;
-  border-radius:10px!important;
-  animation:pmuIn .35s ease backwards;
-  transition:border-color .2s ease,box-shadow .2s ease;
-}
-.pmu-rec:last-child{margin-bottom:12px!important}
-.pmu-rec:hover{border-color:rgba(105,173,252,.6)!important;box-shadow:0 0 12px rgba(105,173,252,.18)}
-@keyframes pmuIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.pmu-rec::before{content:'';position:absolute;left:0;top:8px;bottom:8px;width:3px;border-radius:0 3px 3px 0;background-color:var(--pmu-c,#bdc3c7)}
-.pmu-st-approve{--pmu-c:#2EC46F}
-.pmu-st-pending{--pmu-c:#63A3ED}
-.pmu-st-reject{--pmu-c:#D5493C}
-
-/* ====== ПЕЧАТЬ СТАТУСА: одинаковый размер у всех ====== */
-.pmu-stampwrap{
-  position:absolute;
-  top:38px;
-  right:14px;
-  width:190px;
-  text-align:center;
-  transform:rotate(var(--pmu-r,0deg));
-  animation:pmuStamp .5s cubic-bezier(.2,1.6,.4,1) backwards;
-  pointer-events:none;
-}
-@keyframes pmuStamp{
-  from{transform:rotate(var(--pmu-r,0deg)) scale(1.9);opacity:0}
-  65%{transform:rotate(var(--pmu-r,0deg)) scale(.95);opacity:1}
-  to{transform:rotate(var(--pmu-r,0deg)) scale(1);opacity:1}
-}
-.pmu-stamp{
-  display:flex;align-items:center;justify-content:center;
-  width:184px;height:62px;
-  padding:6px 10px!important;
-  border:3px solid currentColor!important;
-  border-radius:10px!important;
-  font-weight:800;font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
-  line-height:1.45;
-  text-align:center;
-  opacity:.95;
-}
-.pmu-stamp::after{content:'';position:absolute;inset:3px;border:1px solid currentColor;border-radius:7px;opacity:.55}
-.pmu-st-approve .pmu-stamp{color:#2EC46F!important;text-shadow:0 0 14px rgba(46,196,111,.75)}
-.pmu-st-pending .pmu-stamp{color:#63A3ED!important;text-shadow:0 0 14px rgba(99,163,237,.75)}
-.pmu-st-reject .pmu-stamp{color:#D5493C!important;text-shadow:0 0 14px rgba(213,73,60,.75)}
-.pmu-st-none .pmu-stamp{color:#bdc3c7!important}
-.pmu-rest{display:block;margin-top:6px!important;font-size:10.5px;font-weight:600;color:#bdc3c7!important;line-height:1.4}
-
-.pmu-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font-size:10px;font-weight:600}
-.pmu-no{letter-spacing:.07em;text-transform:uppercase;color:#bdc3c7!important;white-space:nowrap}
-.pmu-sent{color:#bdc3c7!important;white-space:nowrap}
-.pmu-sent b{color:#ecf0f1!important;font-weight:700}
-.pmu-nick{margin-top:5px!important;font-size:16.5px;font-weight:700;color:#ecf0f1!important;line-height:1.25;word-break:break-word;padding-right:222px}
-.pmu-line{margin-top:6px!important;font-size:12.5px;color:#ecf0f1!important;line-height:1.4;padding-right:222px}
-.pmu-lbl{display:inline-block;margin-right:7px;font-size:8.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#95a5a6!important;vertical-align:1px}
-.pmu-line-svc{font-size:13.5px!important;font-weight:700}
-.pmu-line-hosp{color:#bdc3c7!important;font-weight:500}
-
-/* раскраска больниц */
-.pmu-hosp{font-weight:700}
-.pmu-hosp-red{color:#c0392b!important;text-shadow:0 0 8px rgba(192,57,43,.45)}
-.pmu-hosp-blue{color:#4f90df!important;text-shadow:0 0 8px rgba(79,144,223,.45)}
-.pmu-hosp-green{color:#2EC46F!important;text-shadow:0 0 8px rgba(46,196,111,.45)}
-
-.pmu-chip{
-  display:inline-flex;align-items:center;gap:6px;max-width:100%;
-  padding:3px 9px!important;
-  border:1px solid #c0392b!important;
-  border-radius:7px!important;
-  color:#ecf0f1!important;text-decoration:none!important;
-  font-size:11px;font-weight:600;
-  transition:border-color .2s ease,box-shadow .2s ease,background-color .2s ease;
-}
-a.pmu-chip:hover{border-color:#4f90df!important;background-color:rgba(79,144,223,.12)!important;box-shadow:0 0 10px rgba(79,144,223,.25)}
-.pmu-chip svg{width:10px;height:10px;flex:none;color:#c0392b}
-a.pmu-chip:hover svg{color:#4f90df}
-.pmu-chip-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.pmu-grid{display:flex;flex-wrap:wrap;row-gap:8px;margin-top:10px!important}
-.pmu-grid>div{display:flex;flex-direction:column;gap:2px;padding:0 12px;border-left:1px solid rgba(105,173,252,.3)}
-.pmu-grid>div:first-child{padding-left:0;border-left:0}
-.pmu-grid label{font-size:8px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:#95a5a6!important}
-.pmu-grid b{font-size:11.5px;font-weight:700;color:#ecf0f1!important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
-.pmu-v-empty{color:#7f8c8d!important;font-weight:500}
-
-/* Примечание (столбец K): длинный текст переносится, мягкий золотистый оттенок */
-.pmu-grid b.pmu-k{
-  white-space:normal!important;overflow:visible!important;text-overflow:clip!important;
-  line-height:1.35!important;word-break:break-word;
-  color:#e0b45c!important;font-weight:600;
-}
-
-/* свежая заявка после отправки */
-.pmu-rec.pmu-just{border-color:#4f90df!important;animation:pmuIn .35s ease backwards,pmuJust 2.8s ease .35s!important}
-@keyframes pmuJust{
-  0%,100%{box-shadow:0 0 0 rgba(79,144,223,0)}
-  10%,40%,70%{box-shadow:0 0 22px rgba(79,144,223,.55)}
-  25%,55%{box-shadow:0 0 5px rgba(79,144,223,.18)}
-}
-.pmu-noanim .pmu-rec,.pmu-noanim .pmu-stampwrap{animation:none!important}
-.pmu-noanim .pmu-rec.pmu-just{animation:none!important;box-shadow:0 0 22px rgba(79,144,223,.45)!important}
-
-/* кнопка дозагрузки */
-.pmu-more{
-  display:block;margin:0 12px 12px;padding:8px;
-  background-color:#2c3e50!important;
-  border:1px dashed rgba(105,173,252,.45)!important;
-  border-radius:10px!important;
-  color:#ecf0f1!important;
-  font-family:'Montserrat',sans-serif!important;font-size:12px;font-weight:600;
-  text-align:center;cursor:pointer;
-  transition:border-color .2s ease,background-color .2s ease;
-}
-.pmu-more:hover{border-color:#4f90df!important;background-color:#34495e!important}
-
-
-/* Keep record layout independent of forum styles and viewport width. */
-:host{display:block;min-width:0;container-type:inline-size;font-family:'Montserrat',sans-serif;color:#ecf0f1;font-size:12px;line-height:1.4;text-align:left;letter-spacing:normal;white-space:normal;writing-mode:horizontal-tb;word-break:normal;text-transform:none;direction:ltr}
-*,*::before,*::after{box-sizing:border-box}
-h3,p{margin:0;padding:0}
-.pmu-rec{display:grid;grid-template-columns:minmax(0,1fr) 190px;column-gap:16px;row-gap:6px;min-width:0}
-.pmu-top{grid-column:1 / -1;grid-row:1;flex-wrap:wrap;min-width:0}
-.pmu-stampwrap{position:relative;top:auto;right:auto;grid-column:2;grid-row:2 / span 4;align-self:start;width:190px;margin:6px 0 0}
-.pmu-stamp{position:relative;max-width:100%;letter-spacing:0}
-.pmu-rest{overflow-wrap:anywhere}
-.pmu-nick,.pmu-line{grid-column:1;min-width:0;padding-right:0!important;overflow-wrap:anywhere}
-.pmu-nick{grid-row:2}
-.pmu-line{margin-top:0!important}
-.pmu-grid{grid-column:1 / -1;display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px 12px;min-width:0}
-.pmu-grid>div{min-width:0;padding:0;border:0}
-.pmu-grid label{display:block;line-height:1.4}
-.pmu-grid b{white-space:normal;overflow-wrap:anywhere}
-.pmu-chip{max-width:100%;text-decoration:none}
-.pmu-more{width:calc(100% - 24px)}
-@container (max-width:540px){
-  .pmu-rec{grid-template-columns:minmax(0,1fr)}
-  .pmu-stampwrap{grid-column:1;grid-row:6;transform:none;animation:none;margin:6px 0 0}
-  .pmu-grid{grid-row:7}
-  .pmu-top{gap:4px 10px}
-  .pmu-no,.pmu-sent{white-space:normal;overflow-wrap:anywhere}
-}
-@media (prefers-reduced-motion:reduce){.pmu-rec,.pmu-stampwrap{animation:none!important}}
-</style>
-</template>
-
 <script>
 const GOOGLE_SHEETS_URL="https://script.google.com/macros/s/AKfycbw3kAlr3wa01TTSsioqey9ilVGzpRxrBuZTb35Rt-Lak9Op6o57zHoaCR02ac_xxNIF/exec";
 const SCRIPT_URL=GOOGLE_SHEETS_URL;
@@ -1058,11 +1109,6 @@ function gas(action,params={},timeout=10000){
   const refreshBtn=$("pmuRefresh");
   const listEl=$("pmuList");
   const recordsEl=$("pmuRecords");
-  // Isolate dynamic records from the forum theme and other topic styles.
-  const recordRoot=recordsEl.attachShadow({mode:"open"});
-  recordRoot.append($("pmuRecordStyles").content.cloneNode(true));
-  const recordList=document.createElement("div");
-  recordRoot.append(recordList);
   const metaEl=$("pmuMeta");
   const idleEl=$("pmuIdle");
   const idleTitle=$("pmuIdleTitle");
@@ -1190,11 +1236,11 @@ function gas(action,params={},timeout=10000){
     const just=highlightNick&&clean(r.B).toLowerCase()===highlightNick.toLowerCase();
 
     return '<div class="pmu-rec pmu-st-'+st.cls+(just?" pmu-just":"")+'" style="animation-delay:'+delay+'ms">'+
+      '<div class="pmu-top"><span class="pmu-no">Заявление № '+(clean(r.N)||r.__n)+'</span><span class="pmu-sent">отправлено <b>'+(fmtSent(r.G)||"—")+"</b></span></div>"+
       '<div class="pmu-stampwrap" style="--pmu-r:'+ROT[i%ROT.length]+'deg;animation-delay:'+(delay+140)+'ms">'+
         '<span class="pmu-stamp">'+escapeHtml(st.word)+"</span>"+
         (st.rest?'<span class="pmu-rest">'+escapeHtml(st.rest)+"</span>":"")+
       "</div>"+
-      '<div class="pmu-top"><span class="pmu-no">Заявление № '+(clean(r.N)||r.__n)+'</span><span class="pmu-sent">отправлено <b>'+(fmtSent(r.G)||"—")+"</b></span></div>"+
       '<h3 class="pmu-nick">'+escapeHtml(clean(r.B))+"</h3>"+
       '<p class="pmu-line"><span class="pmu-lbl">Паспорт</span>'+passportHtml(r.C)+"</p>"+
       '<p class="pmu-line pmu-line-svc"><span class="pmu-lbl">Услуга</span>'+valueHtml(r.F)+"</p>"+
@@ -1235,7 +1281,7 @@ function gas(action,params={},timeout=10000){
     const rows=filtered();
     const visible=rows.slice(0,shown);
 
-    recordList.innerHTML=visible.map(recHtml).join("")+
+    recordsEl.innerHTML=visible.map(recHtml).join("")+
       (shown<rows.length?'<button class="pmu-more" type="button" data-pmu-action="more">Показать ещё · осталось '+(rows.length-shown)+"</button>":"");
 
     recordsEl.hidden=!rows.length;
@@ -1352,7 +1398,7 @@ function gas(action,params={},timeout=10000){
   }
 
   win.addEventListener("click",e=>{
-    const b=e.composedPath().find(el=>el.matches?.("[data-pmu-action]"));
+    const b=e.target.closest?.("[data-pmu-action]");
     if(!b)return;
     const a=b.dataset.pmuAction;
     if(a==="clear"){input.value="";shown=PAGE;reload(false);input.focus()}
@@ -1532,3 +1578,4 @@ document.addEventListener('DOMContentLoaded', function() {
 <div style="text-align: center; margin-top: 20px; margin-bottom: 20px; padding: 15px 0; border-top: 1px solid #34495e; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 12px; line-height: 1.2; letter-spacing: .02em; opacity: .75; color: #ffffff;">
 	made by Robert_Dobrov, Evgeniy_Holmes
 </div>
+
