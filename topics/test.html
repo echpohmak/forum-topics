@@ -9,20 +9,20 @@
   href="https://storage.yandexcloud.net/mta-province-4-forum-styles/forumStylesMO.css"
 />
 <style id="pv-forum-chrome">
-  #elComment_7364249 .ipsResponsive_hidePhone:not(:has(#pv-app)),
-  #elComment_7364249 .ipsComment_author,
-  #elComment_7364249 .ipsComment_meta,
-  #elComment_7364249 .ipsType_reset:not(:has(#pv-app)),
-  #elComment_7364249 .ipsHr,
-  #elComment_7364249 .ipsPhotoPanel_small,
-  #elComment_7364249 .ipsList_inline,
-  #elComment_7364249 .cAuthorPane.cAuthorPane_mobile {
+  #elComment_7972325 .ipsResponsive_hidePhone:not(:has(#pv-app)),
+  #elComment_7972325 .ipsComment_author,
+  #elComment_7972325 .ipsComment_meta,
+  #elComment_7972325 .ipsType_reset:not(:has(#pv-app)),
+  #elComment_7972325 .ipsHr,
+  #elComment_7972325 .ipsPhotoPanel_small,
+  #elComment_7972325 .ipsList_inline,
+  #elComment_7972325 .cAuthorPane.cAuthorPane_mobile {
     display: none;
   }
 
-  #elComment_7364249,
-  #elComment_7364249 .ipsComment:not(.ipsComment_selected),
-  #elComment_7364249 .ipsBox:not(.ipsComment_selected) {
+  #elComment_7972325,
+  #elComment_7972325 .ipsComment:not(.ipsComment_selected),
+  #elComment_7972325 .ipsBox:not(.ipsComment_selected) {
     background: transparent;
     border-color: transparent;
     border-radius: 8px;
@@ -102,6 +102,9 @@
     margin-top: 0;
     line-height: 1.3;
   }
+  #pv-app :is(.echpohmak-header, h2, h3) {
+    font-weight: 400;
+  }
   .pv-intro {
     margin: 0 0 24px;
     text-align: justify;
@@ -128,7 +131,6 @@
     border-radius: 25px;
     background: var(--pv-panel);
     box-shadow: 0 4px 8px rgb(0 0 0 / 20%);
-    text-decoration: none;
     color: #fff;
     transition: border-color 0.2s ease;
   }
@@ -154,10 +156,8 @@
   }
   #pv-app .pv-card h2 {
     margin: 0 0 8px;
-    color: var(--pv-green);
     font-size: 18px;
     line-height: 1.4;
-    font-weight: 700;
     overflow-wrap: anywhere;
   }
   .pv-card-description {
@@ -222,14 +222,11 @@
   #pv-topic .echpohmak-container::after {
     display: none;
   }
-  #pv-topic :is(p, li, p span, li span) {
-    font-size: 14px !important;
+  #pv-topic :is(p, li) {
     overflow-wrap: anywhere;
   }
   #pv-topic h2 {
-    font-size: 30px;
     line-height: 1.3;
-    margin: 0 0 3px;
     scroll-margin-top: 18px;
   }
   #pv-topic h3 {
@@ -273,7 +270,6 @@
   }
   #pv-topic .echpohmak-spoiler-header span {
     position: static;
-    font-size: 14px !important;
     line-height: 1.5;
   }
   #pv-topic .echpohmak-spoiler-header::before {
@@ -374,9 +370,6 @@
       flex: none;
       width: 100%;
     }
-    #pv-app .pv-card h2 {
-      font-size: 18px;
-    }
     #pv-app .pv-toc a {
       font-size: 16px;
     }
@@ -402,7 +395,12 @@
     <h2 class="pv-toc-heading">Оглавление</h2>
     <hr class="echpohmak-hr pv-toc-rule" />
     <div class="pv-grid vehicles-container">
-      <a class="pv-card vehicle-card" href="#ss" data-platoon="ss" data-title="Срочная служба">
+      <a
+        class="pv-card vehicle-card echpohmak-link"
+        href="#ss"
+        data-platoon="ss"
+        data-title="Срочная служба"
+      >
         <div class="pv-card-media vehicle-img">
           <img
             src="https://i.imgur.com/4pYtnPT.png"
@@ -419,7 +417,12 @@
           </p>
         </div>
       </a>
-      <a class="pv-card vehicle-card" href="#ur" data-platoon="ur" data-title="Учебная рота">
+      <a
+        class="pv-card vehicle-card echpohmak-link"
+        href="#ur"
+        data-platoon="ur"
+        data-title="Учебная рота"
+      >
         <div class="pv-card-media vehicle-img">
           <img
             src="https://i.imgur.com/AL3zhEb.png"
@@ -436,7 +439,12 @@
           </p>
         </div>
       </a>
-      <a class="pv-card vehicle-card" href="#uk" data-platoon="uk" data-title="Учебный корпус">
+      <a
+        class="pv-card vehicle-card echpohmak-link"
+        href="#uk"
+        data-platoon="uk"
+        data-title="Учебный корпус"
+      >
         <div class="pv-card-media vehicle-img">
           <img
             src="https://i.imgur.com/qK5wyEI.png"
@@ -453,7 +461,12 @@
           </p>
         </div>
       </a>
-      <a class="pv-card vehicle-card" href="#vp" data-platoon="vp" data-title="Военная полиция">
+      <a
+        class="pv-card vehicle-card echpohmak-link"
+        href="#vp"
+        data-platoon="vp"
+        data-title="Военная полиция"
+      >
         <div class="pv-card-media vehicle-img">
           <img
             src="https://i.imgur.com/jYeFZ8n.png"
@@ -471,7 +484,7 @@
         </div>
       </a>
       <a
-        class="pv-card vehicle-card"
+        class="pv-card vehicle-card echpohmak-link"
         href="#vvs"
         data-platoon="vvs"
         data-title="Военно-воздушные силы"
@@ -492,7 +505,12 @@
           </p>
         </div>
       </a>
-      <a class="pv-card vehicle-card" href="#st" data-platoon="st" data-title="Служба тыла">
+      <a
+        class="pv-card vehicle-card echpohmak-link"
+        href="#st"
+        data-platoon="st"
+        data-title="Служба тыла"
+      >
         <div class="pv-card-media vehicle-img">
           <img
             src="https://i.imgur.com/PfPUms7.png"
@@ -510,7 +528,7 @@
         </div>
       </a>
       <a
-        class="pv-card vehicle-card"
+        class="pv-card vehicle-card echpohmak-link"
         href="#mto"
         data-platoon="mto"
         data-title="Материальное обеспечение"
@@ -532,7 +550,7 @@
         </div>
       </a>
       <a
-        class="pv-card vehicle-card"
+        class="pv-card vehicle-card echpohmak-link"
         href="#dk"
         data-platoon="dk"
         data-title="Дипломатический корпус"
