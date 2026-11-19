@@ -86,10 +86,6 @@
     font-size: 14px;
     line-height: 1.6;
   }
-  #pv-app button {
-    font: inherit;
-    cursor: pointer;
-  }
   #pv-app a,
   #pv-app button {
     -webkit-tap-highlight-color: transparent;
@@ -233,7 +229,7 @@
     font-size: 20px;
     scroll-margin-top: 18px;
   }
-  #pv-topic :is(ul, ol) {
+  #pv-topic :is(ul, ol):not(.echpohmak-spoiler-contents *) {
     margin-top: 0;
     padding-left: 16px;
   }
@@ -249,45 +245,22 @@
     overflow-wrap: anywhere;
     font-size: 14px;
   }
-  #pv-topic .echpohmak-spoiler-container {
-    margin: 4px 0;
-    padding: 0 15px;
-    font-size: 14px;
-    color: #fff;
-  }
-  #pv-topic .echpohmak-spoiler-header {
+  #pv-topic button.echpohmak-spoiler-header {
+    appearance: none;
     display: block;
     width: 100%;
-    min-height: 44px;
     max-height: none;
-    padding: 10px 0 10px 30px;
     border: 0;
-    background: none;
-    font: inherit;
-    font-weight: 700;
-    color: var(--pv-green);
+    color: inherit;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
     text-align: left;
-  }
-  #pv-topic .echpohmak-spoiler-header span {
-    position: static;
-    line-height: 1.5;
-  }
-  #pv-topic .echpohmak-spoiler-header::before {
-    left: 5px;
-    top: 50%;
-    font-size: 20px;
-    transform: translateY(-50%);
-  }
-  #pv-topic .echpohmak-spoiler-container.open > .echpohmak-spoiler-header::before {
-    transform: translateY(-50%) rotate(90deg);
   }
   #pv-topic .echpohmak-spoiler-contents {
     display: grid;
     grid-template-rows: 0fr;
-    max-height: none !important;
-    overflow: visible;
-    margin: 0;
-    padding: 0;
+    max-height: none;
     visibility: hidden;
     transition: grid-template-rows 0.25s ease;
   }
@@ -298,10 +271,6 @@
   .pv-spoiler-body {
     min-height: 0;
     overflow: hidden;
-    font-weight: 400;
-  }
-  #pv-topic .pv-spoiler-body > :last-child {
-    margin-bottom: 12px;
   }
   .pv-reading-actions {
     display: flex;
