@@ -9,20 +9,20 @@
   href="https://storage.yandexcloud.net/mta-province-4-forum-styles/forumStylesMO.css"
 />
 <style id="pv-forum-chrome">
-  #elComment_7364249 .ipsResponsive_hidePhone:not(:has(#pv-app)),
-  #elComment_7364249 .ipsComment_author,
-  #elComment_7364249 .ipsComment_meta,
-  #elComment_7364249 .ipsType_reset:not(:has(#pv-app)),
-  #elComment_7364249 .ipsHr,
-  #elComment_7364249 .ipsPhotoPanel_small,
-  #elComment_7364249 .ipsList_inline,
-  #elComment_7364249 .cAuthorPane.cAuthorPane_mobile {
+  #elComment_7972325 .ipsResponsive_hidePhone:not(:has(#pv-app)),
+  #elComment_7972325 .ipsComment_author,
+  #elComment_7972325 .ipsComment_meta,
+  #elComment_7972325 .ipsType_reset:not(:has(#pv-app)),
+  #elComment_7972325 .ipsHr,
+  #elComment_7972325 .ipsPhotoPanel_small,
+  #elComment_7972325 .ipsList_inline,
+  #elComment_7972325 .cAuthorPane.cAuthorPane_mobile {
     display: none;
   }
 
-  #elComment_7364249,
-  #elComment_7364249 .ipsComment:not(.ipsComment_selected),
-  #elComment_7364249 .ipsBox:not(.ipsComment_selected) {
+  #elComment_7972325,
+  #elComment_7972325 .ipsComment:not(.ipsComment_selected),
+  #elComment_7972325 .ipsBox:not(.ipsComment_selected) {
     background: transparent;
     border-color: transparent;
     border-radius: 8px;
@@ -245,32 +245,16 @@
     overflow-wrap: anywhere;
     font-size: 14px;
   }
-  #pv-topic button.echpohmak-spoiler-header {
-    appearance: none;
-    display: block;
-    width: 100%;
-    max-height: none;
-    border: 0;
-    color: inherit;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit;
-    text-align: left;
-  }
-  #pv-topic .echpohmak-spoiler-contents {
-    display: grid;
-    grid-template-rows: 0fr;
-    max-height: none;
+  #pv-topic .echpohmak-spoiler-container > .echpohmak-spoiler-contents {
+    max-height: 0;
+    interpolate-size: allow-keywords;
+    color: #fff;
+    font-weight: normal;
     visibility: hidden;
-    transition: grid-template-rows 0.25s ease;
   }
   #pv-topic .echpohmak-spoiler-container.open > .echpohmak-spoiler-contents {
-    grid-template-rows: 1fr;
+    max-height: max-content;
     visibility: visible;
-  }
-  .pv-spoiler-body {
-    min-height: 0;
-    overflow: hidden;
   }
   .pv-reading-actions {
     display: flex;
@@ -4925,26 +4909,25 @@
         image.decoding = "async";
       });
       root.querySelectorAll(".echpohmak-spoiler-container").forEach((box, index) => {
-        const oldHeader = box.querySelector(":scope > .echpohmak-spoiler-header");
+        const header = box.querySelector(":scope > .echpohmak-spoiler-header");
         const content = box.querySelector(":scope > .echpohmak-spoiler-contents");
-        if (!oldHeader || !content) return;
-        const header = document.createElement("button");
-        header.type = "button";
-        header.className = oldHeader.className;
-        header.append(...oldHeader.childNodes);
-        oldHeader.replaceWith(header);
+        if (!header || !content) return;
         content.id = "pv-" + slug + "-spoiler-" + index;
-        const inner = document.createElement("div");
-        inner.className = "pv-spoiler-body";
-        inner.append(...content.childNodes);
-        content.replaceChildren(inner);
+        header.setAttribute("role", "button");
+        header.tabIndex = 0;
         header.setAttribute("aria-controls", content.id);
         header.setAttribute("aria-expanded", String(box.classList.contains("open")));
-        inner.inert = !box.classList.contains("open");
-        header.addEventListener("click", () => {
+        content.inert = !box.classList.contains("open");
+        const toggle = () => {
           const open = box.classList.toggle("open");
           header.setAttribute("aria-expanded", String(open));
-          inner.inert = !open;
+          content.inert = !open;
+        };
+        header.addEventListener("click", toggle);
+        header.addEventListener("keydown", (event) => {
+          if (event.target !== header || (event.key !== "Enter" && event.key !== " ")) return;
+          event.preventDefault();
+          if (!event.repeat) toggle();
         });
       });
       const value = { root, sections };
@@ -4964,10 +4947,8 @@
         box
           .querySelector(":scope > .echpohmak-spoiler-header")
           ?.setAttribute("aria-expanded", "true");
-        const inner = box.querySelector(
-          ":scope > .echpohmak-spoiler-contents > .pv-spoiler-body",
-        );
-        if (inner) inner.inert = false;
+        const content = box.querySelector(":scope > .echpohmak-spoiler-contents");
+        if (content) content.inert = false;
       }
       requestAnimationFrame(() =>
         item.heading.scrollIntoView({
