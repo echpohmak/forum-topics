@@ -80,11 +80,15 @@
   #pv-app {
     --pv-green: #32cd32;
     --pv-panel: #1e1e2d;
+    width: 100%;
     max-width: 1280px;
+    min-width: 0;
     margin: 0 auto;
-    padding: 34px 24px 24px;
+    padding: 34px clamp(10px, 3vw, 24px) 24px;
     font-size: 14px;
     line-height: 1.6;
+    overflow-wrap: anywhere;
+    container: platoons / inline-size;
   }
   #pv-app a,
   #pv-app button {
@@ -114,7 +118,7 @@
   }
   .pv-grid {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
     gap: 20px;
   }
   .pv-card {
@@ -264,6 +268,14 @@
     gap: 16px;
     margin: 30px 0 20px;
   }
+  #pv-app .pv-navigation-feedback {
+    margin: 0 0 16px;
+    padding: 10px 14px;
+    border: 1px solid var(--pv-green);
+    border-radius: 10px;
+    color: #fff;
+    background: var(--pv-panel);
+  }
   .pv-morph {
     position: fixed;
     z-index: 200;
@@ -289,45 +301,57 @@
     white-space: nowrap;
     border: 0;
   }
-  @media (max-width: 850px) {
-    .pv-grid {
-      grid-template-columns: minmax(0, 1fr);
-    }
-    .pv-card-media {
-      flex-basis: 32%;
-    }
-  }
   @media (max-width: 480px) {
     #pv-app {
-      padding: 24px 14px 18px;
+      padding-block: 24px 18px;
     }
+  }
+  @container platoons (max-width: 440px) {
     #pv-app .echpohmak-header {
-      font-size: 28px;
-      margin-bottom: 32px;
+      font-size: clamp(21px, 6.5cqi, 28px);
+      margin-bottom: 24px;
     }
     #pv-app .pv-toc-heading,
     #pv-topic h2 {
       font-size: 24px;
     }
     .pv-grid {
-      gap: 15px;
+      gap: 12px;
     }
     .pv-card {
       flex-direction: column;
       align-items: stretch;
-      gap: 12px;
-      padding: 15px;
-      text-align: center;
+      gap: 10px;
+      padding: 12px;
+      border-radius: 16px;
     }
     .pv-card-media {
       flex: none;
       width: 100%;
     }
     #pv-app .pv-toc a {
+      display: block;
       font-size: 16px;
+      min-height: 44px;
+      padding-block: 10px;
     }
-    .pv-intro {
-      text-align: left;
+    #pv-topic :is(p, li)[style*="text-align: justify"] {
+      text-align: start !important;
+    }
+    #pv-topic :is(p, li) span[style*="font-size: 18px"] {
+      font-size: 16px !important;
+    }
+    #pv-app .pv-toolbar {
+      margin-bottom: 16px;
+    }
+    #pv-app .pv-back {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+    .pv-detail-media {
+      aspect-ratio: 3 / 1;
+      margin-bottom: 18px;
     }
   }
   @media (prefers-reduced-motion: reduce) {
@@ -339,6 +363,9 @@
 </style>
 
 <div id="pv-app" class="echpohmak-container">
+  <p class="pv-navigation-feedback" role="status" tabindex="-1" hidden>
+    Раздел не загрузился. Попробуйте обновить страницу.
+  </p>
   <section id="pv-overview" aria-labelledby="pv-overview-title">
     <h1 id="pv-overview-title" class="echpohmak-header">Информация о взводах</h1>
     <p class="pv-intro">
@@ -551,9 +578,7 @@
     </div>
   </section>
   <p id="pv-announcement" class="pv-sr-only" aria-live="polite"></p>
-</div>
-<template id="pv-template-ss" data-source="ministerstvo-oborony/839947-839947.html">
-  <div class="echpohmak-container">
+  <div id="pv-template-ss" class="echpohmak-container" data-source="ministerstvo-oborony/839947-839947.html" hidden>
     <div class="echpohmak-header">Срочная служба</div>
     <p style="text-align: justify">
       <span style="font-size: 18px"
@@ -736,9 +761,7 @@
       >
     </p>
   </div>
-</template>
-<template id="pv-template-ur" data-source="ministerstvo-oborony/839907-839907.html">
-  <div class="echpohmak-container">
+  <div id="pv-template-ur" class="echpohmak-container" data-source="ministerstvo-oborony/839907-839907.html" hidden>
     <div class="echpohmak-header">Учебная Рота</div>
     <p style="text-align: justify">
       <span style="font-size: 18px"
@@ -797,9 +820,7 @@
       </div>
     </div>
   </div>
-</template>
-<template id="pv-template-uk" data-source="ministerstvo-oborony/840042-840042.html">
-  <div class="echpohmak-container">
+  <div id="pv-template-uk" class="echpohmak-container" data-source="ministerstvo-oborony/840042-840042.html" hidden>
     <div class="echpohmak-header">Учебный корпус</div>
     <p style="text-align: justify">
       <span style="font-size: 18px"
@@ -1216,9 +1237,7 @@
       работы.</span
     >
   </div>
-</template>
-<template id="pv-template-vp" data-source="ministerstvo-oborony/839919-839919.html">
-  <div class="echpohmak-container">
+  <div id="pv-template-vp" class="echpohmak-container" data-source="ministerstvo-oborony/839919-839919.html" hidden>
     <div class="echpohmak-header">Военная Полиция</div>
     <p style="text-align: justify">
       <span style="font-size: 18px"
@@ -1715,7 +1734,7 @@
     <h2 style="text-align: center">Перечень позиций для осуществления авто-поста</h2>
     <div class="avtopost-container">
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="1-16"
           data-src="https://i.imgur.com/r5ICY6I.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1725,7 +1744,7 @@
         <div class="avtopost-description">Тен-код: 1-16</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="2-10"
           data-src="https://i.imgur.com/Wj5IhL6.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1735,7 +1754,7 @@
         <div class="avtopost-description">Тен-код: 2-10</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="2-11"
           data-src="https://i.imgur.com/MRSunjR.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1745,7 +1764,7 @@
         <div class="avtopost-description">Тен-код: 2-11</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="2-13"
           data-src="https://i.imgur.com/Rbg5QlR.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1755,7 +1774,7 @@
         <div class="avtopost-description">Тен-код: 2-13</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="2-16"
           data-src="https://i.imgur.com/orKcXfz.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1765,7 +1784,7 @@
         <div class="avtopost-description">Тен-код: 2-16</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="3-11"
           data-src="https://i.imgur.com/Duk83no.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1775,7 +1794,7 @@
         <div class="avtopost-description">Тен-код: 3-11</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="3-13"
           data-src="https://i.imgur.com/Y9iCR1a.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1785,7 +1804,7 @@
         <div class="avtopost-description">Тен-код: 3-13</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="3-15"
           data-src="https://i.imgur.com/usUwusg.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1795,7 +1814,7 @@
         <div class="avtopost-description">Тен-код: 3-15</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="3-16"
           data-src="https://i.imgur.com/YsmmC31.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1805,7 +1824,7 @@
         <div class="avtopost-description">Тен-код: 3-16</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="4-10"
           data-src="https://i.imgur.com/bF4HqVe.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1815,7 +1834,7 @@
         <div class="avtopost-description">Тен-код: 4-10</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="4-13"
           data-src="https://i.imgur.com/VwBVo3p.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1825,7 +1844,7 @@
         <div class="avtopost-description">Тен-код: 4-13</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="4-15"
           data-src="https://i.imgur.com/0Zv1E3C.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1835,7 +1854,7 @@
         <div class="avtopost-description">Тен-код: 4-15</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="4-16"
           data-src="https://i.imgur.com/fl1eZn6.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -1845,7 +1864,7 @@
         <div class="avtopost-description">Тен-код: 4-16</div>
       </div>
       <div class="avtopost-card">
-        <img
+        <img loading="lazy"
           alt="5-15"
           data-src="https://i.imgur.com/LK5AetF.png"
           src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -2048,9 +2067,7 @@
       >
     </p>
   </div>
-</template>
-<template id="pv-template-vvs" data-source="ministerstvo-oborony/839964-839964.html">
-  <div class="echpohmak-container">
+  <div id="pv-template-vvs" class="echpohmak-container" data-source="ministerstvo-oborony/839964-839964.html" hidden>
     <div class="echpohmak-header">Военно-Воздушные силы</div>
     <p style="text-align: justify">
       <span style="font-size: 18px"
@@ -2161,7 +2178,7 @@
             href="https://i.imgur.com/hPeDZyR.jpeg"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="hPeDZyR.jpeg"
               data-ratio="100.00"
               data-src="https://i.imgur.com/hPeDZyR.jpeg"
@@ -2178,7 +2195,7 @@
             href="https://i.imgur.com/RYKy8Gf.jpeg"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="RYKy8Gf.jpeg"
               data-ratio="100.00"
               data-src="https://i.imgur.com/RYKy8Gf.jpeg"
@@ -2302,7 +2319,7 @@
             href="https://i.imgur.com/eW1CiMZ.jpeg"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="eW1CiMZ.jpeg"
               data-ratio="100.00"
               data-src="https://i.imgur.com/eW1CiMZ.jpeg"
@@ -2349,7 +2366,7 @@
             href="https://i.imgur.com/h3UcrxF.png%5B/img%5D"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="100.00"
               data-src="https://i.imgur.com/h3UcrxF.png%5B/img%5D"
@@ -2366,7 +2383,7 @@
             href="https://i.imgur.com/9fxAnAP.png%5B/img%5D"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="100.00"
               data-src="https://i.imgur.com/9fxAnAP.png%5B/img%5D"
@@ -2383,7 +2400,7 @@
             href="https://i.imgur.com/U6xagCp.png%5B/img%5D"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="100.00"
               data-src="https://i.imgur.com/U6xagCp.png%5B/img%5D"
@@ -2448,7 +2465,7 @@
             href="https://i.imgur.com/jQCAv29.png%5B/img%5D"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="100.00"
               data-src="https://i.imgur.com/jQCAv29.png%5B/img%5D"
@@ -2483,7 +2500,7 @@
             href="https://i.imgur.com/CzJ2PYF.png%5B/img%5D"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="100.00"
               data-src="https://i.imgur.com/CzJ2PYF.png%5B/img%5D"
@@ -2565,7 +2582,7 @@
             href="https://i.imgur.com/q25pOtT.jpeg"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="q25pOtT.jpeg"
               data-ratio="100.00"
               data-src="https://i.imgur.com/q25pOtT.jpeg"
@@ -2582,7 +2599,7 @@
             href="https://i.imgur.com/otabf5C.jpeg"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="otabf5C.jpeg"
               data-ratio="100.00"
               data-src="https://i.imgur.com/otabf5C.jpeg"
@@ -2746,9 +2763,7 @@
       </span>
     </p>
   </div>
-</template>
-<template id="pv-template-st" data-source="ministerstvo-oborony/840047-840047.html">
-  <div class="echpohmak-container">
+  <div id="pv-template-st" class="echpohmak-container" data-source="ministerstvo-oborony/840047-840047.html" hidden>
     <div class="echpohmak-header">Служба Тыла</div>
     <p style="text-align: justify">
       <span style="font-size: 18px"
@@ -2844,7 +2859,7 @@
               href="https://i.imgur.com/mQj0vca.png"
               rel="external nofollow"
               title="Увеличить изображение"
-              ><img
+              ><img loading="lazy"
                 alt="l2kZjtG.jpg"
                 data-ratio="40.70"
                 data-src="https://i.imgur.com/mQj0vca.png"
@@ -3110,7 +3125,7 @@
             href="https://i.imgur.com/x7AFlMV.jpeg"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="x7AFlMV.jpeg"
               data-ratio="100.00"
               data-src="https://i.imgur.com/x7AFlMV.jpeg"
@@ -3127,7 +3142,7 @@
             href="https://i.imgur.com/HFsJ4Dk.jpeg"
             rel="external nofollow"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="HFsJ4Dk.jpeg"
               data-ratio="100.00"
               data-src="https://i.imgur.com/HFsJ4Dk.jpeg"
@@ -3233,9 +3248,7 @@
       >
     </p>
   </div>
-</template>
-<template id="pv-template-mto" data-source="ministerstvo-oborony/840039-840039.html">
-  <div class="echpohmak-container">
+  <div id="pv-template-mto" class="echpohmak-container" data-source="ministerstvo-oborony/840039-840039.html" hidden>
     <div class="echpohmak-header">Служба Материального Обеспечения</div>
     <p style="text-align: justify">
       <span style="font-size: 18px"
@@ -3358,7 +3371,7 @@
               rel="external nofollow"
               target="_blank"
               title="Увеличить изображение"
-              ><img
+              ><img loading="lazy"
                 alt="spacer.png"
                 data-ratio="41.87"
                 data-src="https://i.imgur.com/dWgprKJ.png"
@@ -3380,7 +3393,7 @@
               rel="external nofollow"
               target="_blank"
               title="Увеличить изображение"
-              ><img
+              ><img loading="lazy"
                 alt="spacer.png"
                 data-ratio="41.81"
                 data-src="https://i.imgur.com/KlLVLfu.png"
@@ -3402,7 +3415,7 @@
               rel="external nofollow"
               target="_blank"
               title="Увеличить изображение"
-              ><img
+              ><img loading="lazy"
                 alt="spacer.png"
                 data-ratio="41.87"
                 data-src="https://i.imgur.com/teFitvA.png"
@@ -3563,7 +3576,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="100.00"
               data-src="https://i.imgur.com/dybnHut.png"
@@ -3581,7 +3594,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="100.00"
               data-src="https://i.imgur.com/XTlMHxy.png"
@@ -3599,7 +3612,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="100.00"
               data-src="https://i.imgur.com/3rjUO1r.png"
@@ -3617,7 +3630,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="100.00"
               data-src="https://i.imgur.com/M5AWv5p.png"
@@ -3664,7 +3677,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="1 маршрут: 2 города"
               data-src="https://i.imgur.com/5Ax1QUf.jpeg"
               src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -3682,7 +3695,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="2 маршрут: 2 города"
               data-src="https://i.imgur.com/tWiFyXa.jpeg"
               src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -3700,7 +3713,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="3 маршрут: 2 города"
               data-src="https://i.imgur.com/dfvM4GK.jpeg"
               src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -3718,7 +3731,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="4 маршрут: 2 города"
               data-src="https://i.imgur.com/Hv7oU6o.jpeg"
               src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -3736,7 +3749,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="5 маршрут: 2 города"
               data-src="https://i.imgur.com/OdZfAK9.jpeg"
               src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -3754,7 +3767,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="6 маршрут: 2 города"
               data-src="https://i.imgur.com/d9vEbI9.jpeg"
               src="https://forum.gtaprovince.ru/applications/core/interface/js/spacer.png"
@@ -4076,7 +4089,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="yDTQ4t3.jpeg"
               data-ratio="113.45"
               data-src="https://i.imgur.com/yDTQ4t3.jpeg"
@@ -4134,7 +4147,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="56.25"
               data-src="https://i.imgur.com/qPKdLHC.png"
@@ -4171,7 +4184,7 @@
             rel="external nofollow"
             target="_blank"
             title="Увеличить изображение"
-            ><img
+            ><img loading="lazy"
               alt="spacer.png"
               data-ratio="56.25"
               data-src="https://i.imgur.com/kETP1XF.png"
@@ -4666,9 +4679,7 @@
       </div>
     </div>
   </div>
-</template>
-<template id="pv-template-dk" data-source="ministerstvo-oborony/840045-840045.html">
-  <div class="echpohmak-container">
+  <div id="pv-template-dk" class="echpohmak-container" data-source="ministerstvo-oborony/840045-840045.html" hidden>
     <div class="echpohmak-header">Дипломатический Корпус</div>
     <p style="text-align: justify">
       <span style="font-size: 18px"
@@ -4842,13 +4853,14 @@
       >
     </p>
   </div>
-</template>
+</div>
 <script>
   (() => {
     const app = document.getElementById("pv-app");
     if (!app) return;
     const overview = document.getElementById("pv-overview");
     const detail = document.getElementById("pv-detail");
+    const feedback = app.querySelector(".pv-navigation-feedback");
     const outlet = document.getElementById("pv-topic");
     const toc = document.getElementById("pv-toc");
     const tocList = document.getElementById("pv-toc-list");
@@ -4868,9 +4880,11 @@
     let generation = 0;
     let initialized = false;
 
-    function route() {
+    function route(hash = location.hash) {
       try {
-        const [slug = "", anchor = ""] = decodeURIComponent(location.hash.slice(1)).split("/");
+        const [slug = "", anchor = ""] = decodeURIComponent(
+          hash.slice(1),
+        ).split("/");
         return entries.has(slug) ? { slug, anchor } : { slug: "", anchor: "" };
       } catch {
         return { slug: "", anchor: "" };
@@ -4883,16 +4897,30 @@
     }
 
     function navigate(hash) {
-      if (location.hash === hash) return;
-      rememberPosition();
-      history.pushState(null, "", hash);
+      if (!hash) return;
+      const next = route(hash);
+      if (next.slug && !prepareTopic(next.slug)) {
+        feedback.hidden = false;
+        feedback.focus();
+        return;
+      }
+      if (location.hash !== hash) {
+        rememberPosition();
+        const url = new URL(location.href);
+        url.hash = hash;
+        history.pushState(history.state, "", url);
+      }
       render();
     }
 
     function prepareTopic(slug) {
       if (cache.has(slug)) return cache.get(slug);
-      const fragment = document.getElementById("pv-template-" + slug).content.cloneNode(true);
-      const root = fragment.querySelector(".echpohmak-container");
+      const source = document.getElementById("pv-template-" + slug);
+      if (!source?.textContent.trim()) return null;
+      const root = source.cloneNode(true);
+      root.removeAttribute("id");
+      root.removeAttribute("data-source");
+      root.hidden = false;
       root.querySelector(".echpohmak-header")?.remove();
       const sections = [];
       const used = new Set();
@@ -4936,7 +4964,7 @@
     }
 
     function scrollToAnchor(slug, anchor) {
-      const item = prepareTopic(slug).sections.find((section) => section.anchor === anchor);
+      const item = prepareTopic(slug)?.sections.find((section) => section.anchor === anchor);
       if (!item) return false;
       for (
         let box = item.heading.closest(".echpohmak-spoiler-container");
@@ -5057,24 +5085,26 @@
       return layer;
     }
 
-    function showView(next, previous) {
-      current = next;
-      overview.hidden = Boolean(next.slug);
-      detail.hidden = !next.slug;
-      if (!next.slug) {
-        scrollTo({ top: overviewPosition, behavior: "instant" });
-        return;
+    function showView(next, previous, topic) {
+      if (topic) {
+        const selected = entries.get(next.slug);
+        const cardImage = selected.querySelector(".pv-card-media img");
+        detailImage.src = cardImage.currentSrc || cardImage.src;
+        title.textContent = selected.dataset.title;
+        outlet.replaceChildren(topic.root);
+        drawToc(topic, next.slug, next.anchor);
       }
-      const selected = entries.get(next.slug);
-      const topic = prepareTopic(next.slug);
-      const cardImage = selected.querySelector(".pv-card-media img");
-      detailImage.src = cardImage.currentSrc || cardImage.src;
-      title.textContent = selected.dataset.title;
-      outlet.replaceChildren(topic.root);
-      drawToc(topic, next.slug, next.anchor);
-      if (previous.slug !== next.slug) {
+      current = next;
+      overview.hidden = Boolean(topic);
+      detail.hidden = !topic;
+      if (!topic) {
+        scrollTo({ top: overviewPosition, behavior: "instant" });
+      } else if (previous.slug !== next.slug) {
         scrollTo({
-          top: !previous.slug || next.anchor ? 0 : detailPositions.get(next.slug) || 0,
+          top:
+            !previous.slug || next.anchor
+              ? 0
+              : detailPositions.get(next.slug) || 0,
           behavior: "instant",
         });
       }
@@ -5085,6 +5115,9 @@
       requested = next;
       const previous = current;
       stopAnimation();
+      const topic = next.slug ? prepareTopic(next.slug) : null;
+      feedback.hidden = !next.slug || Boolean(topic);
+      if (!feedback.hidden) return;
       const token = generation;
       const changingView = previous.slug !== next.slug;
       const opening = !previous.slug && Boolean(next.slug);
@@ -5117,7 +5150,7 @@
         if (token !== generation) return;
       }
 
-      showView(next, previous);
+      showView(next, previous, topic);
       const effects = [];
       if (transition) {
         app.dataset.transition = "entering";
@@ -5195,7 +5228,7 @@
       )
         return;
       event.preventDefault();
-      navigate(link.getAttribute("href"));
+      navigate(link.hash);
     });
     addEventListener("popstate", () => {
       rememberPosition();
